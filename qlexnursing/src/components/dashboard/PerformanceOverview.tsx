@@ -51,7 +51,12 @@ export function PerformanceOverview({
                 </span>
               </span>
             </div>
-            <LineChart data={trend} />
+            <LineChart
+              data={trend.map((point) => ({
+                label: point.date,
+                value: point.score,
+              }))}
+            />
             <p className="mt-2 text-xs text-muted">
               Score trend over your last {trend.length} practice sessions.
             </p>
