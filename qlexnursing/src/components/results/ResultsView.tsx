@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import type { Exam, ExamResult, Question } from "@/types";
 import {
@@ -28,23 +28,34 @@ export function ResultsView({
   exam: Exam;
   questions: Question[];
 }) {
-  const [result, setResult] = useState<ExamResult | null>(null);
-
-  useEffect(() => {
-    let parsed: ExamResult | null = null;
-    try {
-      const raw = localStorage.getItem(RESULT_STORAGE_KEY(exam.id));
-      if (raw) parsed = JSON.parse(raw) as ExamResult;
-    } catch {
-      parsed = null;
-    }
-    if (!parsed) {
-      parsed = buildDemoResult(exam, questions, exam.id);
-    }
-    setResult(parsed);
-  }, [exam, questions]);
-
   const [showReview, setShowReview] = useState(false);
+
+  const demoResult = useMemo(
+    () => buildDemoResult(exam, questions, exam.id),
+    [exam, questions]
+  );
+
+  const cache = useRef<ExamResult | null>(null);
+  const result = useSyncExternalStore(
+    () => () => {},
+    () => {
+      if (cache.current) return cache.current;
+      if (typeof window !== "undefined") {
+        try {
+          const raw = localStorage.getItem(RESULT_STORAGE_KEY(exam.id));
+          if (raw) {
+            cache.current = JSON.parse(raw) as ExamResult;
+            return cache.current;
+          }
+        } catch {
+          cache.current = null;
+        }
+      }
+      cache.current = demoResult;
+      return cache.current;
+    },
+    () => demoResult
+  );
 
   const scoreTone = useMemo(() => {
     if (!result) return "brand";
