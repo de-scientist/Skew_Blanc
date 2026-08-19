@@ -4,6 +4,16 @@ import {
   ClipboardIcon,
   ChartIcon,
   GraduationIcon,
+  StethoscopeIcon,
+  HeartPulseIcon,
+  LayersIcon,
+  FileTextIcon,
+  MessageIcon,
+  FlameIcon,
+  TargetIcon,
+  UserIcon,
+  SettingsIcon,
+  CompassIcon,
 } from "@/components/ui/icons";
 
 export interface NavItem {
@@ -36,25 +46,95 @@ export const navGroups: NavGroup[] = [
       {
         label: "RN Nursing",
         href: "/exams/rn-nursing",
-        icon: BookIcon,
+        icon: GraduationIcon,
         description: "Comprehensive RN exam",
+      },
+      {
+        label: "LPN Nursing",
+        href: "/exams/lpn-nursing",
+        icon: StethoscopeIcon,
+        description: "Practical nursing prep",
       },
       {
         label: "NCLEX-RN",
         href: "/exams/nclex-rn",
-        icon: ClipboardIcon,
+        icon: HeartPulseIcon,
         description: "Board exam preparation",
+      },
+      {
+        label: "NCLEX-PN",
+        href: "/exams/nclex-pn",
+        icon: StethoscopeIcon,
+        description: "PN licensure prep",
       },
     ],
   },
   {
-    label: "Performance",
+    label: "Resources",
     items: [
       {
-        label: "Results",
-        href: "/results/nclex-rn",
+        label: "Study Notes",
+        href: "/study-notes",
+        icon: BookIcon,
+        description: "Notes & flashcards",
+      },
+      {
+        label: "Flashcards",
+        href: "/study-notes",
+        icon: LayersIcon,
+        description: "Spaced repetition",
+      },
+      {
+        label: "Forums",
+        href: "/forums",
+        icon: MessageIcon,
+        description: "Learn together",
+      },
+    ],
+  },
+  {
+    label: "Progress",
+    items: [
+      {
+        label: "Performance",
+        href: "/progress",
         icon: ChartIcon,
-        description: "Review past attempts",
+        description: "Analytics & mastery",
+      },
+      {
+        label: "Study Streak",
+        href: "/progress#streak",
+        icon: FlameIcon,
+        description: "Build momentum",
+      },
+      {
+        label: "Study Plan",
+        href: "/study-plan",
+        icon: TargetIcon,
+        description: "Your schedule",
+      },
+      {
+        label: "Learning Recaps",
+        href: "/progress#recap",
+        icon: CompassIcon,
+        description: "Weekly review",
+      },
+    ],
+  },
+  {
+    label: "Account",
+    items: [
+      {
+        label: "Profile",
+        href: "/profile",
+        icon: UserIcon,
+        description: "Your details",
+      },
+      {
+        label: "Settings",
+        href: "/settings",
+        icon: SettingsIcon,
+        description: "Preferences",
       },
     ],
   },
@@ -62,7 +142,8 @@ export const navGroups: NavGroup[] = [
 
 export const bottomNavItems: NavItem[] = [
   { label: "Home", href: "/dashboard", icon: DashboardIcon },
-  { label: "RN", href: "/exams/rn-nursing", icon: BookIcon },
-  { label: "NCLEX", href: "/exams/nclex-rn", icon: ClipboardIcon },
-  { label: "Results", href: "/results/nclex-rn", icon: GraduationIcon },
+  { label: "Practice", href: "/exams/rn-nursing", icon: ClipboardIcon },
+  { label: "Progress", href: "/progress", icon: ChartIcon },
+  { label: "Resources", href: "/study-notes", icon: LayersIcon },
+  { label: "Profile", href: "/profile", icon: UserIcon },
 ];
