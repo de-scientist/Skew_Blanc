@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
+import { Badge } from "@/components/ui/Card";
 import { buttonVariants } from "@/components/ui/Button";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import {
@@ -12,6 +13,7 @@ import {
   TargetIcon,
 } from "@/components/ui/icons";
 import type { Exam } from "@/types";
+import type { Accent } from "@/lib/accents";
 
 export interface Faq {
   q: string;
@@ -23,11 +25,13 @@ export function ExamLanding({
   intro,
   faqs,
   breadcrumbLabel,
+  banner,
 }: {
   exam: Exam;
   intro: string;
   faqs: Faq[];
   breadcrumbLabel: string;
+  banner?: { image: string; accent: Accent; highlight?: string };
 }) {
   const overview = [
     {
@@ -55,6 +59,11 @@ export function ExamLanding({
       <section className="grid gap-8 lg:grid-cols-2 lg:items-center">
         <div>
           <Badge tone="brand">{exam.level} level</Badge>
+          {banner?.highlight && (
+            <Badge tone="accent" className="ml-2">
+              {banner.highlight}
+            </Badge>
+          )}
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             Prepare for the {exam.shortTitle}
           </h1>
@@ -76,23 +85,44 @@ export function ExamLanding({
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          {overview.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Card key={item.label}>
-                <CardContent className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <p className="text-xs text-muted">{item.label}</p>
-                    <p className="text-lg font-bold text-ink">{item.value}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+        <div className="relative">
+          {banner ? (
+            <div className="relative h-56 overflow-hidden rounded-2xl border border-line shadow-card sm:h-64">
+              <Image
+                src={banner.image}
+                alt={`${exam.shortTitle} preparation`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-sm font-semibold text-white">
+                  {exam.totalQuestions} questions · {exam.durationMinutes} min ·{" "}
+                  {exam.passingScore}% passing
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-4">
+              {overview.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Card key={item.label}>
+                    <CardContent className="flex items-center gap-3">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <div>
+                        <p className="text-xs text-muted">{item.label}</p>
+                        <p className="text-lg font-bold text-ink">{item.value}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 

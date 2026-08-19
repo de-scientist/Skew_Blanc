@@ -222,4 +222,10 @@ body {
   .container-page {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
+  .input {
+    @apply h-11 w-full rounded-xl border border-line bg-canvas px-3 text-sm text-ink placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100;
+  }
+  .input-icon {
+    @apply h-11 w-full rounded-xl border border-line bg-canvas pl-9 pr-3 text-sm text-ink placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100;
+  }
 }
