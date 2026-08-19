@@ -423,3 +423,17 @@ export const SlidersIcon = (p: IconProps) => (
     <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6" />
   </svg>
 );
+
+export const SendIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="m22 2-7 20-4-9-9-4z" />
+    <path d="M22 2 11 13" />
+  </svg>
+);
+
+export const CornerDownLeftIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="m9 10-5 5 5 5" />
+    <path d="M20 4v7a4 4 0 0 1-4 4H4" />
+  </svg>
+);

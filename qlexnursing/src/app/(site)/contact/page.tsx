@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Field } from "@/components/auth/LoginForm";
 import { MailIcon, PhoneIcon, MapPinIcon, CheckIcon, SendIcon } from "@/components/ui/icons";
+import { createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
   title: "Contact",
