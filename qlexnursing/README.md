@@ -8,13 +8,13 @@ A production-quality redesign of the **QLexNursing** nursing exam-preparation ex
 
 ## Overview
 
-QLexNursing is a modern EdTech/SaaS-style platform that helps nursing students prepare for the **NCLEX-RN** and **RN Nursing** exams. The application was redesigned around the student's real journey:
+QLexNursing is a modern EdTech/SaaS-style platform that helps nursing students prepare for **six exam families**: ATI TEAS, HESI A2, RN Nursing, LPN Nursing, NCLEX-RN and NCLEX-PN. The product is split into a **public marketing site** (landing, exams, blog, resources, legal/SEO pages) and an **authenticated learning platform** (dashboard, exam, results, study plan, notes, forums, profile). It is built around the student's real journey:
 
 ```
-Dashboard → Choose Exam → Start Exam → Answer Questions → Submit → View Results → Review Answers → Identify Weak Areas → Practice Again
+Landing → Choose Exam → Onboard → Dashboard → Study Plan → Start Exam → Answer Questions → Submit → Results → Review → Identify Weak Areas → Practice Again
 ```
 
-Rather than copying the existing sites, the product was rebuilt to prioritize **clarity, speed, confidence and accessibility** over visual novelty.
+Rather than copying the existing sites, the product was rebuilt to prioritize **clarity, speed, confidence and accessibility** over visual novelty. A complete **light / dark / system** theme is built in (default: system) with no FOUC.
 
 ---
 
@@ -52,40 +52,50 @@ No UI component library was used — the design system is implemented from scrat
 ```
 src/
 ├── app/
-│   ├── layout.tsx            # Root layout: html/body, global metadata, skip link
-│   ├── page.tsx              # Public landing (marketing)
-│   ├── globals.css           # Tailwind v4 design tokens + base styles
-│   ├── sitemap.ts            # Public URL sitemap
-│   ├── robots.ts             # Crawler directives
+│   ├── layout.tsx            # Root layout: html/body, ThemeProvider + AuthProvider + no-FOUC script
+│   ├── globals.css           # Tailwind v4 design tokens + light/dark theme + base styles
+│   ├── sitemap.ts            # Public URL sitemap (exams, blog, legal, info)
+│   ├── robots.ts             # Crawler directives (disallows app/auth routes)
 │   ├── opengraph-image.tsx   # Dynamic OG image (next/og)
 │   ├── not-found.tsx         # 404
-│   └── (app)/                # Authenticated-style app shell group
-│       ├── layout.tsx        # AppShell (sidebar + topbar + mobile nav)
-│       ├── dashboard/
-│       ├── exams/
-│       │   ├── nclex-rn/
-│       │   └── rn-nursing/
-│       ├── exam/[id]/
-│       └── results/[id]/
+│   ├── (site)/               # Public marketing group (SiteHeader + SiteFooter)
+│   │   ├── layout.tsx
+│   │   ├── page.tsx          # Landing (hero carousel, paths, why, analytics, FAQs, CTA)
+│   │   ├── exams/            # /exams + /exams/[category]
+│   │   ├── blog/             # /blog + /blog/[slug]
+│   │   ├── resources/ about/ faq/ contact/
+│   │   ├── legal/[doc]/      # privacy, terms, refund-policy, accessibility, disclaimer
+│   │   └── onboarding/       # Post-signup exam selection
+│   ├── (app)/                # Authenticated platform group (RequireAuth + AppShell)
+│   │   ├── layout.tsx        # Sidebar + Topbar + NotificationBell + mobile nav
+│   │   ├── dashboard/  exam/[id]/  results/[id]/
+│   │   ├── study-plan/  progress/  study-notes/
+│   │   ├── forums/  (list, [slug], new)
+│   │   ├── search/  profile/ (profile + edit + settings)
+│   └── (auth)/               # Auth group (centered layout)
+│       ├── login/ register/ forgot-password/ reset-password/ verify-email/
 ├── components/
+│   ├── theme/                # ThemeProvider, useTheme, ThemeScript (no FOUC), ThemeToggle
+│   ├── auth/                 # AuthProvider, RequireAuth, LoginForm/RegisterForm/…
 │   ├── ui/                   # Button, Card, Badge, ProgressBar, StatCard, Modal, Skeleton, charts, icons…
-│   ├── layout/               # AppShell, Sidebar, Topbar, MobileBottomNav, SiteHeader
-│   ├── dashboard/            # Dashboard sections
-│   ├── exam/                 # ExamLanding, ExamInterface, QuestionCard, ExamNavigator, ExamTimer
-│   └── results/              # ResultsView
+│   ├── layout/               # SiteHeader, SiteFooter, Sidebar, Topbar, NotificationBell, MobileBottomNav
+│   ├── home/                 # Homepage sections (HeroCarousel, Testimonials, sections)
+│   ├── dashboard/  exam/  results/  study/  forums/  search/  settings/  legal/
 ├── lib/
-│   ├── api/                  # API abstraction layer (client, exams, questions, dashboard)
+│   ├── api/                  # API abstraction layer (client, exams, questions, dashboard, auth)
 │   ├── result.ts             # Result building + demo fallback
-│   ├── seo.ts                # Metadata + JSON-LD builders
+│   ├── seo.ts                # Metadata + JSON-LD builders (WebSite, Org, Course, Breadcrumb, FAQ, Article)
 │   └── utils.ts              # cn(), formatters
-├── config/                   # site.ts, nav.ts
-├── data/mock/                # Isolated mock data
-└── types/                    # Shared TypeScript types
+├── config/                   # site.ts, nav.ts (public + app navigation)
+├── data/mock/                # Isolated mock data (exams, categories, testimonials, blog, forums…)
+└── types/                    # Shared TypeScript types (domain.ts + types.ts)
 ```
 
 **Key decisions**
 
-- **Route group `(app)`** keeps the marketing landing (public) separate from the application shell (dashboard/exam/results) without affecting URLs.
+- **Route groups** — `(site)` (public marketing) and `(app)` (authenticated platform) and `(auth)` (centered auth) are visually/structurally distinct without affecting clean URLs.
+- **Theme system** — `ThemeProvider` persists `qlex:theme` (`light`/`dark`/`system`, default `system`), syncs to OS preference, and toggles a single `.dark` class on `<html>`. `ThemeScript` runs inline in `<head>` to prevent flash-of-wrong-theme.
+- **Auth (demo)** — A mock `AuthProvider` + `RequireAuth` gate the `(app)` group, reading/writing `qlex:session` in `localStorage`. Clearly documented as a demo; swapping to a real backend is localized to `lib/api/auth.ts`.
 - **API abstraction layer** (`lib/api`) isolates data access so raw `fetch` calls never appear in components. Service functions mirror a real REST contract (`getExams`, `getExam`, `getQuestions`, `getDashboard`).
 - **Mock data is isolated** under `data/mock` and accessed only through the API layer, making real backend integration a drop-in change.
 
@@ -164,7 +174,7 @@ Each function returns a typed Promise. Today they resolve **mock data** served f
 2. Map the response to the existing types in `src/types`.
 3. No component changes are required — the contract is already fixed.
 
-Authentication is assumed to be handled by the existing infrastructure; no auth backend is implemented here. The frontend reads an auth context/session managed by the host app.
+Authentication in this prototype is implemented as a **clearly-labeled demo**: `lib/api/auth.ts` exposes `login/register/logout/getSession` backed by a `localStorage` `qlex:session`, and `components/auth/AuthProvider.tsx` + `RequireAuth` gate the `(app)` group (redirecting guests to `/login?next=…`). Wire the real backend by replacing the bodies of these functions only — no component changes required.
 
 ---
 
@@ -229,9 +239,9 @@ Target **90+** on Performance, Accessibility, Best Practices and SEO for public 
 ## Future Improvements
 
 - Wire the real REST API and replace `localStorage` persistence with backend submission.
-- Add real authentication/session integration.
+- Replace the mock auth/session with the real authentication backend.
 - Expand the question bank and add adaptive difficulty.
-- Add a dedicated study-plan view and spaced-repetition scheduling.
-- Optional, fully-designed dark mode.
+- Add spaced-repetition scheduling on top of the existing study-plan/notes.
 - End-to-end and component tests (Vitest/RTL) and visual regression coverage.
+- Add the dedicated testimonials page and richer blog article rendering (code blocks, callouts).
 ```
