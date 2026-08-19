@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 import { buttonVariants } from "@/components/ui/Button";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import {

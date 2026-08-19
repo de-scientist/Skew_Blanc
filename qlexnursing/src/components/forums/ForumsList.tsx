@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 import { buttonVariants } from "@/components/ui/Button";
 import { forumTopics } from "@/data/mock/content";
 import { SearchIcon, MessageIcon, EyeIcon, ArrowRightIcon, PlusIcon, CheckCircleIcon } from "@/components/ui/icons";

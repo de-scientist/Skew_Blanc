@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Badge } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { buttonVariants } from "@/components/ui/Button";
 import { blogPosts, getBlogPost } from "@/data/mock/blog";

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { forumTopics } from "@/data/mock/content";
 import { Card, CardContent } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Avatar } from "@/components/ui/Avatar";
 import { ReplyBox } from "@/components/forums/ReplyBox";

@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { buttonVariants } from "@/components/ui/Button";
 import { studyNotes } from "@/data/mock/content";
