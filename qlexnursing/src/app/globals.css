@@ -51,6 +51,16 @@
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
+  /* Semantic aliases — resolve to the themeable CSS variables below */
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-elevated: var(--elevated);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-track: var(--track);
+  --color-subtle: var(--subtle);
+
   --radius-xl: 1rem;
   --radius-2xl: 1.25rem;
 
