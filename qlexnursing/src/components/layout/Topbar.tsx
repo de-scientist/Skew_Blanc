@@ -4,22 +4,24 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Avatar } from "@/components/ui/Avatar";
-import {
-  BellIcon,
-  MenuIcon,
-  SearchIcon,
-} from "@/components/ui/icons";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { NotificationBell } from "@/components/layout/NotificationBell";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { SearchIcon, MenuIcon } from "@/components/ui/icons";
 
 export function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
   const router = useRouter();
+  const { user } = useAuth();
   const [query, setQuery] = useState("");
 
   function onSearch(e: React.FormEvent) {
     e.preventDefault();
     const q = query.trim();
     if (!q) return;
-    router.push(`/dashboard?q=${encodeURIComponent(q)}`);
+    router.push(`/search?q=${encodeURIComponent(q)}`);
   }
+
+  const name = user ? `${user.firstName} ${user.lastName}` : "Guest";
 
   return (
     <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-line bg-surface/80 px-4 backdrop-blur lg:px-8">
@@ -37,27 +39,22 @@ export function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search questions, subjects, exams…"
+          placeholder="Search exams, notes, forums…  (⌘K)"
           aria-label="Search"
-          className="h-10 w-full rounded-xl border border-line bg-canvas pl-9 pr-3 text-sm text-ink placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
+          className="input-icon"
         />
       </form>
 
       <div className="ml-auto flex items-center gap-2">
-        <button
-          className="relative rounded-xl p-2.5 text-muted hover:bg-brand-50"
-          aria-label="Notifications"
-        >
-          <BellIcon className="h-5 w-5" />
-          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-danger-500" />
-        </button>
+        <ThemeToggle />
+        <NotificationBell />
         <Link
-          href="/dashboard"
-          className="flex items-center gap-2 rounded-xl p-1 pr-3 hover:bg-brand-50"
+          href="/profile"
+          className="flex items-center gap-2 rounded-xl border border-line bg-surface p-1 pr-3 hover:bg-brand-50"
         >
-          <Avatar name="Jordan Student" />
-          <span className="hidden text-sm font-medium text-ink sm:block">
-            Jordan
+          <Avatar name={name} />
+          <span className="hidden text-sm font-semibold text-ink sm:block">
+            {user?.firstName ?? "Guest"}
           </span>
         </Link>
       </div>
