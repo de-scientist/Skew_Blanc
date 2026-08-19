@@ -2,7 +2,10 @@
 
 /* ============================================================
    QLexNursing Design System — Tailwind v4 theme tokens
+   Light is the default; .dark on <html> flips to dark mode.
    ============================================================ */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Brand — Deep Navy (primary) */
   --color-brand-50: #eef2ff;
@@ -46,13 +49,6 @@
   --color-danger-600: #dc2626;
   --color-danger-700: #b91c1c;
 
-  /* Neutrals */
-  --color-surface: #ffffff;
-  --color-canvas: #f6f8fb;
-  --color-ink: #0f172a;
-  --color-muted: #64748b;
-  --color-line: #e2e8f0;
-
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   --radius-xl: 1rem;
@@ -64,15 +60,101 @@
 }
 
 /* ============================================================
-   Base
+   Light theme tokens (default)
    ============================================================ */
 :root {
   color-scheme: light;
   --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-canvas: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-elevated: #ffffff;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+  --color-track: #e2e8f0;
+  --color-subtle: #f1f5f9;
+
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04),
+    0 4px 16px rgba(15, 23, 42, 0.06);
+  --shadow-card-hover: 0 10px 34px rgba(15, 23, 42, 0.12);
 }
 
+/* ============================================================
+   Dark theme tokens
+   ============================================================ */
+:root.dark {
+  color-scheme: dark;
+
+  --color-canvas: #070b18;
+  --color-surface: #101729;
+  --color-elevated: #16213a;
+  --color-ink: #e8edf7;
+  --color-muted: #93a1bd;
+  --color-line: #25324d;
+  --color-track: #25324d;
+  --color-subtle: #16213a;
+
+  --glass-bg: rgba(16, 23, 41, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 18px rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floaty-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1deg);
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+.animate-floaty-slow {
+  animation: floaty-slow 9s ease-in-out infinite;
+}
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -83,7 +165,14 @@ html {
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-floaty,
+  .animate-floaty-slow,
+  .animate-fade-up {
+    animation: none !important;
   }
 }
 
@@ -92,13 +181,28 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 /* Accessible focus ring for keyboard users */
 :focus-visible {
-  outline: 2px solid var(--color-brand-600);
+  outline: 2px solid var(--color-brand-500);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* Thin scrollbars inside scroll regions */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 9999px;
 }
 
 /* Utility helpers */
@@ -108,5 +212,14 @@ body {
   }
   .text-balance {
     text-wrap: balance;
+  }
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 }
