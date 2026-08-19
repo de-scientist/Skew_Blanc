@@ -61,6 +61,33 @@
   --color-track: var(--track);
   --color-subtle: var(--subtle);
 
+  /* Full semantic design-token set (shadcn-style, brand-adapted) */
+  --color-background: var(--canvas);
+  --color-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--elevated);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--brand-600);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--accent-500);
+  --color-secondary-foreground: #ffffff;
+  --color-accent: var(--accent-500);
+  --color-accent-foreground: #ffffff;
+  --color-muted-background: var(--subtle);
+  --color-muted-foreground: var(--muted);
+  --color-border: var(--line);
+  --color-input: var(--line);
+  --color-ring: var(--brand-500);
+  --color-success: var(--success-500);
+  --color-success-foreground: #ffffff;
+  --color-warning: var(--warning-500);
+  --color-warning-foreground: #1a1205;
+  --color-danger: var(--danger-500);
+  --color-danger-foreground: #ffffff;
+  --color-info: var(--brand-500);
+  --color-info-foreground: #ffffff;
+
   --radius-xl: 1rem;
   --radius-2xl: 1.25rem;
 
