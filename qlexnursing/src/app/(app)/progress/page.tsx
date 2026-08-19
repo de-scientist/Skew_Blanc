@@ -8,6 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Card";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Button } from "@/components/ui/Button";
+import { buttonVariants } from "@/components/ui/Button";
+import Link from "next/link";
 import { mockStreak } from "@/data/mock/user";
 import { createMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { formatDuration, formatNumber } from "@/lib/utils";
@@ -93,10 +95,13 @@ export default async function ProgressPage() {
       </div>
 
       <div className="flex justify-center">
-        <Button variant="outline" size="lg" href="/exam/rn-nursing">
+        <Link
+          href="/exam/rn-nursing"
+          className={buttonVariants({ variant: "outline", size: "lg" })}
+        >
           Practice weak areas
           <ArrowRightIcon className="h-4 w-4" />
-        </Button>
+        </Link>
       </div>
     </div>
   );

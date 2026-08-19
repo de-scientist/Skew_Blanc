@@ -104,3 +104,30 @@ export function faqJsonLd(items: { question: string; answer: string }[]) {
     })),
   };
 }
+
+export function articleJsonLd(input: {
+  title: string;
+  description: string;
+  author: string;
+  datePublished: string;
+  dateModified: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: input.title,
+    description: input.description,
+    author: { "@type": "Organization", name: input.author },
+    datePublished: input.datePublished,
+    dateModified: input.dateModified,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.organization,
+      url: siteConfig.url,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": siteConfig.url,
+    },
+  };
+}
