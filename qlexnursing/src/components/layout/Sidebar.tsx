@@ -62,6 +62,8 @@ export function Sidebar({
                   const active =
                     pathname === item.href ||
                     (item.href !== "/dashboard" &&
+                      item.href !== "/profile" &&
+                      item.href !== "/study-notes" &&
                       pathname.startsWith(item.href));
                   const Icon = item.icon;
                   return (
@@ -73,8 +75,8 @@ export function Sidebar({
                         className={cn(
                           "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
                           active
-                            ? "bg-brand-50 text-brand-700"
-                            : "text-slate-600 hover:bg-brand-50 hover:text-brand-700"
+                            ? "bg-brand-50 text-brand-700 dark:bg-brand-900/40 dark:text-brand-200"
+                            : "text-muted hover:bg-brand-50 hover:text-brand-700 dark:hover:bg-brand-900/30 dark:hover:text-brand-200"
                         )}
                       >
                         <Icon className="h-5 w-5 shrink-0" />
@@ -89,11 +91,11 @@ export function Sidebar({
         </nav>
 
         <div className="border-t border-line p-4">
-          <div className="rounded-xl bg-brand-50 p-4">
-            <p className="text-sm font-semibold text-brand-800">
+          <div className="rounded-xl bg-brand-50 p-4 dark:bg-brand-900/30">
+            <p className="text-sm font-semibold text-brand-800 dark:text-brand-200">
               Need a study plan?
             </p>
-            <p className="mt-1 text-xs text-brand-700/80">
+            <p className="mt-1 text-xs text-brand-700/80 dark:text-brand-200/70">
               Follow your recommended focus area on the dashboard.
             </p>
           </div>
