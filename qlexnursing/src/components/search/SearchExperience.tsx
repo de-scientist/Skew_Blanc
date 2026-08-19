@@ -54,7 +54,7 @@ export function SearchExperience() {
     return all.filter(
       (r) => r.title.toLowerCase().includes(term) || r.sub.toLowerCase().includes(term)
     );
-  }, [q]);
+  }, [q, all]);
 
   React.useEffect(() => {
     function onKey(e: KeyboardEvent) {
