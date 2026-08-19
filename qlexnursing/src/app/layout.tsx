@@ -70,6 +70,7 @@ export default function RootLayout({
             Skip to content
           </a>
           {children}
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
