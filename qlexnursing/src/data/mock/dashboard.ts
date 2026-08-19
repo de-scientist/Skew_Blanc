@@ -1,7 +1,7 @@
 import type { DashboardData } from "@/types";
 
 export const mockDashboard: DashboardData = {
-  studentName: "Jordan",
+  studentName: "Mark",
   stats: {
     questionsAnswered: 1248,
     accuracy: 78,
