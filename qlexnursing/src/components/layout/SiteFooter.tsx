@@ -76,7 +76,7 @@ export function SiteFooter() {
                     name="newsletter"
                     placeholder="you@email.com"
                     aria-label="Email address"
-                    className="h-11 w-full rounded-xl border border-line bg-canvas pl-9 pr-3 text-sm text-ink placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
+                    className="input-icon"
                   />
                 </div>
                 <button

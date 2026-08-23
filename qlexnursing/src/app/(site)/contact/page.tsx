@@ -71,7 +71,7 @@ export default function ContactPage() {
                   </select>
                 </Field>
                 <Field label="Message" htmlFor="message">
-                  <textarea id="message" name="message" required rows={5} className="w-full rounded-xl border border-line bg-canvas p-3 text-sm text-ink placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100" placeholder="How can we help?" />
+                  <textarea id="message" name="message" required rows={5} className="input-area" placeholder="How can we help?" />
                 </Field>
                 <Button type="submit" size="lg" className="w-full">
                   <SendIcon className="h-4 w-4" /> Send message

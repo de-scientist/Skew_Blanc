@@ -31,7 +31,7 @@ export function ReplyBox({ topic }: { topic: string }) {
             onChange={(e) => setText(e.target.value)}
             rows={3}
             placeholder={`Share your thoughts on “${topic}”…`}
-            className="w-full rounded-xl border border-line bg-canvas p-3 text-sm text-ink placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
+            className="input-area"
           />
           <Button type="submit" size="sm">
             Post reply

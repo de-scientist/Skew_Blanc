@@ -74,8 +74,8 @@ export function ThemeRadioGroup({
             className={cn(
               "flex flex-col items-center gap-2 rounded-xl border p-3 text-sm font-medium transition-colors",
               active
-                ? "border-brand-500 bg-brand-50 text-brand-700"
-                : "border-line bg-surface text-muted hover:bg-brand-50"
+                ? "border-brand-500 bg-brand-50 text-brand-700 dark:border-brand-400 dark:bg-brand-900/40 dark:text-brand-200"
+                : "border-line bg-surface text-muted hover:bg-brand-50 dark:hover:bg-brand-900/30"
             )}
           >
             {opt.icon}

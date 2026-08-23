@@ -34,7 +34,7 @@ export function NewTopicForm() {
         </select>
       </Field>
       <Field label="Details" htmlFor="body">
-        <textarea id="body" value={body} onChange={(e) => setBody(e.target.value)} rows={6} className="w-full rounded-xl border border-line bg-canvas p-3 text-sm text-ink placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100" placeholder="Add context so others can help" />
+          <textarea id="body" value={body} onChange={(e) => setBody(e.target.value)} rows={6} className="input-area" placeholder="Add context so others can help" />
       </Field>
       <div className="flex items-center gap-3">
         <Button type="submit">
