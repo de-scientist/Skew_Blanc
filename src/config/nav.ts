@@ -14,6 +14,8 @@ import {
   UserIcon,
   SettingsIcon,
   CompassIcon,
+  FileTextIcon,
+  FlagIcon,
 } from "@/components/ui/icons";
 
 export interface NavItem {
@@ -118,6 +120,23 @@ export const navGroups: NavGroup[] = [
         href: "/progress#recap",
         icon: CompassIcon,
         description: "Weekly review",
+      },
+    ],
+  },
+  {
+    label: "Instructor",
+    items: [
+      {
+        label: "Question Bank",
+        href: "/admin/questions/bank",
+        icon: FileTextIcon,
+        description: "Author & manage questions",
+      },
+      {
+        label: "Question Reports",
+        href: "/admin/questions/reports",
+        icon: FlagIcon,
+        description: "Review student reports",
       },
     ],
   },
