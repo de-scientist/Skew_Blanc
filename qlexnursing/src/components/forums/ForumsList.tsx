@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
+import { Avatar } from "@/components/ui/Avatar";
 import { buttonVariants } from "@/components/ui/Button";
 import { forumTopics } from "@/data/mock/content";
 import { SearchIcon, MessageIcon, EyeIcon, ArrowRightIcon, PlusIcon, CheckCircleIcon } from "@/components/ui/icons";
@@ -43,11 +44,9 @@ export function ForumsList() {
       <div className="space-y-3">
         {filtered.map((t) => (
           <Link key={t.id} href={`/forums/${t.slug}`} className="group">
-            <Card className="transition-all hover:border-brand-300 hover:shadow-card-hover">
-              <CardContent className="flex items-center gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
-                  {t.authorInitials}
-                </span>
+              <Card className="transition-all hover:border-brand-300 hover:shadow-card-hover">
+                <CardContent className="flex items-center gap-4">
+                  <Avatar name={t.author} className="h-11 w-11 shrink-0" />
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <Badge tone="brand">{t.category}</Badge>
