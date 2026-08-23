@@ -28,7 +28,6 @@ import {
   LayersIcon,
   CheckCircleIcon,
   MessageIcon,
-  FileTextIcon,
   UsersIcon,
   PlayIcon,
   FlagIcon,
@@ -381,20 +380,14 @@ export function ResourceSection() {
         />
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {studyResources.slice(0, 6).map((r) => (
-            <Link key={r.id} href={r.href} className="group">
-              <Card className="h-full transition-all hover:-translate-y-1 hover:shadow-card-hover">
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <Badge tone="brand">{r.type}</Badge>
-                    <span className="text-xs text-muted">{r.count} items</span>
-                  </div>
-                  <h3 className="mt-3 text-base font-semibold text-ink">
-                    {r.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted">{r.description}</p>
-                </CardContent>
-              </Card>
-            </Link>
+            <ResourceCard
+              key={r.id}
+              href={r.href}
+              type={r.type}
+              title={r.title}
+              description={r.description}
+              count={r.count}
+            />
           ))}
         </div>
       </div>
