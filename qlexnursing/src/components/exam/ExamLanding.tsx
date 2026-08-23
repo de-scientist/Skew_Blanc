@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/Card";
+import { ImageFrame } from "@/components/ui/ImageFrame";
 import { Badge } from "@/components/ui/Badge";
 import { buttonVariants } from "@/components/ui/Button";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
@@ -88,14 +88,13 @@ export function ExamLanding({
         <div className="relative">
           {banner ? (
             <div className="relative h-56 overflow-hidden rounded-2xl border border-line shadow-card sm:h-64">
-              <Image
+              <ImageFrame
                 src={banner.image}
                 alt={`${exam.shortTitle} preparation`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                overlay="bg-gradient-to-t from-brand-950/85 via-brand-950/25 to-transparent"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
                 <p className="text-sm font-semibold text-white">
                   {exam.totalQuestions} questions · {exam.durationMinutes} min ·{" "}

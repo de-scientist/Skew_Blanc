@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { buttonVariants } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ResourceCard, ImageCard } from "@/components/ui/cards";
+import { ArrowRightIcon } from "@/components/ui/icons";
 import { studyResources } from "@/data/mock/content";
 import { examCategories } from "@/data/mock/examCategories";
 import { createMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { formatNumber } from "@/lib/utils";
-import { BookIcon, LayersIcon, FileTextIcon, GraduationIcon, ArrowRightIcon, SparkIcon, ClipboardIcon } from "@/components/ui/icons";
+import { BookIcon, LayersIcon, FileTextIcon, GraduationIcon, SparkIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = createMetadata({
   title: "Study Resources",
@@ -42,23 +41,15 @@ export default function ResourcesPage() {
         <SectionHeading title="Browse by resource" description="Pick a format and dive in." />
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {studyResources.map((r) => (
-            <Link key={r.id} href={r.href} className="group">
-              <Card className="h-full transition-all hover:-translate-y-1 hover:shadow-card-hover">
-                <CardContent>
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
-                    {resIcon[r.type] ?? <BookIcon className="h-5 w-5" />}
-                  </span>
-                  <h3 className="mt-4 text-base font-semibold text-ink">{r.title}</h3>
-                  <p className="mt-1 text-sm text-muted">{r.description}</p>
-                  <div className="mt-3 flex items-center justify-between text-xs text-muted">
-                    <span>{r.subject}</span>
-                    <span className="inline-flex items-center gap-1 font-semibold text-brand-700">
-                      Open <ArrowRightIcon className="h-4 w-4" />
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
+            <ResourceCard
+              key={r.id}
+              href={r.href}
+              type={r.type}
+              title={r.title}
+              description={r.description}
+              count={r.count}
+              icon={resIcon[r.type] ?? <BookIcon className="h-5 w-5" />}
+            />
           ))}
         </div>
       </div>
@@ -67,20 +58,24 @@ export default function ResourcesPage() {
         <SectionHeading title="Resources by exam" description="Jump straight to materials for your track." />
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {examCategories.map((c) => (
-            <Link key={c.id} href={`/exams/${c.slug}`} className="group">
-              <Card className="h-full transition-all hover:-translate-y-1 hover:shadow-card-hover">
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-base font-semibold text-ink">{c.name}</h3>
-                    <ClipboardIcon className="h-5 w-5 text-muted" />
-                  </div>
-                  <p className="mt-1 text-sm text-muted">{formatNumber(c.questionCount)} practice questions across {c.subjects.length} subjects.</p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
-                    Explore {c.shortName} <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </CardContent>
-              </Card>
-            </Link>
+            <ImageCard
+              key={c.id}
+              href={`/exams/${c.slug}`}
+              image={c.heroImage}
+              alt={`${c.name} resources`}
+              ratio="video"
+              overlay="bg-gradient-to-t from-brand-950/85 via-brand-950/20 to-transparent"
+              sizes="(max-width: 1024px) 100vw, 33vw"
+              eyebrow={`${formatNumber(c.questionCount)} questions`}
+              title={c.name}
+              description={`Practice questions across ${c.subjects.length} subjects.`}
+              footer={
+                <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 dark:text-brand-300">
+                  Explore {c.shortName}
+                  <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              }
+            />
           ))}
         </div>
       </div>

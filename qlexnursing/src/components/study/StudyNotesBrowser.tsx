@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+import { ImageFrame } from "@/components/ui/ImageFrame";
 import { buttonVariants } from "@/components/ui/Button";
 import { studyNotes } from "@/data/mock/content";
 import { SearchIcon, BookIcon, BookmarkIcon, ArrowRightIcon, FileTextIcon } from "@/components/ui/icons";
@@ -39,7 +40,14 @@ export function StudyNotesBrowser() {
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((n) => (
-          <Card key={n.id} className="flex h-full flex-col">
+          <Card key={n.id} className="group flex h-full flex-col overflow-hidden">
+            <ImageFrame
+              src={n.cover}
+              alt={n.title}
+              ratio="ten"
+              zoomOnHover
+              sizes="(max-width: 1024px) 100vw, 33vw"
+            />
             <CardContent className="flex flex-1 flex-col">
               <div className="flex items-center justify-between">
                 <Badge tone="brand">{n.category}</Badge>

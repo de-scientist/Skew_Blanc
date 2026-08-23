@@ -10,10 +10,18 @@ const iconWrap: Record<Accent, string> = {
   warning: "bg-warning-50 text-warning-700",
 };
 
+const trendTone: Record<string, string> = {
+  success: "text-success-600",
+  warning: "text-warning-600",
+  danger: "text-danger-600",
+  neutral: "text-muted",
+};
+
 export function StatCard({
   label,
   value,
   footnote,
+  trend,
   accent = "brand",
   icon,
   className,
@@ -21,6 +29,7 @@ export function StatCard({
   label: string;
   value: string | number;
   footnote?: string;
+  trend?: { value: string; tone?: "success" | "warning" | "danger" | "neutral" };
   accent?: Accent;
   icon?: React.ReactNode;
   className?: string;
@@ -45,6 +54,16 @@ export function StatCard({
         {typeof value === "number" ? formatNumber(value) : value}
       </p>
       {footnote && <p className="mt-1 text-xs text-muted">{footnote}</p>}
+      {trend && (
+        <p
+          className={cn(
+            "mt-1 text-xs font-semibold",
+            trendTone[trend.tone ?? "neutral"]
+          )}
+        >
+          {trend.value}
+        </p>
+      )}
     </div>
   );
 }

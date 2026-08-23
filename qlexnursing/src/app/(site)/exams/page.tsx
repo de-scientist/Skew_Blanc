@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { buttonVariants } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ImageCard } from "@/components/ui/cards";
+import { ArrowRightIcon } from "@/components/ui/icons";
 import { examCategories } from "@/data/mock/examCategories";
 import { accentStyles } from "@/lib/accents";
 import { createMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { formatNumber } from "@/lib/utils";
-import { LayersIcon, ArrowRightIcon, ClipboardIcon, BookIcon, GraduationIcon, StethoscopeIcon, HeartPulseIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = createMetadata({
   title: "Nursing Exam Prep",
@@ -17,15 +15,6 @@ export const metadata: Metadata = createMetadata({
   path: "/exams",
   keywords: ["nursing exams", "ATI TEAS", "HESI A2", "NCLEX", "RN Nursing", "LPN Nursing"],
 });
-
-const catIcon: Record<string, React.ReactNode> = {
-  "ati-teas": <BookIcon className="h-5 w-5" />,
-  "hesi-a2": <ClipboardIcon className="h-5 w-5" />,
-  "rn-nursing": <GraduationIcon className="h-5 w-5" />,
-  "lpn-nursing": <StethoscopeIcon className="h-5 w-5" />,
-  "nclex-rn": <HeartPulseIcon className="h-5 w-5" />,
-  "nclex-pn": <StethoscopeIcon className="h-5 w-5" />,
-};
 
 export default function ExamsIndexPage() {
   const jsonLd = breadcrumbJsonLd([
@@ -52,27 +41,36 @@ export default function ExamsIndexPage() {
           {examCategories.map((cat) => {
             const a = accentStyles[cat.accent];
             return (
-              <Link key={cat.id} href={`/exams/${cat.slug}`} className="group">
-                <Card className="h-full transition-all hover:-translate-y-1 hover:shadow-card-hover">
-                  <CardContent>
-                    <div className="flex items-center justify-between">
-                      <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${a.soft} ${a.text}`}>
-                        {catIcon[cat.slug] ?? <LayersIcon className="h-5 w-5" />}
-                      </span>
-                      <Badge tone="neutral">{cat.audience}</Badge>
-                    </div>
-                    <h2 className="mt-4 text-lg font-bold text-ink">{cat.name}</h2>
-                    <p className="mt-1 text-sm text-muted">{cat.description}</p>
-                    <div className="mt-4 flex items-center justify-between text-xs text-muted">
-                      <span>{formatNumber(cat.questionCount)} questions</span>
-                      <span className={`inline-flex items-center gap-1 font-semibold ${a.text}`}>
-                        Open {cat.shortName}
-                        <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+              <ImageCard
+                key={cat.id}
+                href={`/exams/${cat.slug}`}
+                image={cat.heroImage}
+                alt={`${cat.name} preparation`}
+                ratio="video"
+                overlay="bg-gradient-to-t from-brand-950/85 via-brand-950/20 to-transparent"
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                badge={
+                  <Badge tone="neutral" className="bg-white/90 text-ink">
+                    {cat.audience}
+                  </Badge>
+                }
+                eyebrow={cat.tagline}
+                title={cat.name}
+                description={cat.description}
+                footer={
+                  <>
+                    <span className="text-xs font-medium text-muted">
+                      {formatNumber(cat.questionCount)} questions
+                    </span>
+                    <span
+                      className={`inline-flex items-center gap-1 text-sm font-semibold ${a.text}`}
+                    >
+                      Open {cat.shortName}
+                      <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </>
+                }
+              />
             );
           })}
         </div>

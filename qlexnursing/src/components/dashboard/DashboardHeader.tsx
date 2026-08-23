@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/Button";
+import { GlassCard } from "@/components/ui/cards";
 import { ArrowRightIcon, FlameIcon } from "@/components/ui/icons";
 import { formatNumber } from "@/lib/utils";
 
@@ -30,13 +31,13 @@ export function DashboardHeader({
             streak alive.
           </p>
         </div>
-        <div className="flex shrink-0 items-center gap-3 rounded-xl bg-white/10 px-4 py-3 backdrop-blur">
-          <FlameIcon className="h-6 w-6 text-warning-400" />
+        <GlassCard className="flex shrink-0 items-center gap-3 rounded-xl bg-white/10 px-4 py-3 text-white">
+          <FlameIcon className="h-6 w-6 text-warning-300" />
           <div>
-            <p className="text-xs text-brand-100">Study streak</p>
+            <p className="text-xs text-white/70">Study streak</p>
             <p className="text-lg font-bold">12 days</p>
           </div>
-        </div>
+        </GlassCard>
       </div>
       <div className="mt-6 flex flex-wrap gap-3">
         <Link
