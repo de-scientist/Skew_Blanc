@@ -198,7 +198,7 @@ All stages above are implemented as routes/components. Authentication and persis
 | Inter (Google Fonts) | Typography | Verified (`app/layout.tsx`) |
 | No database / ORM | Persistence | Not present (mock data only) |
 | No state-management library | State | Not present (React Context only) |
-| No testing framework | Tests | Not present |
+| Vitest `^4` | Tests | Verified (`src/lib/assessment/engine.test.ts`, `npm run test`) |
 | No CI/CD configuration | Deployment pipeline | Not present |
 
 There is **no** database, ORM, state-management library (Redux/Zustand), testing framework, or CI/CD configuration in the repository. shadcn/ui CLI is **not** installed; the equivalents are hand-maintained in `src/components/ui`.
@@ -734,17 +734,26 @@ Exam categories are defined in `src/data/mock/examCategories.ts`:
 | NCLEX-RN | `nclex-rn` | RN |
 | NCLEX-PN | `nclex-pn` | LPN |
 
+Nursora implements **four distinct learning modes** on a single, configuration-driven assessment engine. Mode behavior — feedback timing, explanations, hints, AI tutor, timer strictness, randomization, navigation, and passing score — is defined centrally as a `ModeConfig` in `src/lib/assessment/modes.ts` (see [Assumptions](#a9--four-mode-assessment-engine)). The `AssessmentPlayer` and engine read exclusively from these configs; there is no `if (mode === "exam")` branching in the UI.
+
+| Mode | Purpose | Feedback | Explanations | Hints / AI | Timer | Randomization |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Practice** | Learn with immediate feedback | Immediate | Immediate | UI only (no AI) | Optional | Off |
+| **Tutor** | Guided, AI-assisted reasoning | Guided | Interactive | On — heuristic tutor | None | Off |
+| **Test** | Measure knowledge | After submission | After submission | Off | Enabled | On |
+| **Exam** | Simulate exam conditions | After submission | After submission | Off | Mandatory (authoritative `expiresAt`) | On |
+
 **Flow**
 
-1. `/exams` lists categories; `/exams/[category]` shows the landing page (`ExamLanding`) with overview, subjects, and FAQs.
-2. "Start practice" navigates to `/exam/[id]` which renders `ExamInterface`.
-3. `ExamInterface` renders `QuestionCard` for each question, supports answer selection, question **flagging**, a `ExamNavigator` (jump between questions, see answered/flagged status), and an `ExamTimer`.
-4. On submit, results are built by `buildResult()` in `src/lib/result.ts` and stored in `localStorage` under `qlex:result:<examId>` (legacy identifier).
-5. `/results/[id]` renders `ResultsView` with per-question correctness, subject performance, and readiness summary.
+1. `/exams` lists categories; `/exams/[category]` shows the landing page (`ExamLanding`) with an overview, subjects, FAQ, and a **mode selector** (`ModeSelector`).
+2. Choosing a mode navigates to `/assessment/[id]?mode=<mode>`, which renders `AssessmentPlayer` with the matching `ModeConfig`.
+3. `AssessmentPlayer` renders `QuestionCard`, supports answer selection, **flagging**, question navigation (`ExamNavigator`), and an `ExamTimer` derived from the server-style `expiresAt` (refreshes / tab closes cannot extend time). In Tutor mode it renders `TutorPanel` — a rule-based, heuristic tutor with an LLM-ready seam in `src/lib/assessment/tutor.ts`.
+4. On submit/finish, the result is computed **authoritatively** by `computeResult()` in `src/lib/assessment/engine.ts` (correctness is recomputed from the question bank; the client score is never trusted) and persisted to `localStorage`.
+5. `/assessment/results/[id]` renders `AssessmentResults` with per-question review, subject / topic / difficulty performance, weak areas, and recommendations.
 
-Each `Exam` mock record defines `totalQuestions`, `durationMinutes`, and `passingScore`. Questions are served from mock data through `src/lib/api/exams.ts` and `src/lib/api/questions.ts`.
+Each `Exam` mock record defines `totalQuestions`, `durationMinutes`, and `passingScore`. Questions are served from mock data through `src/lib/api/questions.ts` and `src/lib/api/exams.ts`.
 
-> The FAQ copy mentions "practice, tutor, test and exam modes." This is **template mock content**; the codebase implements a single practice-exam flow (interface → results). Multiple modes are **not** implemented and should be treated as planned/aspirational until built.
+> **Backward compatibility.** A legacy single-flow exam interface (`ExamInterface` → `lib/result.ts` → `/results/[id]`) still exists; new entries use the four-mode flow above. The four modes are implemented in the front end and run on the mocked data/attempt layer. Server-side scoring, a real question bank, and a live LLM tutor remain backend work (see [Known Limitations](#known-limitations)).
 
 ---
 
@@ -793,9 +802,10 @@ There is **no HTTP API** in the repository. Instead, typed service modules in `s
 | `client.ts` | `request(data, delayMs)`, `sleep(ms)`, `DEMO_DELAY_MS` | Simulates latency (tunable via `NEXT_PUBLIC_DEMO_DELAY_MS`); clone of data |
 | `auth.ts` | `login`, `register`, `updateProfile`, `readSession`, `writeSession`, `clearSession` | `localStorage` |
 | `exams.ts` | `getExams`, `getExam(idOrSlug)` | `data/mock/exams` |
-| `questions.ts` | `getQuestions(examId)` | `data/mock/questions` |
+| `questions.ts` | `getQuestions(examId)`, `getQuestionPool(examId)` | `data/mock/questions` |
 | `dashboard.ts` | `getDashboard` | `data/mock/dashboard` |
-| `result.ts` | `buildResult`, `RESULT_STORAGE_KEY` | `localStorage` |
+| `result.ts` | `buildResult`, `RESULT_STORAGE_KEY` | `localStorage` (legacy flow) |
+| `assessment.ts` | `startAssessment`, `autosaveAnswer`, `autosaveAttempt`, `submitAssessment`, `fetchResult`, `fetchHistory` | `lib/assessment/attempt.ts` (localStorage) |
 
 Example usage (actual project syntax):
 
@@ -817,7 +827,17 @@ To connect a real backend, replace the body of `request()` with a `fetch` to `pr
 
 ## Testing
 
-**No automated tests are present** in the repository (no Vitest, Jest, Playwright, or Testing Library configuration). Testing is a recommended addition (see [Future Roadmap](#future-roadmap)).
+Unit tests cover the assessment engine (`src/lib/assessment/engine.ts`) — scoring, percentage/pass-fail, answer evaluation (single + multiple choice), deterministic randomization (`mulberry32` / `shuffle`), question selection/filtering/pooling, weak-area detection, recommendations, and the mode configuration.
+
+- **Runner:** [Vitest](https://vitest.dev) (`vitest.config.mts`).
+- **Command:** `npm run test` (run once) or `npm run test:watch`.
+- **Location:** `src/lib/assessment/engine.test.ts`.
+
+```bash
+npm run test   # 22 tests, all passing
+```
+
+> The engine is a pure, framework-free module so it can be unit-tested in Node and reused verbatim on a future backend. UI/integration/security tests are recommended next steps (see [Future Roadmap](#future-roadmap)).
 
 ---
 
