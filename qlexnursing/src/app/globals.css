@@ -277,7 +277,6 @@ body {
     -webkit-backdrop-filter: blur(16px);
     color: #ffffff;
   }
-}
 
 /* Centralized z-index utilities (explicit so the scale is guaranteed,
    independent of theme-generated utilities).
