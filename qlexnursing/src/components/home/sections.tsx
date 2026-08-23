@@ -47,49 +47,39 @@ export function QuickPaths() {
         {examCategories.map((cat) => {
           const a = accentStyles[cat.accent];
           return (
-            <Link key={cat.id} href={`/exams/${cat.slug}`} className="group">
-              <Card className="h-full overflow-hidden transition-all hover:-translate-y-1 hover:shadow-card-hover">
-                <div className="relative h-32">
-                  <Image
-                    src={cat.heroImage}
-                    alt={`${cat.name} preparation`}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-ink/10" />
-                  <Badge
-                    tone="accent"
-                    className="absolute left-3 top-3 bg-white/90 text-brand-700"
+            <ImageCard
+              key={cat.id}
+              href={`/exams/${cat.slug}`}
+              image={cat.heroImage}
+              alt={`${cat.name} preparation`}
+              ratio="video"
+              overlay="bg-gradient-to-t from-ink/85 via-ink/20 to-transparent"
+              sizes="(max-width: 1024px) 100vw, 33vw"
+              badge={
+                <Badge
+                  tone="accent"
+                  className="bg-white/90 text-brand-700"
+                >
+                  {cat.highlight}
+                </Badge>
+              }
+              eyebrow={cat.tagline}
+              title={cat.name}
+              description={cat.description}
+              footer={
+                <>
+                  <span className="text-xs font-medium text-muted">
+                    {formatNumber(cat.questionCount)} questions
+                  </span>
+                  <span
+                    className={`inline-flex items-center gap-1 text-sm font-semibold ${a.text}`}
                   >
-                    {cat.highlight}
-                  </Badge>
-                </div>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-ink">{cat.name}</h3>
-                    <span
-                      className={`flex h-9 w-9 items-center justify-center rounded-xl ${a.soft} ${a.text}`}
-                    >
-                      <LayersIcon className="h-5 w-5" />
-                    </span>
-                  </div>
-                  <p className="mt-1 text-sm text-muted">{cat.tagline}</p>
-                  <p className="mt-3 text-sm text-muted">{cat.description}</p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-xs font-medium text-muted">
-                      {formatNumber(cat.questionCount)} questions
-                    </span>
-                    <span
-                      className={`inline-flex items-center gap-1 text-sm font-semibold ${a.text}`}
-                    >
-                      Explore {cat.shortName}
-                      <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
+                    Explore {cat.shortName}
+                    <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </>
+              }
+            />
           );
         })}
       </div>
@@ -187,24 +177,16 @@ export function WhySection() {
         title="Everything you need to prepare with confidence"
         description="One calm, focused place for practice, review and progress."
       />
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {whyFeatures.map((f) => {
-          const Icon = f.icon;
-          return (
-            <Card key={f.title} className="h-full">
-              <CardContent>
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 text-white">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-4 text-base font-semibold text-ink">
-                  {f.title}
-                </h3>
-                <p className="mt-1 text-sm text-muted">{f.text}</p>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {whyFeatures.map((f) => (
+            <FeatureCard
+              key={f.title}
+              icon={<f.icon className="h-5 w-5" />}
+              title={f.title}
+              description={f.text}
+            />
+          ))}
+        </div>
     </section>
   );
 }
