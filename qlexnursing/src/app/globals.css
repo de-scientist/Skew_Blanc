@@ -106,6 +106,7 @@
   --z-modal: 60;
   --z-toast: 70;
   --z-tooltip: 80;
+  --z-skip: 100;
 }
 
 /* ============================================================
@@ -309,14 +310,20 @@ body {
   .z-tooltip {
     z-index: var(--z-tooltip);
   }
+  .z-skip {
+    z-index: var(--z-skip);
+  }
 }
   .container-page {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
   .input {
-    @apply h-11 w-full rounded-xl border border-line bg-canvas px-3 text-sm text-ink placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100;
+    @apply h-11 w-full rounded-xl border border-line bg-canvas px-3 text-sm text-ink placeholder:text-muted focus:border-brand-500 focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-brand-500/30;
   }
   .input-icon {
-    @apply h-11 w-full rounded-xl border border-line bg-canvas pl-9 pr-3 text-sm text-ink placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100;
+    @apply h-11 w-full rounded-xl border border-line bg-canvas pl-9 pr-3 text-sm text-ink placeholder:text-muted focus:border-brand-500 focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-brand-500/30;
+  }
+  .input-area {
+    @apply w-full rounded-xl border border-line bg-canvas p-3 text-sm text-ink placeholder:text-muted focus:border-brand-500 focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-brand-500/30;
   }
 }

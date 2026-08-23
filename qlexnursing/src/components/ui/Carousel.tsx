@@ -107,7 +107,7 @@ export function Carousel({
             type="button"
             onClick={() => go(index - 1)}
             aria-label="Previous slide"
-            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-surface/80 text-ink shadow-card backdrop-blur transition-colors hover:bg-surface"
+            className="absolute left-3 top-1/2 z-content flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-surface/80 text-ink shadow-card backdrop-blur transition-colors hover:bg-surface"
           >
             <ChevronLeftIcon className="h-5 w-5" />
           </button>
@@ -115,7 +115,7 @@ export function Carousel({
             type="button"
             onClick={() => go(index + 1)}
             aria-label="Next slide"
-            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-surface/80 text-ink shadow-card backdrop-blur transition-colors hover:bg-surface"
+            className="absolute right-3 top-1/2 z-content flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-surface/80 text-ink shadow-card backdrop-blur transition-colors hover:bg-surface"
           >
             <ChevronRightIcon className="h-5 w-5" />
           </button>
