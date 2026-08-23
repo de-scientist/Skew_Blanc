@@ -91,7 +91,7 @@ function FloatingReadiness() {
 export function HeroCarousel() {
   return (
     <Carousel
-      ariaLabel="QLexNursing highlights"
+      ariaLabel="Nursora highlights"
       className="overflow-hidden rounded-3xl border border-line shadow-card-hover"
       slides={slides.map((slide, i) => ({
         id: slide.id,

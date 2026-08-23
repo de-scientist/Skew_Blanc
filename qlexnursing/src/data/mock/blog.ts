@@ -7,7 +7,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "A practical, week-by-week framework for turning a vague goal into a consistent, measurable NCLEX preparation routine.",
     category: "NCLEX",
-    author: "QLex Nursing Team",
+    author: "Nursora Team",
     publishedAt: "2026-07-22",
     updatedAt: "2026-08-01",
     readingMinutes: 7,
@@ -27,7 +27,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "The handful of math concepts that show up most often on the TEAS, and how to practice them without panic.",
     category: "ATI",
-    author: "QLex Nursing Team",
+    author: "Nursora Team",
     publishedAt: "2026-07-15",
     readingMinutes: 6,
     cover:
@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "What the NCSBN clinical-judgment model means for your practice, and how to train it deliberately.",
     category: "Clinical Judgment",
-    author: "QLex Nursing Team",
+    author: "Nursora Team",
     publishedAt: "2026-06-30",
     readingMinutes: 8,
     cover:
@@ -61,7 +61,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Where to spend your limited HESI A2 prep time for the biggest anatomy return.",
     category: "HESI",
-    author: "QLex Nursing Team",
+    author: "Nursora Team",
     publishedAt: "2026-06-18",
     readingMinutes: 5,
     cover:
@@ -77,7 +77,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "The overlap is large, but the emphasis differs. Here is how to aim your study time.",
     category: "RN Nursing",
-    author: "QLex Nursing Team",
+    author: "Nursora Team",
     publishedAt: "2026-06-02",
     readingMinutes: 5,
     cover:

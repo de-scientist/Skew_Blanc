@@ -112,7 +112,7 @@ export function LoginForm() {
       </Button>
 
       <p className="text-center text-sm text-muted">
-        New to QLexNursing?{" "}
+        New to Nursora?{" "}
         <Link href="/register" className="font-semibold text-brand-700 hover:underline">
           Create a free account
         </Link>

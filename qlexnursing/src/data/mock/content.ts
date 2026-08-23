@@ -194,7 +194,7 @@ export const studyNotes: StudyNote[] = [
 export const studyResources: StudyResource[] = [
   {
     id: "r1",
-    title: "QLex Study Notes",
+    title: "Nursora Study Notes",
     type: "Notes",
     subject: "All subjects",
     description:
@@ -243,15 +243,15 @@ export const studyResources: StudyResource[] = [
 export const faqs: FaqItem[] = [
   {
     category: "Getting Started",
-    question: "What is QLexNursing?",
+    question: "What is Nursora?",
     answer:
-      "QLexNursing is a nursing exam-preparation platform that helps students practice with realistic questions, review detailed rationales, and track performance across ATI TEAS, HESI A2, RN Nursing, LPN Nursing, NCLEX-RN and NCLEX-PN.",
+      "Nursora is a nursing exam-preparation platform that helps students practice with realistic questions, review detailed rationales, and track performance across ATI TEAS, HESI A2, RN Nursing, LPN Nursing, NCLEX-RN and NCLEX-PN.",
   },
   {
     category: "Getting Started",
-    question: "Is QLexNursing affiliated with the official NCLEX or NCSBN?",
+    question: "Is Nursora affiliated with the official NCLEX or NCSBN?",
     answer:
-      "No. QLexNursing is an independent study tool and is not affiliated with, endorsed by, or sponsored by NCSBN or any trademark holder. All practice content is original and for preparation purposes only.",
+      "No. Nursora is an independent study tool and is not affiliated with, endorsed by, or sponsored by NCSBN or any trademark holder. All practice content is original and for preparation purposes only.",
   },
   {
     category: "Exams",
@@ -281,7 +281,7 @@ export const faqs: FaqItem[] = [
     category: "Study Resources",
     question: "What study resources are included?",
     answer:
-      "You get QLex Study Notes, flashcards, subject guides, cheat sheets and community forums, all linked to the subjects you practice.",
+      "You get Nursora Study Notes, flashcards, subject guides, cheat sheets and community forums, all linked to the subjects you practice.",
   },
   {
     category: "Results",

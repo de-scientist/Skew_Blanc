@@ -1,12 +1,12 @@
 export const siteConfig = {
-  name: "QLexNursing",
-  shortName: "QLex",
-  tagline: "Practice smarter. Understand your performance. Prepare with confidence.",
+  name: "Nursora",
+  shortName: "Nursora",
+  tagline: "Learn. Practice. Advance.",
   description:
-    "QLexNursing is a modern NCLEX-RN and RN nursing exam preparation platform. Practice exam-style questions, track your performance, and identify areas that need more attention.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://qlexnursing.vercel.app",
-  apiUrl: process.env.NEXT_PUBLIC_API_URL ?? "https://api.qlexnursing.com",
-  twitterHandle: "@qlexnursing",
+    "Nursora is a modern nursing education and examination preparation platform. Practice exam-style questions, track your performance, follow a study plan, and advance toward your professional goals.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://nursora.vercel.app",
+  apiUrl: process.env.NEXT_PUBLIC_API_URL ?? "https://api.nursora.com",
+  twitterHandle: "@nursora",
   organization: "Skew Blanc LTD",
   locale: "en_US",
 } as const;

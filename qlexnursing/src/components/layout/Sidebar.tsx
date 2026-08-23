@@ -40,7 +40,7 @@ export function Sidebar({
             <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white">
               <SparkIcon className="h-5 w-5" />
             </span>
-            QLexNursing
+            Nursora
           </Link>
           <button
             className="rounded-lg p-1.5 text-muted hover:bg-brand-50 lg:hidden"

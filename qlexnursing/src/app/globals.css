@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================================
-   QLexNursing Design System — Tailwind v4 theme tokens
+   Nursora Design System — Tailwind v4 theme tokens
    Light is the default; .dark on <html> flips to dark mode.
    ============================================================ */
 @custom-variant dark (&:where(.dark, .dark *));

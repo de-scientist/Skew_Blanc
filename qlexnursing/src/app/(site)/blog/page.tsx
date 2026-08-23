@@ -11,7 +11,7 @@ import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = createMetadata({
   title: "Blog",
-  description: "Nursing exam tips, study strategies and NCLEX, ATI, HESI and RN preparation insights from the QLexNursing team.",
+  description: "Nursing exam tips, study strategies and NCLEX, ATI, HESI and RN preparation insights from the Nursora team.",
   path: "/blog",
   keywords: ["nursing blog", "NCLEX tips", "ATI TEAS", "HESI A2", "study tips"],
 });
@@ -25,7 +25,7 @@ export default function BlogPage() {
     <div className="container-page py-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SectionHeading
-        title="The QLexNursing blog"
+        title="The Nursora blog"
         description="Practical study strategies and exam insights for nursing students."
         action={
           <div className="flex flex-wrap gap-2">

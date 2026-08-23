@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "QLexNursing — NCLEX-RN & RN Nursing Exam Prep";
+export const alt = "Nursora — NCLEX-RN & RN Nursing Exam Prep";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -43,7 +43,7 @@ export default function OpenGraphImage() {
           >
             Q
           </div>
-          QLexNursing
+          Nursora
         </div>
         <div style={{ marginTop: 40, fontSize: 68, fontWeight: 800, lineHeight: 1.1 }}>
           Practice smarter.

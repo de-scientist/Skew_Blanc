@@ -16,7 +16,7 @@ export default async function SearchPage() {
       <Breadcrumb items={[{ name: "Dashboard", href: "/dashboard" }, { name: "Search" }]} className="mb-2" />
       <PageHeader
         title="Search"
-        description="Find exams, study notes, forum discussions and articles across QLexNursing."
+        description="Find exams, study notes, forum discussions and articles across Nursora."
       />
       <SearchExperience />
     </div>

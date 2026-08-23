@@ -15,7 +15,7 @@ const docs: Record<string, LegalDoc> = {
     title: "Privacy Policy",
     updated: "2026-08-01",
     intro:
-      "This privacy policy explains, in plain language, how QLexNursing handles information. It is provided as a template and should be reviewed by counsel before launch.",
+      "This privacy policy explains, in plain language, how Nursora handles information. It is provided as a template and should be reviewed by counsel before launch.",
     sections: [
       { heading: "Information we collect", body: "We collect account details you provide (such as name and email) and study activity (practice attempts, accuracy and streaks) to personalize your experience." },
       { heading: "How we use information", body: "Your activity powers performance analytics, recommendations and streak tracking. We use aggregated, anonymized data to improve the product." },
@@ -27,12 +27,12 @@ const docs: Record<string, LegalDoc> = {
     title: "Terms of Service",
     updated: "2026-08-01",
     intro:
-      "These terms govern your use of QLexNursing. This is a template and should be reviewed by counsel before launch.",
+      "These terms govern your use of Nursora. This is a template and should be reviewed by counsel before launch.",
     sections: [
-      { heading: "Use of the service", body: "QLexNursing is provided for personal exam preparation. You agree to use it lawfully and not to misuse or disrupt the service." },
+      { heading: "Use of the service", body: "Nursora is provided for personal exam preparation. You agree to use it lawfully and not to misuse or disrupt the service." },
       { heading: "Accounts", body: "You are responsible for keeping your account credentials secure and for activity under your account." },
       { heading: "Content", body: "Practice content is original and for preparation only. It is not affiliated with or endorsed by NCSBN or any trademark holder." },
-      { heading: "Limitation of liability", body: "The service is provided as-is. Preparation results vary and QLexNursing does not guarantee any exam outcome." },
+      { heading: "Limitation of liability", body: "The service is provided as-is. Preparation results vary and Nursora does not guarantee any exam outcome." },
     ],
   },
   "refund-policy": {
@@ -50,7 +50,7 @@ const docs: Record<string, LegalDoc> = {
     title: "Accessibility Statement",
     updated: "2026-08-01",
     intro:
-      "We aim to make QLexNursing usable by everyone, including keyboard and screen-reader users.",
+      "We aim to make Nursora usable by everyone, including keyboard and screen-reader users.",
     sections: [
       { heading: "Standards", body: "We follow WCAG-conscious practices: semantic HTML, visible focus, keyboard navigation, skip links and reduced-motion support." },
       { heading: "Compatible technologies", body: "The product is designed to work with modern browsers and common assistive technologies." },
@@ -61,11 +61,11 @@ const docs: Record<string, LegalDoc> = {
     title: "Disclaimer",
     updated: "2026-08-01",
     intro:
-      "Important disclaimer about QLexNursing's relationship to official nursing exams.",
+      "Important disclaimer about Nursora's relationship to official nursing exams.",
     sections: [
-      { heading: "Not affiliated", body: "QLexNursing is an independent study tool and is not affiliated with, endorsed by, or sponsored by NCSBN, ATI, HESI or any trademark holder." },
+      { heading: "Not affiliated", body: "Nursora is an independent study tool and is not affiliated with, endorsed by, or sponsored by NCSBN, ATI, HESI or any trademark holder." },
       { heading: "Preparation only", body: "Practice exams and questions are original preparation material and are not the official exams." },
-      { heading: "No guarantee", body: "Using QLexNursing does not guarantee a passing score on any official examination." },
+      { heading: "No guarantee", body: "Using Nursora does not guarantee a passing score on any official examination." },
     ],
   },
 };

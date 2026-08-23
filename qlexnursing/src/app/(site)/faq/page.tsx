@@ -7,9 +7,9 @@ import { HelpIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = createMetadata({
   title: "FAQs",
-  description: "Answers to common questions about QLexNursing exam preparation, accounts, exams and performance tracking.",
+  description: "Answers to common questions about Nursora exam preparation, accounts, exams and performance tracking.",
   path: "/faq",
-  keywords: ["nursing exam FAQ", "NCLEX prep", "QLexNursing help"],
+  keywords: ["nursing exam FAQ", "NCLEX prep", "Nursora help"],
 });
 
 const categories = Array.from(new Set(faqs.map((f) => f.category)));
@@ -31,7 +31,7 @@ export default function FaqPage() {
             Frequently asked questions
           </h1>
           <p className="mt-3 text-muted">
-            Everything you need to know about preparing with QLexNursing.
+            Everything you need to know about preparing with Nursora.
           </p>
         </div>
 

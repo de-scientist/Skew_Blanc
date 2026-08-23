@@ -15,7 +15,7 @@ export default function AuthLayout({
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 text-white">
             <SparkIcon className="h-5 w-5" />
           </span>
-          QLex<span className="text-accent-300">Nursing</span>
+          Nursora
         </Link>
         <div className="relative">
           <h2 className="max-w-md text-3xl font-extrabold leading-tight text-white">
@@ -23,7 +23,7 @@ export default function AuthLayout({
           </h2>
           <p className="mt-4 max-w-md text-brand-100">
             Join thousands of nursing students building real exam readiness with
-            QLexNursing — realistic questions, clear rationales and progress you
+            Nursora — realistic questions, clear rationales and progress you
             can see.
           </p>
           <ul className="mt-8 space-y-3 text-sm text-brand-100">

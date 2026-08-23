@@ -16,7 +16,7 @@ export default async function StudyNotesPage() {
     <div className="space-y-6">
       <Breadcrumb items={[{ name: "Dashboard", href: "/dashboard" }, { name: "Study Notes" }]} className="mb-2" />
       <PageHeader
-        title="QLex Study Notes"
+        title="Nursora Study Notes"
         description="Concise, exam-aligned notes and flashcards for the subjects you practice."
         action={
           <span className="inline-flex items-center gap-2 rounded-xl border border-line bg-surface px-3 py-2 text-sm text-muted">

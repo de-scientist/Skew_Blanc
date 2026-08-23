@@ -2,7 +2,7 @@ import type { User, ExamGoal, NursingPath } from "@/types/domain";
 import { request } from "./client";
 
 /**
- * Mock authentication service. The QLexNursing backend already owns real
+ * Mock authentication service. The Nursora backend already owns real
  * auth; this layer mirrors the intended contract so the UI can be wired to a
  * real API by swapping `request(...)` for a `fetch` to NEXT_PUBLIC_API_URL.
  *
@@ -69,7 +69,7 @@ export async function updateProfile(
   patch: Partial<User>
 ): Promise<User> {
   const stored = readSession();
-  const merged = { ...(stored?.user ?? makeUser({ email: patch.email ?? "example@qlexnursing.com" })), ...patch, id };
+  const merged = { ...(stored?.user ?? makeUser({ email: patch.email ?? "example@nursora.com" })), ...patch, id };
   return request(merged, 400);
 }
 

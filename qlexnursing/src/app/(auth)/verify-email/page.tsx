@@ -18,7 +18,7 @@ export default function VerifyEmailPage() {
         <h1 className="text-2xl font-bold tracking-tight text-ink">Check your inbox</h1>
         <p className="mt-2 text-sm text-muted">
           We sent a verification link to your email. Confirm it to unlock your
-          full QLexNursing experience.
+          full Nursora experience.
         </p>
       </div>
       <div className="rounded-xl border border-line bg-subtle px-3 py-3 text-sm text-muted">

@@ -99,7 +99,7 @@ export function ProcessSection() {
     <section className="border-y border-line bg-surface">
       <div className="container-page py-16">
         <SectionHeading
-          title="How QLexNursing works"
+          title="How Nursora works"
           description="A simple loop that turns scattered studying into measurable progress."
         />
         <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -464,7 +464,7 @@ export function CommunitySection() {
     <section className="container-page py-16">
       <SectionHeading
         title="Learn together"
-        description="Recent discussions from the QLexNursing community."
+        description="Recent discussions from the Nursora community."
         action={
           <Link
             href="/forums"
@@ -513,7 +513,7 @@ export function CommunitySection() {
 export function HomeFaq() {
   const items = [
     {
-      q: "What is QLexNursing?",
+      q: "What is Nursora?",
       a: "A nursing exam-preparation platform with realistic practice questions, detailed rationales and performance tracking across ATI TEAS, HESI A2, RN Nursing, LPN Nursing, NCLEX-RN and NCLEX-PN.",
     },
     {

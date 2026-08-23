@@ -44,7 +44,7 @@ function getFaqs(slug: string): Faq[] {
   if (slug.startsWith("nclex")) {
     base.unshift({
       q: "Is this affiliated with the official NCLEX or NCSBN?",
-      a: "No. QLexNursing is an independent study tool and is not affiliated with, endorsed by, or sponsored by NCSBN or any trademark holder.",
+      a: "No. Nursora is an independent study tool and is not affiliated with, endorsed by, or sponsored by NCSBN or any trademark holder.",
     });
   }
   return base;

@@ -3,7 +3,7 @@ import { SparkIcon, FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon, MailI
 
 const columns = [
   {
-    title: "QLexNursing",
+    title: "Nursora",
     links: [
       { label: "About", href: "/about" },
       { label: "Our Mission", href: "/about" },
@@ -54,7 +54,7 @@ export function SiteFooter() {
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 text-white">
                 <SparkIcon className="h-5 w-5" />
               </span>
-              QLex<span className="text-brand-600">Nursing</span>
+              Nursora
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted">
               Prepare smarter, practice confidently, and know where you stand.
@@ -117,7 +117,7 @@ export function SiteFooter() {
         <div className="mt-12 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             <p className="text-xs text-muted">
-              © {new Date().getFullYear()} Skew Blanc LTD. QLexNursing is an
+              © {new Date().getFullYear()} Skew Blanc LTD. Nursora is an
               independent study tool and is not affiliated with, endorsed by, or
               sponsored by NCSBN or any trademark holder.
             </p>

@@ -39,7 +39,7 @@ export function SettingsPanel() {
           <CardTitle className="flex items-center gap-2">
             <span className="text-brand-600"><ShieldIcon className="h-5 w-5" /></span> Appearance
           </CardTitle>
-          <CardDescription>Choose how QLexNursing looks. System follows your device.</CardDescription>
+          <CardDescription>Choose how Nursora looks. System follows your device.</CardDescription>
         </CardHeader>
         <CardContent>
           <ThemeRadioGroup value={theme as Theme} onChange={setTheme} />

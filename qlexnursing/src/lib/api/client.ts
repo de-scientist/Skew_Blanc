@@ -1,7 +1,7 @@
 /**
  * Mock API client.
  *
- * The QLexNursing backend already exists. This client simulates network
+ * The Nursora backend already exists. This client simulates network
  * latency so the UI behaves like a production app. Replace `request` with a
  * real `fetch` call to `process.env.NEXT_PUBLIC_API_URL` when wiring the
  * backend — the service functions below already expose the contract.

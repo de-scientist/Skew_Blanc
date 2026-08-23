@@ -11,7 +11,7 @@ import { formatNumber } from "@/lib/utils";
 export const metadata: Metadata = createMetadata({
   title: "Nursing Exam Prep",
   description:
-    "Explore QLexNursing exam prep across ATI TEAS, HESI A2, RN Nursing, LPN Nursing, NCLEX-RN and NCLEX-PN. Pick your pathway and start practicing.",
+    "Explore Nursora exam prep across ATI TEAS, HESI A2, RN Nursing, LPN Nursing, NCLEX-RN and NCLEX-PN. Pick your pathway and start practicing.",
   path: "/exams",
   keywords: ["nursing exams", "ATI TEAS", "HESI A2", "NCLEX", "RN Nursing", "LPN Nursing"],
 });

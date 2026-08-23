@@ -4,7 +4,7 @@ export const mockUser: User = {
   id: "u-1001",
   firstName: "Mark",
   lastName: "Example",
-  email: "example@qlexnursing.com",
+  email: "example@nursora.com",
   phone: "+1 (555) 014-2278",
   nursingLevel: "RN",
   institution: "Lakeside College of Nursing",

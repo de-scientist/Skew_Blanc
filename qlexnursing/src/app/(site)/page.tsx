@@ -18,7 +18,7 @@ import {
 export const metadata: Metadata = createMetadata({
   title: "Smart Nursing Exam Preparation",
   description:
-    "QLexNursing helps nursing students practice smarter, understand their performance and prepare for ATI TEAS, HESI A2, RN Nursing, LPN Nursing, NCLEX-RN and NCLEX-PN with confidence.",
+    "Nursora helps nursing students practice smarter, understand their performance and prepare for ATI TEAS, HESI A2, RN Nursing, LPN Nursing, NCLEX-RN and NCLEX-PN with confidence.",
   path: "/",
   keywords: [
     "nursing exam prep",
@@ -56,7 +56,7 @@ export default function HomePage() {
             Loved by nursing students
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-muted">
-            Real stories from students using QLexNursing to prepare. Demonstration
+            Real stories from students using Nursora to prepare. Demonstration
             testimonials shown for product preview.
           </p>
         </div>

@@ -3,7 +3,7 @@ import { RegisterForm } from "@/components/auth/RegisterForm";
 
 export const metadata: Metadata = {
   title: "Create your account",
-  description: "Create a free QLexNursing account and personalize your study plan.",
+  description: "Create a free Nursora account and personalize your study plan.",
   robots: { index: false, follow: false },
 };
 

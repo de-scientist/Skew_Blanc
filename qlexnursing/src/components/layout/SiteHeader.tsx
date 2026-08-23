@@ -97,7 +97,7 @@ export function SiteHeader() {
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 text-white shadow-card">
             <SparkIcon className="h-5 w-5" />
           </span>
-          QLex<span className="text-brand-600">Nursing</span>
+          Nursora
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -223,7 +223,7 @@ export function SiteHeader() {
                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white">
                   <SparkIcon className="h-4 w-4" />
                 </span>
-                QLexNursing
+                Nursora
               </span>
               <button
                 data-autofocus

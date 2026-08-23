@@ -4,7 +4,7 @@ import { LoginForm } from "@/components/auth/LoginForm";
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Sign in to your QLexNursing account to continue preparing.",
+  description: "Sign in to your Nursora account to continue preparing.",
   robots: { index: false, follow: false },
 };
 

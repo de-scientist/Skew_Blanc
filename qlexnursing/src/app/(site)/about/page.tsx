@@ -7,7 +7,7 @@ import { createMetadata, breadcrumbJsonLd, organizationJsonLd } from "@/lib/seo"
 import { SparkIcon, TargetIcon, ShieldIcon, UsersIcon, ArrowRightIcon, HeartPulseIcon, BookIcon, ChartIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = createMetadata({
-  title: "About QLexNursing",
+  title: "About Nursora",
   description: "Our mission: help nursing students prepare smarter and practice with confidence through realistic questions and clear performance insights.",
   path: "/about",
 });
@@ -32,7 +32,7 @@ export default function AboutPage() {
           Prepare smarter. Practice confidently. Know where you stand.
         </h1>
         <p className="mt-3 max-w-2xl text-brand-100">
-          QLexNursing exists to help nursing students build real exam readiness with
+          Nursora exists to help nursing students build real exam readiness with
           realistic practice, detailed rationales and performance insights designed
           around the way people actually learn.
         </p>
@@ -100,7 +100,7 @@ export default function AboutPage() {
       </section>
 
       <p className="mt-8 text-center text-xs text-muted">
-        QLexNursing is an independent study tool and is not affiliated with, endorsed
+        Nursora is an independent study tool and is not affiliated with, endorsed
         by, or sponsored by NCSBN or any trademark holder.
       </p>
     </div>

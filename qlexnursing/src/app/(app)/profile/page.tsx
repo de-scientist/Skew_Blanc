@@ -4,7 +4,7 @@ import { createMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
   title: "Profile",
-  description: "Your QLexNursing profile and study snapshot.",
+  description: "Your Nursora profile and study snapshot.",
   path: "/profile",
 });
 

@@ -7,7 +7,7 @@ import { createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
   title: "Contact",
-  description: "Get in touch with the QLexNursing team for support, partnerships or feedback.",
+  description: "Get in touch with the Nursora team for support, partnerships or feedback.",
   path: "/contact",
 });
 
@@ -26,7 +26,7 @@ export default function ContactPage() {
         <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
           <div className="space-y-4">
             {[
-              { icon: <MailIcon className="h-5 w-5" />, label: "Email", value: "support@qlexnursing.com" },
+              { icon: <MailIcon className="h-5 w-5" />, label: "Email", value: "support@nursora.com" },
               { icon: <PhoneIcon className="h-5 w-5" />, label: "Phone", value: "+1 (555) 014-2278" },
               { icon: <MapPinIcon className="h-5 w-5" />, label: "Office", value: "Skew Blanc LTD · Remote-first team" },
             ].map((c) => (

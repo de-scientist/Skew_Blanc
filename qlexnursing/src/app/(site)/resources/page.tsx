@@ -11,7 +11,7 @@ import { BookIcon, LayersIcon, FileTextIcon, GraduationIcon, SparkIcon } from "@
 
 export const metadata: Metadata = createMetadata({
   title: "Study Resources",
-  description: "Explore QLexNursing study notes, flashcards, guides and exam resources to support your nursing preparation.",
+  description: "Explore Nursora study notes, flashcards, guides and exam resources to support your nursing preparation.",
   path: "/resources",
 });
 
