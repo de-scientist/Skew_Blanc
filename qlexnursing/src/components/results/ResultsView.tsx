@@ -119,7 +119,7 @@ export function ResultsView({
             className={buttonVariants({
               variant: "secondary",
               size: "lg",
-              className: "bg-white text-brand-800 hover:bg-brand-50",
+              className: "bg-surface text-ink hover:bg-subtle",
             })}
           >
             {showReview ? "Hide review" : "Review answers"}

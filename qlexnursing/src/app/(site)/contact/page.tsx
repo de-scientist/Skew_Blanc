@@ -72,9 +72,9 @@ export default function ContactPage() {
                 <Field label="Message" htmlFor="message">
                   <textarea id="message" name="message" required rows={5} className="w-full rounded-xl border border-line bg-canvas p-3 text-sm text-ink placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100" placeholder="How can we help?" />
                 </Field>
-                <button type="submit" className="inline-flex h-11 items-center gap-2 rounded-xl bg-brand-600 px-5 text-sm font-semibold text-white transition-colors hover:bg-brand-700">
+                <Button type="submit" size="lg" className="w-full">
                   <SendIcon className="h-4 w-4" /> Send message
-                </button>
+                </Button>
               </form>
             </CardContent>
           </Card>

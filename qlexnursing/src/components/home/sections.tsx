@@ -419,7 +419,7 @@ export function StreakSection() {
               className={buttonVariants({
                 variant: "secondary",
                 size: "lg",
-                className: "mt-6 bg-white text-brand-800 hover:bg-brand-50",
+                className: "mt-6 bg-surface text-ink hover:bg-subtle",
               })}
             >
               Continue studying
@@ -577,7 +577,7 @@ export function FinalCta() {
             className={buttonVariants({
               variant: "secondary",
               size: "lg",
-              className: "bg-white text-brand-800 hover:bg-brand-50",
+              className: "bg-surface text-ink hover:bg-subtle",
             })}
           >
             Create free account
