@@ -67,7 +67,7 @@ const slides: Slide[] = [
 function FloatingReadiness() {
   return (
     <div className="pointer-events-none absolute bottom-6 right-6 z-10 hidden lg:block animate-floaty">
-      <GlassCard className="w-56 rounded-2xl p-4 text-white">
+      <GlassCard dark className="w-56 rounded-2xl p-4">
         <div className="flex items-center gap-2">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15">
             <TrophyIcon className="h-5 w-5 text-warning-300" />
@@ -116,7 +116,7 @@ export function HeroCarousel() {
 
             <div className="relative z-10 flex min-h-[72vh] items-center sm:min-h-[78vh]">
               <div className="container-page w-full">
-                <GlassCard className="max-w-2xl rounded-2xl p-7 sm:p-10">
+                <GlassCard dark className="max-w-2xl rounded-2xl p-7 sm:p-10">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur">
                     <SparkIcon className="h-3.5 w-3.5" /> {slide.eyebrow}
                   </span>
@@ -134,7 +134,7 @@ export function HeroCarousel() {
                       className={buttonVariants({
                         variant: "secondary",
                         size: "lg",
-                        className: "bg-white text-brand-800 hover:bg-brand-50",
+                        className: "bg-surface text-ink hover:bg-subtle",
                       })}
                     >
                       {slide.cta.label}
