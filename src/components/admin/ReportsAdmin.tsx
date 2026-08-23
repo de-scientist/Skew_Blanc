@@ -71,7 +71,7 @@ export function ReportsAdmin() {
               {r.detail && (
                 <p className="rounded-lg bg-canvas p-3 text-sm text-muted">
                   {r.detail}
-                </ as>
+                </p>
               )}
               {r.reviewerNote && (
                 <p className="text-xs text-muted">
