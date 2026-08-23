@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Avatar } from "@/components/ui/Avatar";
 import { buttonVariants } from "@/components/ui/Button";
+import { EmptyState } from "@/components/ui/EmptyState";
 import { forumTopics } from "@/data/mock/content";
 import { SearchIcon, MessageIcon, EyeIcon, ArrowRightIcon, PlusIcon, CheckCircleIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
@@ -67,7 +68,11 @@ export function ForumsList() {
         ))}
       </div>
       {filtered.length === 0 && (
-        <p className="py-10 text-center text-sm text-muted">No discussions found.</p>
+        <EmptyState
+          icon={<MessageIcon className="h-5 w-5" />}
+          title="No discussions found"
+          description="Be the first to start a topic in this community."
+        />
       )}
     </div>
   );

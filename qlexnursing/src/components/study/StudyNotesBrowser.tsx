@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { ImageFrame } from "@/components/ui/ImageFrame";
 import { buttonVariants } from "@/components/ui/Button";
+import { EmptyState } from "@/components/ui/EmptyState";
 import { studyNotes } from "@/data/mock/content";
 import { SearchIcon, BookIcon, BookmarkIcon, ArrowRightIcon, FileTextIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
@@ -73,7 +74,11 @@ export function StudyNotesBrowser() {
         ))}
       </div>
       {filtered.length === 0 && (
-        <p className="py-10 text-center text-sm text-muted">No notes match your search.</p>
+        <EmptyState
+          icon={<FileTextIcon className="h-5 w-5" />}
+          title="No notes found"
+          description="Try a different search term or pick another category."
+        />
       )}
     </div>
   );
