@@ -26,6 +26,20 @@ export interface AnswerOption {
   text: string;
 }
 
+export type QuestionType = "single_choice" | "multiple_choice" | "true_false";
+export type Difficulty = "Easy" | "Medium" | "Hard";
+export type QuestionBankStatus = "draft" | "published" | "archived" | "ai_generated";
+export type ReviewStatus = "pending" | "approved" | "rejected";
+
+/**
+ * A question in the Nursora question bank.
+ *
+ * The base fields (id, examId, number, subject, text, options,
+ * correctOptionId, explanation) are kept compatible with the original
+ * assessment flow so existing components keep working. The additional fields
+ * power the four-mode engine: richer metadata, multiple question types,
+ * per-option rationales, and nursing-specific context.
+ */
 export interface Question {
   id: ID;
   examId: ID;
@@ -35,6 +49,25 @@ export interface Question {
   options: AnswerOption[];
   correctOptionId: AnswerOptionId;
   explanation: string;
+  // --- Enriched question-bank fields (optional for backward compatibility) ---
+  questionType?: QuestionType;
+  topic?: string;
+  subtopic?: string;
+  difficulty?: Difficulty;
+  correctOptionIds?: AnswerOptionId[];
+  optionRationales?: Record<string, string>;
+  tags?: string[];
+  nursingProcess?: string;
+  clinicalSetting?: string;
+  competency?: string;
+  priorityLevel?: string;
+  cognitiveLevel?: string;
+  questionBankStatus?: QuestionBankStatus;
+  reviewStatus?: ReviewStatus;
+  poolId?: string;
+  source?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface SubjectPerformance {
