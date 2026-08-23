@@ -1,11 +1,16 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { buttonVariants } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { DonutChart } from "@/components/ui/DonutChart";
+import {
+  ImageCard,
+  FeatureCard,
+  ResourceCard,
+} from "@/components/ui/cards";
+import { ArrowRightIcon } from "@/components/ui/icons";
 import { examCategories } from "@/data/mock/examCategories";
 import { studyResources } from "@/data/mock/content";
 import { forumTopics } from "@/data/mock/content";
