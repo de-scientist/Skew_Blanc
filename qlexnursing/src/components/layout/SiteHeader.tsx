@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { buttonVariants } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Dropdown } from "@/components/ui/Dropdown";
@@ -50,9 +50,9 @@ export function SiteHeader() {
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
 
-  const drawerRef = React.useRef<HTMLDivElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!open) return;
     const prev = document.activeElement as HTMLElement | null;
     const panel = drawerRef.current?.querySelector<HTMLElement>(
