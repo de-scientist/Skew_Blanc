@@ -261,6 +261,12 @@ export const faqs: FaqItem[] = [
   },
   {
     category: "Exams",
+    question: "What learning modes does Nursora offer?",
+    answer:
+      "Nursora provides four modes built on one assessment engine. Practice Mode gives immediate feedback and explanations as you answer. Tutor Mode adds a guided, rule-based tutor that helps you reason toward the answer with hints and mistake analysis (it guides rather than simply revealing the answer). Test Mode is a timed assessment where answers and explanations are revealed only after you submit. Exam Mode simulates a structured, timed examination with a mandatory, authoritative timer and automatic submission when time expires.",
+  },
+  {
+    category: "Exams",
     question: "Can I practice ATI TEAS questions?",
     answer:
       "Yes. The ATI TEAS area includes Reading, Math, Science and English practice modeled on the admission exam's structure.",
