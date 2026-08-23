@@ -3,13 +3,15 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { StudyNotesBrowser } from "@/components/study/StudyNotesBrowser";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { BookIcon } from "@/components/ui/icons";
+import { sleep } from "@/lib/api/client";
 
 export const metadata: Metadata = {
   title: "Study Notes",
   robots: { index: false, follow: false },
 };
 
-export default function StudyNotesPage() {
+export default async function StudyNotesPage() {
+  await sleep();
   return (
     <div className="space-y-6">
       <Breadcrumb items={[{ name: "Dashboard", href: "/dashboard" }, { name: "Study Notes" }]} className="mb-2" />
