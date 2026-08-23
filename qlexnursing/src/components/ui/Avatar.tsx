@@ -2,9 +2,11 @@ import { cn } from "@/lib/utils";
 
 export function Avatar({
   name,
+  src,
   className,
 }: {
   name: string;
+  src?: string;
   className?: string;
 }) {
   const initials = name
@@ -13,6 +15,19 @@ export function Avatar({
     .slice(0, 2)
     .join("")
     .toUpperCase();
+  if (src) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={src}
+        alt={name}
+        className={cn(
+          "h-9 w-9 rounded-full object-cover",
+          className
+        )}
+      />
+    );
+  }
   return (
     <span
       className={cn(

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { LockIcon, CheckCircleIcon, ArrowRightIcon, EyeIcon, EyeOffIcon } from "@/components/ui/icons";
-import { Field } from "@/components/auth/LoginForm";
+import { Field, Input } from "@/components/ui/form";
+import { LockIcon, CheckCircleIcon, ArrowRightIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
   title: "Set a new password",
@@ -20,16 +20,10 @@ export default function ResetPasswordPage() {
       </div>
       <form className="space-y-4" action="/login">
         <Field label="New password" htmlFor="password">
-          <div className="relative">
-            <LockIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-            <input id="password" type="password" name="password" required className="input-icon" placeholder="••••••••" />
-          </div>
+          <Input id="password" type="password" name="password" required leftIcon={<LockIcon className="h-4 w-4" />} placeholder="••••••••" />
         </Field>
         <Field label="Confirm password" htmlFor="confirm">
-          <div className="relative">
-            <LockIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-            <input id="confirm" type="password" name="confirm" required className="input-icon" placeholder="••••••••" />
-          </div>
+          <Input id="confirm" type="password" name="confirm" required leftIcon={<LockIcon className="h-4 w-4" />} placeholder="••••••••" />
         </Field>
         <Button type="submit" size="lg" className="w-full">
           Update password

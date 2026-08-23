@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { Field, Input } from "@/components/ui/form";
 import { MailIcon, CheckIcon, ArrowRightIcon } from "@/components/ui/icons";
-import { Field } from "@/components/auth/LoginForm";
 
 export const metadata: Metadata = {
   title: "Forgot password",
@@ -23,10 +23,7 @@ export default function ForgotPasswordPage() {
         action="/reset-password"
       >
         <Field label="Email" htmlFor="email">
-          <div className="relative">
-            <MailIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-            <input id="email" type="email" name="email" required className="input-icon" placeholder="you@email.com" />
-          </div>
+          <Input id="email" type="email" name="email" required leftIcon={<MailIcon className="h-4 w-4" />} placeholder="you@email.com" />
         </Field>
         <Button type="submit" size="lg" className="w-full">
           Send reset link
