@@ -284,13 +284,13 @@ qlexnursing/                # repository / package directory (legacy technical i
 │   ├── ui/                  # Design-system primitives (Button, Card, Badge, …)
 │   ├── layout/              # AppShell, SiteHeader, Topbar, Sidebar, MobileBottomNav, Footer
 │   ├── dashboard/           # DashboardHeader, Stats, Performance, Subject, Activity, Recommendation
-│   ├── exams/               # ExamLanding, ExamInterface, QuestionCard, ExamNavigator, ExamTimer
-│   ├── results/             # ResultsView
+│   ├── exams/               # ExamLanding, QuestionCard, ExamNavigator, ExamTimer
+│   ├── results/             # AssessmentResults, AssessmentResultsClient
 │   ├── auth/                # AuthProvider, RequireAuth, LoginForm, RegisterForm
 │   ├── forums/  home/  study/  settings/  profile/  search/  theme/  onboarding/
 ├── config/                  # site.ts (siteConfig), nav.ts (navigation)
 ├── data/mock/               # examCategories, exams, questions, dashboard, content, user, blog, testimonials
-├── lib/                     # api/ (mock services), seo.ts, result.ts, accents.ts, utils.ts
+├── lib/                     # api/ (mock services), assessment/ (engine, modes, attempt, tutor), seo.ts, accents.ts, utils.ts
 ├── types/                   # domain.ts, index.ts (Exam, Question, …)
 ├── public/                  # static assets
 ├── .env.example
@@ -761,7 +761,7 @@ Nursora implements **four distinct learning modes** on a single, configuration-d
 
 Each `Exam` mock record defines `totalQuestions`, `durationMinutes`, and `passingScore`. Questions are served from mock data through `src/lib/api/questions.ts` and `src/lib/api/exams.ts`.
 
-> **Backward compatibility.** A legacy single-flow exam interface (`ExamInterface` → `lib/result.ts` → `/results/[id]`) still exists; new entries use the four-mode flow above. The four modes are implemented in the front end and run on the mocked data/attempt layer. Server-side scoring, a real question bank, and a live LLM tutor remain backend work (see [Known Limitations](#known-limitations)).
+> **Single system.** There is exactly one assessment engine. The routes `/exam/[id]` and `/assessment/[id]` are alias entry points that both render `AssessmentPlayer`; the routes `/results/[id]` and `/assessment/results/[id]` are alias results entry points that both render `AssessmentResultsClient`. A direct/demo visit to a results route with no stored attempt (e.g. from a dashboard "recent activity" link) is handled by a **real-engine demo fallback** in `AssessmentResultsClient`, so there is a single code path for results — no second result builder. The four modes are implemented in the front end and run on the mocked data/attempt layer. Server-side scoring, a real question bank, and a live LLM tutor remain backend work (see [Known Limitations](#known... )).
 
 ---
 

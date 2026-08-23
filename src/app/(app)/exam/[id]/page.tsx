@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getExam } from "@/lib/api/exams";
-import { getQuestions } from "@/lib/api/questions";
-import { ExamInterface } from "@/components/exam/ExamInterface";
+import { AssessmentPlayer } from "@/components/assessment/AssessmentPlayer";
+import type { AssessmentMode } from "@/types/assessment";
+import { ORDERED_MODES } from "@/lib/assessment/modes";
 import { createMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -12,12 +13,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const exam = await getExam(id);
-  if (!exam) {
-    return { title: "Exam not found" };
-  }
+  if (!exam) return { title: "Exam not found" };
   return {
     ...createMetadata({
-      title: `Taking ${exam.shortTitle}`,
+      title: `Assessment · ${exam.shortTitle}`,
       description: exam.description,
       path: `/exam/${exam.id}`,
     }),
@@ -27,13 +26,19 @@ export async function generateMetadata({
 
 export default async function ExamPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ mode?: string }>;
 }) {
   const { id } = await params;
+  const { mode } = await searchParams;
   const exam = await getExam(id);
   if (!exam) notFound();
-  const questions = await getQuestions(exam.id);
 
-  return <ExamInterface exam={exam} questions={questions} />;
+  const resolved: AssessmentMode = ORDERED_MODES.includes(mode as AssessmentMode)
+    ? (mode as AssessmentMode)
+    : "practice";
+
+  return <AssessmentPlayer exam={exam} mode={resolved} />;
 }
