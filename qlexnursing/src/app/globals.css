@@ -277,6 +277,40 @@ body {
     -webkit-backdrop-filter: blur(16px);
     color: #ffffff;
   }
+}
+
+/* Centralized z-index utilities (explicit so the scale is guaranteed,
+   independent of theme-generated utilities).
+   Content < BottomNav < Header < Overlay < Drawer/Dropdown < Modal < Toast < Tooltip */
+@layer utilities {
+  .z-content {
+    z-index: var(--z-content);
+  }
+  .z-bottomnav {
+    z-index: var(--z-bottomnav);
+  }
+  .z-header {
+    z-index: var(--z-header);
+  }
+  .z-overlay {
+    z-index: var(--z-overlay);
+  }
+  .z-drawer {
+    z-index: var(--z-drawer);
+  }
+  .z-dropdown {
+    z-index: var(--z-dropdown);
+  }
+  .z-modal {
+    z-index: var(--z-modal);
+  }
+  .z-toast {
+    z-index: var(--z-toast);
+  }
+  .z-tooltip {
+    z-index: var(--z-tooltip);
+  }
+}
   .container-page {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
