@@ -24,6 +24,7 @@ import { QuestionCard } from "@/components/exam/QuestionCard";
 import { ExamNavigator, type QuestionStatus } from "@/components/exam/ExamNavigator";
 import { ExamTimer } from "@/components/exam/ExamTimer";
 import { TutorPanel } from "@/components/assessment/TutorPanel";
+import { ReportQuestionModal } from "@/components/assessment/ReportQuestionModal";
 import { Modal, Button } from "@/components/ui/Modal";
 import {
   ChevronLeftIcon,
@@ -55,6 +56,7 @@ export function AssessmentPlayer({
   const [revealedMap, setRevealedMap] = useState<Record<string, boolean>>({});
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [showSubmit, setShowSubmit] = useState(false);
+  const [reportOpen, setReportOpen] = useState(false);
   const startedRef = useRef(false);
 
   const loadOrStart = useCallback(async () => {

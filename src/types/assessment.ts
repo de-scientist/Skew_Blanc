@@ -173,6 +173,40 @@ export interface AssessmentResult {
   }[];
 }
 
+// --- Question reporting ---
+
+export type ReportReason =
+  | "incorrect_answer"
+  | "incorrect_explanation"
+  | "ambiguous"
+  | "typo"
+  | "outdated"
+  | "other";
+
+export const REPORT_REASONS: { value: ReportReason; label: string }[] = [
+  { value: "incorrect_answer", label: "Incorrect answer" },
+  { value: "incorrect_explanation", label: "Incorrect explanation" },
+  { value: "ambiguous", label: "Ambiguous question" },
+  { value: "typo", label: "Typographical error" },
+  { value: "outdated", label: "Outdated information" },
+  { value: "other", label: "Other" },
+];
+
+export type ReportStatus = "open" | "reviewed" | "resolved";
+
+export interface QuestionReport {
+  id: ID;
+  questionId: ID;
+  examId?: ID;
+  reason: ReportReason;
+  detail?: string;
+  questionText: string;
+  subject?: string;
+  status: ReportStatus;
+  createdAt: string;
+  reviewerNote?: string;
+}
+
 // --- AI Tutor ---
 
 export type TutorAction =
