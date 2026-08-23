@@ -437,3 +437,14 @@ export const CornerDownLeftIcon = (p: IconProps) => (
     <path d="M20 4v7a4 4 0 0 1-4 4H4" />
   </svg>
 );
+
+export const ImageOffIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M21 3H3v18h18z" opacity="0" />
+    <path d="M2 2l20 20" />
+    <path d="M21 15V5a2 2 0 0 0-2-2H9" />
+    <path d="M5 9v10a2 2 0 0 0 2 2h10" />
+    <path d="M9 9h.01" />
+    <path d="M15 15h.01" />
+  </svg>
+);

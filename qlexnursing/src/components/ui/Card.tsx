@@ -66,3 +66,21 @@ export function CardContent({
     </div>
   );
 }
+
+export function CardFooter({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-between gap-3 p-5 pt-0",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
