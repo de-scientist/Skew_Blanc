@@ -10,7 +10,6 @@ import {
   FeatureCard,
   ResourceCard,
 } from "@/components/ui/cards";
-import { ArrowRightIcon } from "@/components/ui/icons";
 import { examCategories } from "@/data/mock/examCategories";
 import { studyResources } from "@/data/mock/content";
 import { forumTopics } from "@/data/mock/content";

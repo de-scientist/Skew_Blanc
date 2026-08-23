@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { BlogCard, ImageFrame } from "@/components/ui/cards";
+import { BlogCard } from "@/components/ui/cards";
+import { ImageFrame } from "@/components/ui/ImageFrame";
 import { Badge } from "@/components/ui/Badge";
 import { ArrowRightIcon } from "@/components/ui/icons";
-import { blogPosts, blogCategories, getBlogPost } from "@/data/mock/blog";
+import { blogPosts, blogCategories } from "@/data/mock/blog";
 import { createMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
 
