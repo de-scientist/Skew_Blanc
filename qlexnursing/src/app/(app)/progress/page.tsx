@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { DashboardStats } from "@/components/dashboard/DashboardStats";
 import { PerformanceOverview } from "@/components/dashboard/PerformanceOverview";
 import { SubjectPerformance } from "@/components/dashboard/SubjectPerformance";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { GlassCard } from "@/components/ui/cards";
 import { Badge } from "@/components/ui/Badge";
 import { ProgressBar } from "@/components/ui/ProgressBar";
@@ -91,7 +91,7 @@ export default async function ProgressPage() {
               </div>
               <Badge tone="success">+4 pts vs last week</Badge>
             </CardContent>
-          </Card>
+          </GlassCard>
         </div>
       </div>
 
