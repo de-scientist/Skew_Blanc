@@ -18,9 +18,8 @@ import { getModeConfig } from "@/lib/assessment/modes";
 import {
   shuffledOptionOrder,
   evaluateAnswer,
-  getRemainingSeconds,
 } from "@/lib/assessment/engine";
-import { getAttempt } from "@/lib/assessment/attempt";
+import { getAttempt, getRemainingSeconds } from "@/lib/assessment/attempt";
 import { QuestionCard } from "@/components/exam/QuestionCard";
 import { ExamNavigator, type QuestionStatus } from "@/components/exam/ExamNavigator";
 import { ExamTimer } from "@/components/exam/ExamTimer";
