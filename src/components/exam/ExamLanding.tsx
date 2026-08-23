@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/icons";
 import type { Exam } from "@/types";
 import type { Accent } from "@/lib/accents";
+import { ModeSelector } from "@/components/assessment/ModeSelector";
 
 export interface Faq {
   q: string;
@@ -69,17 +70,22 @@ export function ExamLanding({
           </h1>
           <p className="mt-4 text-lg text-muted">{exam.description}</p>
           <p className="mt-3 text-base text-ink">{intro}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href={`/exam/${exam.id}`}
-              className={buttonVariants({ variant: "primary", size: "lg" })}
-            >
-              Start {exam.shortTitle} practice
-              <ArrowRightIcon className="h-4 w-4" />
-            </Link>
+          <div className="mt-6">
+            <p className="text-sm font-semibold text-ink">Choose your mode</p>
+            <p className="mt-1 text-sm text-muted">
+              Practice for feedback, learn with the tutor, take a timed test, or
+              simulate exam conditions.
+            </p>
+            <div className="mt-4">
+              <ModeSelector exam={exam} />
+            </div>
             <Link
               href="/dashboard"
-              className={buttonVariants({ variant: "outline", size: "lg" })}
+              className={buttonVariants({
+                variant: "ghost",
+                size: "sm",
+                className: "mt-4",
+              })}
             >
               View performance
             </Link>
