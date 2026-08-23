@@ -97,6 +97,7 @@ const baseResultInput = {
   startedAt: new Date().toISOString(),
   durationMinutes: 30,
   passingScore: 70,
+  mode: "practice" as AssessmentMode,
   timeUsedMinutes: 12,
 };
 
