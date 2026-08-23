@@ -215,13 +215,13 @@ Browser
         ├── UI primitives (src/components/ui)
         ├── Feature components (dashboard, exams, forums, …)
         ├── Context providers (ThemeProvider, AuthProvider)
-        └── API / services (src/lib/api)  ← currently MOCK
-              ├── client.ts   (simulated latency)
-              ├── auth.ts     (localStorage session)
-              ├── exams.ts     (mock exams)
-              ├── dashboard.ts (mock dashboard)
-              ├── questions.ts  (mock questions)
-              └── result.ts    (localStorage results)
+         └── API / services (src/lib/api)  ← currently MOCK
+               ├── client.ts   (simulated latency)
+               ├── auth.ts     (localStorage session)
+               ├── exams.ts     (mock exams)
+               ├── dashboard.ts (mock dashboard)
+               ├── questions.ts  (mock questions)
+               └── assessment.ts (start/autosave/submit/result; backed by lib/assessment/attempt.ts)
 ```
 
 ### Frontend
@@ -812,7 +812,7 @@ There is **no HTTP API** in the repository. Instead, typed service modules in `s
 | `exams.ts` | `getExams`, `getExam(idOrSlug)` | `data/mock/exams` |
 | `questions.ts` | `getQuestions(examId)`, `getQuestionPool(examId)` | `data/mock/questions` |
 | `dashboard.ts` | `getDashboard` | `data/mock/dashboard` |
-| `result.ts` | `buildResult`, `RESULT_STORAGE_KEY` | `localStorage` (legacy flow) |
+| `result.ts` | (removed — results are built by `computeResult()` in `lib/assessment/engine.ts` and persisted by `lib/assessment/attempt.ts`) | — |
 | `assessment.ts` | `startAssessment`, `autosaveAnswer`, `autosaveAttempt`, `submitAssessment`, `fetchResult`, `fetchHistory` | `lib/assessment/attempt.ts` (localStorage) |
 
 Example usage (actual project syntax):
@@ -954,7 +954,7 @@ These are storage keys / package identifiers, not the product name. They are int
 | --- | --- | --- |
 | `qlexnursing` | Package name / repository directory | `package.json`, `package-lock.json`, folder `qlexnursing/` |
 | `qlex:session` | `localStorage` session key | `src/lib/api/auth.ts` |
-| `qlex:result:<examId>` | `localStorage` result key | `src/lib/result.ts` |
+| `qlex:result:<examId>` | `localStorage` result key (legacy identifier) | `src/lib/assessment/attempt.ts` (`RESULT_KEY`/`RESULTS_INDEX`) |
 | `qlex:theme` | `localStorage` theme key | `src/components/theme/ThemeProvider.tsx` |
 
 When connecting a real backend, the product name is already **Nursora** everywhere it is rendered; only the legacy storage keys and package name retain the `qlex*` identifier by design.
