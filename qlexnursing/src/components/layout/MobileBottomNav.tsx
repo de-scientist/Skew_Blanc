@@ -9,7 +9,7 @@ export function MobileBottomNav() {
   const pathname = usePathname();
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-bottomnav border-t border-line bg-surface lg:hidden"
       aria-label="Mobile navigation"
     >
       <ul className="grid grid-cols-4">

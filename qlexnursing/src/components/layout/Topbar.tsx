@@ -24,7 +24,7 @@ export function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
   const name = user ? `${user.firstName} ${user.lastName}` : "Guest";
 
   return (
-    <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-line bg-surface/80 px-4 backdrop-blur lg:px-8">
+    <header className="sticky top-0 z-header flex h-16 items-center gap-3 border-b border-line bg-surface/80 px-4 backdrop-blur lg:px-8">
       <button
         className="rounded-lg p-2 text-muted hover:bg-brand-50 lg:hidden"
         onClick={onMenuClick}
