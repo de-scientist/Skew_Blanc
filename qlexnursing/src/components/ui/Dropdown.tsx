@@ -62,7 +62,7 @@ export function Dropdown({
         <div
           role="menu"
           className={cn(
-            "absolute z-50 mt-2 min-w-[14rem] overflow-hidden rounded-2xl border border-line bg-surface p-1.5 shadow-card-hover",
+            "absolute z-dropdown mt-2 min-w-[14rem] overflow-hidden rounded-2xl border border-line bg-surface p-1.5 shadow-card-hover",
             align === "right" ? "right-0" : "left-0"
           )}
         >

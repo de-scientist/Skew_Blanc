@@ -211,7 +211,7 @@ export function ExamInterface({
 
       {/* Mobile drawer */}
       {drawerOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-modal lg:hidden" role="dialog" aria-modal="true" aria-label="Question navigator">
           <div
             className="absolute inset-0 bg-ink/40"
             onClick={() => setDrawerOpen(false)}
