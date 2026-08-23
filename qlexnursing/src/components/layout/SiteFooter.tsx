@@ -114,12 +114,25 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-line pt-6 sm:flex-row">
-          <p className="text-xs text-muted">
-            © {new Date().getFullYear()} Skew Blanc LTD. QLexNursing is an
-            independent study tool and is not affiliated with, endorsed by, or
-            sponsored by NCSBN or any trademark holder.
-          </p>
+        <div className="mt-12 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="space-y-1">
+            <p className="text-xs text-muted">
+              © {new Date().getFullYear()} Skew Blanc LTD. QLexNursing is an
+              independent study tool and is not affiliated with, endorsed by, or
+              sponsored by NCSBN or any trademark holder.
+            </p>
+            <p className="text-xs text-muted">
+              Designed by{" "}
+              <a
+                href="https://github.com/de-scientist"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-brand-700 transition-colors hover:underline dark:text-brand-300"
+              >
+                Descientist
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-2">
             {[FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon].map(
               (Icon, i) => (
