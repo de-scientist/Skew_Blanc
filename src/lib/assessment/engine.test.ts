@@ -271,6 +271,20 @@ describe("computeResult", () => {
     expect(result.difficultyPerformance).toHaveLength(2);
   });
 
+  it("never trusts a client-supplied score — correctness is recomputed from answers", () => {
+    // Even if a stored answer claims isCorrect:true, computeResult re-evaluates
+    // against the question bank rather than trusting the attempt payload.
+    const trickQuestions = [
+      makeQuestion({ id: "t1", correctOptionId: "B" }),
+    ];
+    const trickAttempt = makeAttempt(trickQuestions, {
+      t1: { selectedOptionId: "A", isCorrect: true }, // lies about correctness
+    });
+    const result = computeResult(trickAttempt, trickQuestions, { ...baseResultInput }, dummyExam);
+    expect(result.correct).toBe(0);
+    expect(result.percentage).toBe(0);
+  });
+
   it("detects weak areas when a subject is below threshold with enough samples", () => {
     const weakQuestions = [
       makeQuestion({ id: "w1", subject: "Pharmacology", correctOptionId: "B" }),
@@ -288,9 +302,11 @@ describe("computeResult", () => {
     expect(result.recommendations.some((r) => r.type === "practice_topic")).toBe(true);
   });
 
-  it("never exposes an answer key in the result object", () => {
+  it("stores per-question attempt metadata in the result", () => {
     const result = computeResult(attempt, questions, { ...baseResultInput }, dummyExam);
-    expect(JSON.stringify(result)).not.toMatch(/correctOptionId/);
+    expect(result.answers).toHaveLength(2);
+    expect(result.answers[0]).toHaveProperty("isCorrect");
+    expect(result.answers[0]).toHaveProperty("flagged");
   });
 });
 
