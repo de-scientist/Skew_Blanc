@@ -108,7 +108,7 @@ export function SiteHeader() {
               className={cn(
                 "rounded-lg px-3 py-2 text-sm font-semibold transition-colors",
                 isActive(item.href)
-                  ? "text-brand-700"
+                  ? "text-brand-700 dark:text-brand-300"
                   : "text-muted hover:text-ink"
               )}
             >
@@ -123,7 +123,7 @@ export function SiteHeader() {
                 className={cn(
                   "flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold transition-colors",
                   moreNav.some((m) => isActive(m.href))
-                    ? "text-brand-700"
+                    ? "text-brand-700 dark:text-brand-300"
                     : "text-muted hover:text-ink"
                 )}
               >

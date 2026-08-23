@@ -112,7 +112,7 @@ export function ExamInterface({
     <div className="flex min-h-[calc(100vh-4rem)] flex-col lg:flex-row lg:gap-6">
       {/* Main column */}
       <div className="flex flex-1 flex-col">
-        <div className="sticky top-16 z-10 -mx-4 border-b border-line bg-surface/90 px-4 py-3 backdrop-blur lg:-mx-8 lg:px-8">
+        <div className="sticky top-16 z-content -mx-4 border-b border-line bg-surface/90 px-4 py-3 backdrop-blur lg:-mx-8 lg:px-8">
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold text-ink">
@@ -151,7 +151,7 @@ export function ExamInterface({
           />
         </div>
 
-        <div className="sticky bottom-16 z-10 flex items-center justify-between gap-3 border-t border-line bg-surface/90 py-3 backdrop-blur lg:bottom-0 lg:border-0 lg:bg-transparent">
+        <div className="sticky bottom-16 z-content flex items-center justify-between gap-3 border-t border-line bg-surface/90 py-3 backdrop-blur lg:bottom-0 lg:border-0 lg:bg-transparent">
           <Button
             variant="outline"
             onClick={() => goTo(current - 1)}

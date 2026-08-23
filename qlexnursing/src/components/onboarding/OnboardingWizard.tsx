@@ -43,7 +43,7 @@ export function OnboardingWizard() {
 
   return (
     <div className="mx-auto max-w-xl px-4 py-12">
-      <p className="text-center text-sm font-semibold text-brand-700">
+      <p className="text-center text-sm font-semibold text-brand-700 dark:text-brand-300">
         Step {step + 1} of {steps.length}
       </p>
       <ProgressBar value={((step + 1) / steps.length) * 100} className="mt-2" tone="brand" />
