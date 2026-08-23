@@ -120,7 +120,7 @@ export function ImageCard({
   zoom?: boolean;
 }) {
   const Inner = (
-    <Card className={cn("group h-full overflow-hidden", className)}>
+    <Card className={cn("group h-full overflow-hidden transition-all hover:-translate-y-1 hover:shadow-card-hover", className)}>
       <ImageFrame
         src={image}
         alt={alt}
@@ -202,7 +202,7 @@ export function BlogCard({
         className
       )}
     >
-      <Card className="h-full overflow-hidden">
+      <Card className="h-full overflow-hidden transition-all hover:-translate-y-1 hover:shadow-card-hover">
         <ImageFrame
           src={image}
           alt={alt}
@@ -403,7 +403,7 @@ export function PortfolioCard({
         className
       )}
     >
-      <Card className="h-full overflow-hidden">
+      <Card className="h-full overflow-hidden transition-all hover:-translate-y-1 hover:shadow-card-hover">
         <ImageFrame
           src={image}
           alt={alt}

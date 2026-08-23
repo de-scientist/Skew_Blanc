@@ -7,6 +7,7 @@ import { studyNotes } from "@/data/mock/content";
 import { forumTopics } from "@/data/mock/content";
 import { blogPosts } from "@/data/mock/blog";
 import { SearchIcon, ClipboardIcon, BookIcon, MessageIcon, FileTextIcon, ArrowRightIcon, CornerDownLeftIcon } from "@/components/ui/icons";
+import { EmptyState } from "@/components/ui/EmptyState";
 import { cn } from "@/lib/utils";
 
 type Result = { group: string; title: string; sub: string; href: string; icon: React.ReactNode };
@@ -124,7 +125,12 @@ export function SearchExperience() {
       )}
 
       {q.trim() && results.length === 0 && (
-        <p className="mt-8 text-center text-sm text-muted">No results for “{q}”.</p>
+        <EmptyState
+          className="mt-8"
+          icon={<SearchIcon className="h-5 w-5" />}
+          title={`No results for “${q}”`}
+          description="Try a different term or browse all sections from the home page."
+        />
       )}
 
       <div className="mt-6 space-y-6">
