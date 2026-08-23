@@ -109,7 +109,7 @@ export function QuestionCard({
                 className="sr-only"
                 checked={selected}
                 onChange={() => onSelect?.(option.id)}
-                disabled={review}
+                disabled={review || disabled}
               />
               <span
                 className={cn(
@@ -146,6 +146,37 @@ export function QuestionCard({
             <span className="font-medium">Explanation: </span>
             {question.explanation}
           </p>
+          {showRationales && rationales && (
+            <div className="mt-4 space-y-2 border-t border-line pt-3">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                Why each option is right or wrong
+              </p>
+              <ul className="space-y-1.5 text-sm">
+                {order.map((optionId) => {
+                  const option = question.options.find((o) => o.id === optionId);
+                  if (!option) return null;
+                  const rationale = rationales[optionId];
+                  if (!rationale) return null;
+                  const isCorrectOption = option.id === question.correctOptionId;
+                  return (
+                    <li key={optionId} className="flex gap-2">
+                      <span
+                        className={cn(
+                          "mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold",
+                          isCorrectOption
+                            ? "bg-success-100 text-success-700"
+                            : "bg-subtle text-muted"
+                        )}
+                      >
+                        {option.id}
+                      </span>
+                      <span className="text-muted">{rationale}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </div>
