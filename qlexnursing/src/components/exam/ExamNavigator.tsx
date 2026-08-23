@@ -24,7 +24,7 @@ export function ExamNavigator({
           <span className="h-3 w-3 rounded-full bg-success-500" /> Answered
         </span>
         <span className="inline-flex items-center gap-1">
-          <span className="h-3 w-3 rounded-full border border-slate-300" /> Unanswered
+          <span className="h-3 w-3 rounded-full border border-line" /> Unanswered
         </span>
         <span className="inline-flex items-center gap-1">
           <span className="h-3 w-3 rounded-full bg-warning-500" /> Flagged
@@ -50,8 +50,8 @@ export function ExamNavigator({
                   status === "incorrect" && "border-danger-500 bg-danger-50 text-danger-700",
                   status === "flagged" && "border-warning-500 bg-warning-50 text-warning-700",
                   isAnswered && !isCurrent && "border-success-500 bg-success-50 text-success-700",
-                  status === "unanswered" && !isCurrent && "border-slate-200 text-muted",
-                  isCurrent && status === "unanswered" && "border-slate-200 text-muted"
+                  status === "unanswered" && !isCurrent && "border-line text-muted",
+                  isCurrent && status === "unanswered" && "border-line text-muted"
                 )}
               >
                 {i + 1}

@@ -194,7 +194,7 @@ export function ExamInterface({
             <p className="mt-1 text-muted">
               {answeredCount} of {total} answered
             </p>
-            <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-slate-100">
+              <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-track">
               <div
                 className="h-full rounded-full bg-brand-600 transition-[width]"
                 style={{ width: `${(answeredCount / total) * 100}%` }}

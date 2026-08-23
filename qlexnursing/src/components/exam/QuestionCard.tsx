@@ -42,7 +42,7 @@ export function QuestionCard({
             "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition-colors",
             flagged
               ? "bg-warning-50 text-warning-700"
-              : "bg-slate-100 text-muted hover:bg-slate-200",
+              : "bg-subtle text-muted hover:bg-track",
             review && "pointer-events-none opacity-50"
           )}
         >
@@ -76,7 +76,7 @@ export function QuestionCard({
               stateClass = "border-danger-500 bg-danger-50";
               statusIcon = <XIcon className="h-4 w-4 text-danger-700" />;
             } else {
-              stateClass = "border-line bg-slate-50 opacity-70";
+              stateClass = "border-line bg-subtle opacity-70";
             }
           } else if (selected) {
             stateClass = "border-brand-600 bg-brand-50";
@@ -103,7 +103,7 @@ export function QuestionCard({
                   "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs font-bold",
                   selected || (review && isCorrectOption)
                     ? "border-brand-600 bg-brand-600 text-white"
-                    : "border-slate-300 text-muted"
+                    : "border-line text-muted"
                 )}
                 aria-hidden="true"
               >

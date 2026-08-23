@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Button } from "@/components/ui/Button";
+import { Card, CardContent } from "@/components/ui/Card";
 import { CheckIcon, ArrowRightIcon } from "@/components/ui/icons";
 
 export function ReplyBox({ topic }: { topic: string }) {
@@ -16,8 +17,9 @@ export function ReplyBox({ topic }: { topic: string }) {
   }
 
   return (
-    <div className="rounded-2xl border border-line bg-surface p-4">
-      <p className="text-sm font-semibold text-ink">Join the discussion</p>
+    <Card>
+      <CardContent>
+        <p className="text-sm font-semibold text-ink">Join the discussion</p>
       {posted ? (
         <p className="mt-3 flex items-center gap-2 rounded-xl bg-success-50 px-3 py-2 text-sm text-success-700 dark:bg-success-900/20">
           <CheckIcon className="h-4 w-4" /> Thanks! Your reply was posted (demo).
@@ -37,6 +39,7 @@ export function ReplyBox({ topic }: { topic: string }) {
           </Button>
         </form>
       )}
-    </div>
+      </CardContent>
+    </Card>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/Card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Avatar } from "@/components/ui/Avatar";
 import { buttonVariants } from "@/components/ui/Button";
@@ -65,8 +65,10 @@ export default function ProfilePage() {
 
         <div className="space-y-6 lg:col-span-2">
           <Card>
+            <CardHeader>
+              <CardTitle>Account details</CardTitle>
+            </CardHeader>
             <CardContent className="space-y-4">
-              <h3 className="text-base font-semibold text-ink">Account details</h3>
               <div className="grid gap-4 sm:grid-cols-2">
                 <Detail icon={<MailIcon className="h-4 w-4" />} label="Email" value={u.email} />
                 <Detail icon={<PhoneIcon className="h-4 w-4" />} label="Phone" value={u.phone ?? "—"} />
@@ -77,8 +79,10 @@ export default function ProfilePage() {
           </Card>
 
           <Card>
+            <CardHeader>
+              <CardTitle>Study preferences</CardTitle>
+            </CardHeader>
             <CardContent>
-              <h3 className="text-base font-semibold text-ink">Study preferences</h3>
               <p className="mt-2 text-sm text-muted">{u.studyGoal}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Badge tone="neutral">Language: {u.preferredLanguage}</Badge>

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { Button } from "@/components/ui/Button";
 import { Avatar } from "@/components/ui/Avatar";
+import { Card, CardContent } from "@/components/ui/Card";
 import { Field } from "@/components/auth/LoginForm";
 import { CheckIcon, ArrowRightIcon, UserIcon, MailIcon, PhoneIcon, GraduationIcon } from "@/components/ui/icons";
 import type { NursingPath } from "@/types/domain";
@@ -39,16 +40,18 @@ export function ProfileEditForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-5">
-      <div className="flex items-center gap-4 rounded-2xl border border-line bg-subtle p-4">
-        <Avatar name={`${form.firstName} ${form.lastName}`} className="h-16 w-16 text-xl" />
-        <div>
-          <p className="text-sm font-semibold text-ink">Profile photo</p>
-          <p className="text-xs text-muted">Upload support is coming soon. Initials are used for now.</p>
-        </div>
-        <Button type="button" variant="outline" size="sm" className="ml-auto" disabled>
-          Replace
-        </Button>
-      </div>
+      <Card>
+        <CardContent className="flex items-center gap-4">
+          <Avatar name={`${form.firstName} ${form.lastName}`} className="h-16 w-16 text-xl" />
+          <div>
+            <p className="text-sm font-semibold text-ink">Profile photo</p>
+            <p className="text-xs text-muted">Upload support is coming soon. Initials are used for now.</p>
+          </div>
+          <Button type="button" variant="outline" size="sm" className="ml-auto" disabled>
+            Replace
+          </Button>
+        </CardContent>
+      </Card>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="First name" htmlFor="firstName">
