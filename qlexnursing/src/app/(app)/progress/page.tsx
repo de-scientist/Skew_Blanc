@@ -50,7 +50,7 @@ export default async function ProgressPage() {
         </div>
 
         <div className="space-y-6" id="streak">
-          <Card>
+          <GlassCard>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <FlameIcon className="h-5 w-5 text-warning-500" /> Study streak
@@ -68,9 +68,9 @@ export default async function ProgressPage() {
                 ))}
               </div>
             </CardContent>
-          </Card>
+          </GlassCard>
 
-          <Card id="recap">
+          <GlassCard id="recap">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <SparkIcon className="h-5 w-5 text-brand-600" /> Learning recap
