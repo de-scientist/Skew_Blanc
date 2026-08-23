@@ -181,7 +181,6 @@ export function QuestionBankAdmin() {
           question={editing}
           onClose={() => setEditing(null)}
           onSaved={() => {
-            updateQuestion;
             refresh();
             setEditing(null);
           }}
