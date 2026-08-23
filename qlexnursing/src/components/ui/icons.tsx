@@ -438,6 +438,14 @@ export const CornerDownLeftIcon = (p: IconProps) => (
   </svg>
 );
 
+export const UploadIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="17 8 12 3 7 8" />
+    <line x1="12" y1="3" x2="12" y2="15" />
+  </svg>
+);
+
 export const ImageOffIcon = (p: IconProps) => (
   <svg {...base(p)}>
     <path d="M21 3H3v18h18z" opacity="0" />
