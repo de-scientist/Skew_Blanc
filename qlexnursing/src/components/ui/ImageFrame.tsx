@@ -86,17 +86,17 @@ export function ImageFrame({
         <Image
           src={src}
           alt={alt}
-          fill={fill ? undefined : true}
-          {...(fill ? { width: 0, height: 0 } : {})}
+          fill
           priority={priority}
-          sizes={fill ? undefined : sizes}
+          sizes={sizes}
           onLoad={() => setLoaded(true)}
           onError={() => setError(true)}
           style={{ objectPosition: position }}
           className={cn(
             "h-full w-full transition-[transform,opacity] duration-500 ease-out",
             fitClass[fit],
-            zoomOnHover && "transition-transform duration-500 ease-out group-hover:scale-[1.04]",
+            zoomOnHover &&
+              "transition-transform duration-500 ease-out group-hover:scale-[1.04]",
             loaded ? "opacity-100" : "opacity-0",
             imgClassName
           )}

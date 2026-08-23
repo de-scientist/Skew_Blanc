@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { buttonVariants } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { BlogCard, ImageFrame } from "@/components/ui/cards";
+import { Badge } from "@/components/ui/Badge";
+import { ArrowRightIcon } from "@/components/ui/icons";
 import { blogPosts, blogCategories, getBlogPost } from "@/data/mock/blog";
 import { createMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
-import { ArrowRightIcon, BookIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = createMetadata({
   title: "Blog",
@@ -38,41 +36,50 @@ export default function BlogPage() {
       />
 
       <Link href={`/blog/${featured.slug}`} className="group mt-8 block">
-        <Card className="overflow-hidden">
+        <div className="card overflow-hidden">
           <div className="grid lg:grid-cols-2">
-            <div className="relative h-56 lg:h-auto">
-              <Image src={featured.cover} alt={featured.title} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div className="relative h-56 lg:h-full">
+              <ImageFrame
+                src={featured.cover}
+                alt={featured.title}
+                fill
+                priority
+                sizes="(max-width:1024px) 100vw, 50vw"
+              />
             </div>
-            <CardContent className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center p-6 sm:p-8">
               <Badge tone="brand">Featured · {featured.category}</Badge>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-ink group-hover:text-brand-700">{featured.title}</h2>
+              <h2 className="mt-3 text-2xl font-bold tracking-tight text-ink group-hover:text-brand-700 dark:group-hover:text-brand-300">
+                {featured.title}
+              </h2>
               <p className="mt-2 text-muted">{featured.excerpt}</p>
-              <p className="mt-4 text-xs text-muted">{featured.author} · {formatDate(featured.publishedAt)} · {featured.readingMinutes} min read</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
+              <p className="mt-4 text-xs text-muted">
+                {featured.author} · {formatDate(featured.publishedAt)} · {featured.readingMinutes} min read
+              </p>
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 dark:text-brand-300">
                 Read article <ArrowRightIcon className="h-4 w-4" />
               </span>
-            </CardContent>
+            </div>
           </div>
-        </Card>
+        </div>
       </Link>
 
       <div className="mt-10">
         <SectionHeading title="Latest posts" />
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {rest.map((p) => (
-            <Link key={p.slug} href={`/blog/${p.slug}`} className="group">
-              <Card className="h-full overflow-hidden transition-all hover:-translate-y-1 hover:shadow-card-hover">
-                <div className="relative h-40">
-                  <Image src={p.cover} alt={p.title} fill sizes="(max-width:1024px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <CardContent>
-                  <Badge tone="accent">{p.category}</Badge>
-                  <h3 className="mt-3 text-base font-semibold text-ink group-hover:text-brand-700">{p.title}</h3>
-                  <p className="mt-1 line-clamp-2 text-sm text-muted">{p.excerpt}</p>
-                  <p className="mt-3 text-xs text-muted">{formatDate(p.publishedAt)} · {p.readingMinutes} min</p>
-                </CardContent>
-              </Card>
-            </Link>
+            <BlogCard
+              key={p.slug}
+              href={`/blog/${p.slug}`}
+              image={p.cover}
+              alt={p.title}
+              category={p.category}
+              title={p.title}
+              excerpt={p.excerpt}
+              author={p.author}
+              date={formatDate(p.publishedAt)}
+              readingMinutes={p.readingMinutes}
+            />
           ))}
         </div>
       </div>
