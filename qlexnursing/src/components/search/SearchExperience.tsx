@@ -98,7 +98,7 @@ export function SearchExperience() {
           onKeyDown={onKeyDown}
           placeholder="Search exams, notes, forums, articles…"
           aria-label="Global search"
-          className="h-14 w-full rounded-2xl border border-line bg-canvas pl-12 pr-4 text-base text-ink placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
+          className="h-14 w-full rounded-2xl border border-line bg-canvas pl-12 pr-4 text-base text-ink placeholder:text-muted focus:border-brand-500 focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-brand-500/30"
         />
         <span className="absolute right-4 top-1/2 -translate-y-1/2 rounded-md border border-line px-2 py-1 text-xs text-muted">⌘K</span>
       </div>
