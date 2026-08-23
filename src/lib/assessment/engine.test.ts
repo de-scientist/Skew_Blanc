@@ -13,14 +13,12 @@ import {
   defaultAssessmentConfig,
   detectWeakAreas,
   evaluateAnswer,
-  getModeConfig,
   mulberry32,
   selectQuestions,
   shuffledOptionOrder,
   shuffle,
-  WEAK_AREA_MIN_SAMPLES,
-  WEAK_AREA_THRESHOLD,
 } from "@/lib/assessment/engine";
+import { getModeConfig } from "@/lib/assessment/modes";
 
 // --- Test factories -------------------------------------------------------
 
@@ -239,8 +237,8 @@ describe("detectWeakAreas", () => {
 
   it("respects a custom threshold and minSamples", () => {
     const groups = [withAccuracy("A", 2, 3)]; // 66%
-    expect(detectWeakAreas(groups, 60, 2)).toHaveLength(1);
-    expect(detectWeakAreas(groups, 70, 2)).toHaveLength(0);
+    expect(detectWeakAreas(groups, 70, 2)).toHaveLength(1); // 66 < 70
+    expect(detectWeakAreas(groups, 60, 2)).toHaveLength(0); // 66 >= 60
   });
 });
 
