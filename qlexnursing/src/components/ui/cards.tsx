@@ -20,12 +20,14 @@ import { accentStyles, type Accent } from "@/lib/accents";
 export function GlassCard({
   className,
   children,
+  dark = false,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: React.HTMLAttributes<HTMLDivElement> & { dark?: boolean }) {
   return (
     <Card
       className={cn(
-        "glass border-transparent shadow-card-hover",
+        dark ? "glass-dark border-transparent" : "glass border-transparent",
+        "shadow-card-hover",
         className
       )}
       {...props}
@@ -153,7 +155,10 @@ export function ImageCard({
 
   if (href) {
     return (
-      <Link href={href} className="block focus-visible:outline-none">
+      <Link
+        href={href}
+        className="group block h-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+      >
         {Inner}
       </Link>
     );
@@ -190,7 +195,13 @@ export function BlogCard({
   className?: string;
 }) {
   return (
-    <Link href={href} className={cn("group block h-full", className)}>
+    <Link
+      href={href}
+      className={cn(
+        "group block h-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas",
+        className
+      )}
+    >
       <Card className="h-full overflow-hidden">
         <ImageFrame
           src={image}
@@ -248,7 +259,13 @@ export function ResourceCard({
   className?: string;
 }) {
   return (
-    <Link href={href} className={cn("group block h-full", className)}>
+    <Link
+      href={href}
+      className={cn(
+        "group block h-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas",
+        className
+      )}
+    >
       <Card className="h-full transition-all hover:-translate-y-1 hover:shadow-card-hover">
         <CardContent className="flex h-full flex-col">
           <div className="flex items-center justify-between gap-3">
@@ -379,7 +396,13 @@ export function PortfolioCard({
   className?: string;
 }) {
   return (
-    <Link href={href} className={cn("group block h-full", className)}>
+    <Link
+      href={href}
+      className={cn(
+        "group block h-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas",
+        className
+      )}
+    >
       <Card className="h-full overflow-hidden">
         <ImageFrame
           src={image}

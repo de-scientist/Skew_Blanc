@@ -50,9 +50,49 @@ export function SiteHeader() {
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
 
+  const drawerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (!open) return;
+    const prev = document.activeElement as HTMLElement | null;
+    const panel = drawerRef.current?.querySelector<HTMLElement>(
+      "[data-autofocus], a[href], button"
+    );
+    panel?.focus();
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      if (e.key === "Tab") {
+        const root = drawerRef.current;
+        if (!root) return;
+        const f = root.querySelectorAll<HTMLElement>(
+          "a[href], button:not([disabled]), input, [tabindex]:not([tabindex='-1'])"
+        );
+        if (f.length === 0) return;
+        const first = f[0];
+        const last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      prev?.focus();
+    };
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-surface/80 backdrop-blur">
-      <div className="container-page flex h-16 items-center justify-between gap-4">
+    <>
+      <header className="sticky top-0 z-header border-b border-line bg-surface/80 backdrop-blur">
+        <div className="container-page flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2 font-extrabold tracking-tight text-ink">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 text-white shadow-card">
             <SparkIcon className="h-5 w-5" />
@@ -164,7 +204,16 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        </header>
+      )}
+      {open && (
+        <div
+          ref={drawerRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+          className="fixed inset-0 z-drawer lg:hidden"
+        >
           <div
             className="absolute inset-0 bg-ink/40"
             onClick={() => setOpen(false)}
