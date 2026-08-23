@@ -168,10 +168,10 @@ Dashboard  →  /dashboard
 Set study goal / study plan  →  /settings, /study-plan
   ↓
 Choose exam category  →  /exams/[category]
-  ↓
-Start practice exam  →  /exam/[id]
-  ↓
-Answer questions, flag, submit
+   ↓
+Pick a mode (Practice / Tutor / Test / Exam)  →  /assessment/[id]?mode=<mode>
+   ↓
+Answer questions, flag, submit / finish
   ↓
 Review results  →  /results/[id]
   ↓
@@ -620,7 +620,15 @@ This section documents assumptions made during development. Items are flagged as
 - **Why:** No test framework is configured.
 - **Impact:** Regressions can go unnoticed.
 - **Risk:** Medium as the codebase grows.
-- **Validation:** Verified (no test config).
+- **Validation:** Superseded — Vitest unit tests now cover the assessment engine (see [Testing](#testing)).
+
+### A9 — Four-mode assessment engine is configuration-driven
+
+- **Assumption:** Practice, Tutor, Test, and Exam are one engine with mode-specific behavior, not four separate systems.
+- **Why:** `src/lib/assessment/modes.ts` defines a single `ModeConfig` per mode; `AssessmentPlayer` and `computeResult` read from it exclusively. The FAQ's "four modes" claim is realized by this architecture (front-end only; see [Known Limitations](#known-limitations)).
+- **Impact:** Adding a mode or tuning behavior is a data change, not a UI rewrite.
+- **Risk:** Scoring/timer/attempt authority still lives client-side until a backend is connected.
+- **Validation:** Verified by reading `src/lib/assessment/*` and the `/assessment/[id]` + `/assessment/results/[id]` routes.
 
 > No other explicit assumptions were documented in the repository beyond those observable from the code above.
 
@@ -898,7 +906,7 @@ The route-level skeletons (`loading.tsx`) are driven by the mock API's artificia
 - **No backend / database.** All data is mock data in `src/data/mock`; the API client simulates latency (tunable via `NEXT_PUBLIC_DEMO_DELAY_MS`).
 - **Mock authentication.** Any credentials sign in; sessions are in `localStorage` and are not secure.
 - **No persistence beyond the browser.** Profile/settings/study-plan/forum posts are demo-only.
-- **No automated tests, CI/CD, or coverage.**
+- **Tests are engine-only.** Unit tests cover `src/lib/assessment/engine.ts`; there is no UI/integration/security test suite yet. No CI/CD.
 - **Single access state** (guest vs authenticated); no admin/moderator roles.
 - **Exam content is sample data**, not affiliated with or derived from official exams.
 - **No rate limiting, CSRF, or server-side validation** in the current code.
@@ -920,7 +928,7 @@ The route-level skeletons (`loading.tsx`) are driven by the mock API's artificia
 - **Phase 4 — Advanced learning analytics:** trend dashboards, readiness scoring, adaptive recommendations.
 - **Phase 5 — Personalized learning:** study plans driven by performance; spaced repetition.
 - **Phase 6 — Mobile applications:** native or PWA shell.
-- **Phase 7 — AI-powered tutoring (proposed):** only if/when a real backend and content pipeline exist; not present today.
+- **Phase 7 — AI-powered tutoring:** a rule-based, heuristic tutor (`src/lib/assessment/tutor.ts`) is implemented today behind a `TutorProvider` seam; wiring a live LLM requires a backend and is the next step.
 
 These phases are **proposed ideas**, not confirmed product commitments, unless the repository later confirms them.
 
