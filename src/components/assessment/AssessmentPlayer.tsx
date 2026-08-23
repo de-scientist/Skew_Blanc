@@ -262,6 +262,16 @@ export function AssessmentPlayer({
             disabled={feedbackVisible}
           />
 
+          <div className="mt-4 flex justify-end">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setReportOpen(true)}
+            >
+              Report question
+            </Button>
+          </div>
+
           {mode === "practice" && !checkedMap[qid] && (
             <div className="mt-4 flex justify-end">
               <Button
@@ -388,6 +398,14 @@ export function AssessmentPlayer({
           </>
         }
       />
+
+      {reportOpen && question && (
+        <ReportQuestionModal
+          question={question}
+          examId={exam.id}
+          onClose={() => setReportOpen(false)}
+        />
+      )}
 
       {drawerOpen && (
         <div
