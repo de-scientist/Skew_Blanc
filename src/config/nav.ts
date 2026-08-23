@@ -14,7 +14,6 @@ import {
   UserIcon,
   SettingsIcon,
   CompassIcon,
-  FileTextIcon,
   FlagIcon,
 } from "@/components/ui/icons";
 

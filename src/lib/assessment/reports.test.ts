@@ -11,10 +11,10 @@ const sample: Question = {
   difficulty: "Medium",
   text: "Which is a beta-blocker?",
   options: [
-    { id: "a", text: "Atenolol" },
-    { id: "b", text: "Lisinopril" },
+    { id: "A", text: "Atenolol" },
+    { id: "B", text: "Lisinopril" },
   ],
-  correctOptionId: "a",
+  correctOptionId: "A",
   explanation: "Atenolol is a beta-blocker.",
   reviewStatus: "approved",
   questionBankStatus: "published",
