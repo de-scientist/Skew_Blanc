@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { Badge } from "@/components/ui/Badge";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { buttonVariants } from "@/components/ui/Button";
+import { BlogCard, ImageFrame } from "@/components/ui/cards";
 import { blogPosts, getBlogPost } from "@/data/mock/blog";
 import { createMetadata, breadcrumbJsonLd, articleJsonLd } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
-import { ArrowRightIcon, BookIcon, ClockIcon } from "@/components/ui/icons";
+import { BookIcon, ClockIcon } from "@/components/ui/icons";
 
 export async function generateMetadata({
   params,
@@ -68,9 +68,14 @@ export default async function BlogPostPage({
         </div>
       </div>
 
-      <div className="relative mt-6 h-64 overflow-hidden rounded-3xl sm:h-80">
-        <Image src={post.cover} alt={post.title} fill priority sizes="(max-width:768px) 100vw, 768px" className="object-cover" />
-      </div>
+      <ImageFrame
+        src={post.cover}
+        alt={post.title}
+        ratio="wide"
+        priority
+        sizes="(max-width: 768px) 100vw, 768px"
+        className="mt-6 rounded-3xl"
+      />
 
       <div className="mx-auto mt-8 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink">
         <p className="text-lg font-medium text-ink">{post.excerpt}</p>
@@ -89,12 +94,20 @@ export default async function BlogPostPage({
       {related.length > 0 && (
         <div className="mx-auto mt-10 max-w-3xl">
           <h2 className="text-lg font-bold text-ink">Related articles</h2>
-          <div className="mt-4 space-y-2">
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((r) => (
-              <Link key={r.slug} href={`/blog/${r.slug}`} className="flex items-center justify-between rounded-xl border border-line p-3 hover:bg-brand-50">
-                <span className="text-sm font-semibold text-ink">{r.title}</span>
-                <ArrowRightIcon className="h-4 w-4 text-muted" />
-              </Link>
+              <BlogCard
+                key={r.slug}
+                href={`/blog/${r.slug}`}
+                image={r.cover}
+                alt={r.title}
+                category={r.category}
+                title={r.title}
+                excerpt={r.excerpt}
+                author={r.author}
+                date={formatDate(r.publishedAt)}
+                readingMinutes={r.readingMinutes}
+              />
             ))}
           </div>
         </div>
