@@ -763,6 +763,16 @@ Each `Exam` mock record defines `totalQuestions`, `durationMinutes`, and `passin
 
 > **Single system.** There is exactly one assessment engine. The routes `/exam/[id]` and `/assessment/[id]` are alias entry points that both render `AssessmentPlayer`; the routes `/results/[id]` and `/assessment/results/[id]` are alias results entry points that both render `AssessmentResultsClient`. A direct/demo visit to a results route with no stored attempt (e.g. from a dashboard "recent activity" link) is handled by a **real-engine demo fallback** in `AssessmentResultsClient`, so there is a single code path for results — no second result builder. The four modes are implemented in the front end and run on the mocked data/attempt layer. Server-side scoring, a real question bank, and a live LLM tutor remain backend work (see [Known Limitations](#known... )).
 
+### Instructor Tools & Question Reporting
+
+Nursora includes an instructor/authoring surface (nav group **Instructor**) built on the mock question bank.
+
+- **Question Bank** (`/admin/questions/bank`, `QuestionBankAdmin`): lists every question across exams with subject, topic, difficulty, review status, and bank status. Filters by subject / review status / difficulty / free-text search. An **Edit** modal persists instructor changes (correct answer, explanation, difficulty, review status, bank status) through `src/lib/assessment/questionBank.ts`, which stores a small override map in `localStorage` merged over the static mock bank at read time. The panel documents how the bank feeds the four modes: `Practice`/`Tutor` show explanations immediately, `Test`/`Exam` show them only after submission; **difficulty** drives pooling and weak-area recommendations; **review status** is the quality gate (keep items `approved` before they feed Exam mode).
+- **Question Reports** (`/admin/questions/reports`, `ReportsAdmin`): lists student-submitted reports (`open` → `reviewed` → `resolved`) with reason, detail, and subject; instructors can **Mark reviewed** or **Resolve**. Persisted via `src/lib/assessment/reports.ts`.
+- **Student reporting:** every question in `AssessmentPlayer` exposes a **Report question** button that opens `ReportQuestionModal`. Reports capture a reason (`REPORT_REASONS`), optional detail, and the question context via `submitReport()`.
+
+Both stores are intentionally localStorage-backed so the full reporting → review loop works in the demo without a backend; the function signatures (`submitReport`, `getReports`, `updateReport`, `updateQuestion`, `getAllQuestions`) mirror what a REST/DB service would expose, so they can be swapped for a real backend later.
+
 ---
 
 ## Study System
