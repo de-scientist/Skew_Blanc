@@ -87,6 +87,7 @@ No claims of official affiliation, accreditation, or exam guarantees are made by
 - Login / logout (client-side mock session).
 - Password reset and email verification screens (UI present; wired to mock flows).
 - Profile management (name, contact, institution, study goal, preferences).
+- Profile photo upload: in-app file picker + live preview, persisted to the session (`avatarUrl`).
 - Theme preference persisted per browser.
 
 ### Learning & Study
@@ -265,14 +266,14 @@ qlexnursing/
 | File | Why it matters |
 | --- | --- |
 | `package.json` | Scripts (`dev`, `build`, `start`, `lint`) and dependency versions. |
-| `.env.example` | Documents the two public env vars (`NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_API_URL`). |
+| `.env.example` | Documents the public env vars, including `NEXT_PUBLIC_DEMO_DELAY_MS` (mock loading latency). |
 | `next.config.ts` | Next.js config; currently only `images.remotePatterns` (Unsplash). |
 | `postcss.config.mjs` | Enables Tailwind v4 via `@tailwindcss/postcss`. |
 | `tsconfig.json` | Path alias `@/*` → `./src/*`; strict TypeScript. |
 | `app/globals.css` | **Design system source**: Tailwind v4 `@theme` tokens, `.glass`/`.glass-dark`, z-index scale, focus styles, reduced-motion. |
 | `src/config/site.ts` | Site name, URL, organization, SEO defaults. |
 | `src/config/nav.ts` | Sidebar and mobile-bottom navigation definitions. |
-| `src/lib/api/client.ts` | Mock API seam — replace `request()` with a real `fetch`. |
+| `src/lib/api/client.ts` | Mock API seam — `request()`, `sleep()`, `DEMO_DELAY_MS` (demo latency, tunable via `NEXT_PUBLIC_DEMO_DELAY_MS`). Replace `request()` with a real `fetch`. |
 | `src/components/theme/ThemeProvider.tsx` | Light/Dark/System theme logic + no-flash script. |
 | `src/components/auth/AuthProvider.tsx` | Mock auth context. |
 | `eslint.config.mjs` | ESLint flat config (Next.js). |
@@ -309,6 +310,7 @@ The application reads two public environment variables. A template is provided i
 | --- | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | No | Canonical site URL used for metadata, Open Graph, and JSON-LD | `https://qlexnursing.vercel.app` |
 | `NEXT_PUBLIC_API_URL` | No | Base URL of the (future) backend API; currently unused by the mock client | `https://api.qlexnursing.com` |
+| `NEXT_PUBLIC_DEMO_DELAY_MS` | No | Artificial latency (ms) added by the mock API so loading skeletons are demoable. `0` disables; defaults to `900` when unset | `900` |
 
 No secrets, API keys, or private URLs are required to run the project locally. The repository does **not** contain real credentials. `.env.example` explicitly states that authentication is handled externally by a host backend and that real secrets must never be committed.
 
@@ -398,7 +400,7 @@ These features read from `src/data/mock` and are currently presentation/demo onl
 
 ## Profile & Settings
 
-- **Profile** (`/profile`, `/profile/edit`): view and edit name, contact, institution, study goal, and avatar; `ProfileEditForm` updates the session via `updateProfile`.
+- **Profile** (`/profile`, `/profile/edit`): view and edit name, contact, institution, study goal, and profile photo. The **Replace** button opens a file picker, previews the chosen image (via `Avatar`'s `src`), and persists it to the session through `updateProfile({ avatarUrl })`; a **Remove** option clears it. The profile page reads the saved photo from the auth session so changes appear immediately after saving.
 - **Settings** (`/settings`): `SettingsPanel` manages theme preference (light/dark/system), notification and study preferences. Changes are demo-local.
 
 ## Blog & Content
@@ -424,9 +426,11 @@ QLexNursing uses a single, reusable component system rather than ad-hoc styles.
 - **Cards**: a single `Card` primitive (`Card` / `CardHeader` / `CardTitle` / `CardDescription` / `CardContent` / `CardFooter`) plus composed variants in `src/components/ui/cards.tsx`: `GlassCard`, `FeatureCard`, `ImageCard`, `BlogCard`, `ResourceCard`, `TestimonialCard`, `PortfolioCard`, `Rating`, and a `StatCard`.
 - **Images**: `ImageFrame` enforces aspect ratios (`video` 16:9, `standard` 4:3, `ten` 16:10, `portrait`, `wide` 21:9, `tall` 3:4), `object-cover`, overflow clipping, hover zoom, gradient overlays, error fallback, and priority/sizes for `next/image`.
 - **Glassmorphism**: `.glass` (theme-aware) and `.glass-dark` (always-dark, for overlays above imagery) keep text readable.
-- **Forms**: shared `input` / `input-icon` classes plus a `Field` wrapper; labels, placeholders, and focus rings are theme-safe.
+- **Forms**: typed `Input`, `Textarea`, `Select`, `Label`, and `Field` components live in `src/components/ui/form.tsx` (all `forwardRef`, `aria-invalid` aware, with theme-safe focus rings). They build on the underlying `input` / `input-icon` / `input-area` utilities; the auth, profile, contact, and forum forms all use the typed components.
 - **Navigation**: `SiteHeader` (public), `Topbar` + `Sidebar` (app), `MobileBottomNav`, and a focus-trapped mobile drawer.
-- **Accessibility primitives**: `Avatar`, `Badge`, `Breadcrumb`, `Carousel`, `Dropdown`, `Modal`, `ProgressBar`, `Skeleton`/`Skeletons`, `SectionHeading`, `Accordion`, `ThemeToggle`, `NotificationBell`, `PageHeader`, `LineChart`, `DonutChart`.
+- **Loading states**: route-level `loading.tsx` skeletons for the dashboard, progress, study-notes, forums, search, exam, results, and forum-topic views. Reusable `Skeleton` and `SkeletonText` primitives back these. The mock API adds an artificial latency (`NEXT_PUBLIC_DEMO_DELAY_MS`, default 900ms) so the skeletons are visibly demoable. Empty result sets (search, forums, study notes) use a shared `EmptyState` component (dashed panel with icon + copy).
+- **Hover rhythm**: image cards (`ImageCard`, `BlogCard`, `PortfolioCard`) share a subtle `hover:-translate-y-1 hover:shadow-card-hover` lift; all clickable cards expose visible `focus-visible` rings.
+- **Accessibility primitives**: `Avatar`, `Badge`, `Breadcrumb`, `Carousel`, `Dropdown`, `Modal`, `ProgressBar`, `Skeleton`/`Skeletons`, `EmptyState`, `SectionHeading`, `Accordion`, `ThemeToggle`, `NotificationBell`, `PageHeader`, `LineChart`, `DonutChart`.
 
 Focus states use a global `:focus-visible` outline plus `ring` utilities on interactive components. Reduced-motion is respected globally (`prefers-reduced-motion` disables animations/transitions).
 
@@ -486,7 +490,7 @@ There is **no HTTP API** in the repository. Instead, typed service modules in `s
 
 | Module | Exports | Source |
 | --- | --- | --- |
-| `client.ts` | `request(data, delayMs)` | Simulates latency; clone of data |
+| `client.ts` | `request(data, delayMs)`, `sleep(ms)`, `DEMO_DELAY_MS` | Simulates latency (tunable via `NEXT_PUBLIC_DEMO_DELAY_MS`); clone of data |
 | `auth.ts` | `login`, `register`, `updateProfile`, `readSession`, `writeSession`, `clearSession` | `localStorage` |
 | `exams.ts` | `getExams`, `getExam(idOrSlug)` | `data/mock/exams` |
 | `dashboard.ts` | `getDashboard` | `data/mock/dashboard` |
@@ -623,6 +627,9 @@ npm install
 **Demo data resets**
 All mock data and results live in `localStorage`; clearing site data resets progress, streak, and session.
 
+**Loading skeletons don't appear**
+The route-level skeletons (`loading.tsx`) are driven by the mock API's artificial latency. Set `NEXT_PUBLIC_DEMO_DELAY_MS` (e.g. `900`) in `.env.local` to make them visible, or `0` to disable. The client-rendered views (`/study-notes`, `/forums`, `/search`) also `await sleep()` on the server so their skeletons show during navigation.
+
 ## Contributing
 
 1. Fork the repository and clone your fork.
@@ -681,7 +688,7 @@ chore:    tooling/build
 
 ## Known Limitations
 
-- **No backend / database.** All data is mock data in `src/data/mock`; the API client simulates latency.
+- **No backend / database.** All data is mock data in `src/data/mock`; the API client simulates latency (tunable via `NEXT_PUBLIC_DEMO_DELAY_MS`).
 - **Mock authentication.** Any credentials sign in; sessions are in `localStorage` and are not secure.
 - **No persistence beyond the browser.** Profile/settings/study-plan/forum posts are demo-only.
 - **No automated tests, CI/CD, or coverage.**
@@ -696,7 +703,7 @@ QLexNursing is an independent study tool and is **not affiliated with, endorsed 
 
 ## Contact & Support
 
-The in-app contact form (`/contact`) is a demo and does not submit data. For project support, contact the project maintainers.
+The in-app contact form (`/contact`) is a demo and does not submit data. For project support, contact the project maintainers. The site footer attributes the design to **Descientist** with a link to their GitHub profile.
 
 ## License
 
