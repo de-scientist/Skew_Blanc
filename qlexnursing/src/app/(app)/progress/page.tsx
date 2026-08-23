@@ -5,6 +5,7 @@ import { DashboardStats } from "@/components/dashboard/DashboardStats";
 import { PerformanceOverview } from "@/components/dashboard/PerformanceOverview";
 import { SubjectPerformance } from "@/components/dashboard/SubjectPerformance";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { GlassCard } from "@/components/ui/cards";
 import { Badge } from "@/components/ui/Badge";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Button } from "@/components/ui/Button";
