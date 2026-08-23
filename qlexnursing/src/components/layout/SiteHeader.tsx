@@ -202,10 +202,8 @@ export function SiteHeader() {
           </button>
         </div>
       </div>
+      </header>
 
-      {open && (
-        </header>
-      )}
       {open && (
         <div
           ref={drawerRef}
@@ -228,6 +226,7 @@ export function SiteHeader() {
                 QLexNursing
               </span>
               <button
+                data-autofocus
                 className="rounded-lg p-1.5 text-muted hover:bg-brand-50"
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
@@ -302,6 +301,6 @@ export function SiteHeader() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
