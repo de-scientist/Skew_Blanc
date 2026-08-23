@@ -14,6 +14,10 @@ export function QuestionCard({
   onToggleFlag,
   mode = "practice",
   isCorrect,
+  optionOrder,
+  disabled,
+  rationales,
+  showRationales = false,
 }: {
   question: Question;
   index: number;
@@ -24,8 +28,13 @@ export function QuestionCard({
   onToggleFlag?: () => void;
   mode?: "practice" | "review";
   isCorrect?: boolean;
+  optionOrder?: AnswerOptionId[];
+  disabled?: boolean;
+  rationales?: Record<string, string>;
+  showRationales?: boolean;
 }) {
   const review = mode === "review";
+  const order = optionOrder ?? question.options.map((o) => o.id);
 
   return (
     <div>
@@ -36,14 +45,14 @@ export function QuestionCard({
         <button
           type="button"
           onClick={onToggleFlag}
-          disabled={review}
+          disabled={review || disabled}
           aria-pressed={flagged}
           className={cn(
             "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition-colors",
             flagged
               ? "bg-warning-50 text-warning-700"
               : "bg-subtle text-muted hover:bg-track",
-            review && "pointer-events-none opacity-50"
+            (review || disabled) && "pointer-events-none opacity-50"
           )}
         >
           <FlagIcon className="h-3.5 w-3.5" />
@@ -56,11 +65,15 @@ export function QuestionCard({
       </h2>
       <p className="mt-1 text-xs font-medium uppercase tracking-wide text-accent-700">
         {question.subject}
+        {question.topic ? ` · ${question.topic}` : ""}
+        {question.difficulty ? ` · ${question.difficulty}` : ""}
       </p>
 
-      <fieldset className="mt-5 space-y-3" disabled={review}>
+      <fieldset className="mt-5 space-y-3" disabled={review || disabled}>
         <legend className="sr-only">Answer options</legend>
-        {question.options.map((option) => {
+        {order.map((optionId) => {
+          const option = question.options.find((o) => o.id === optionId);
+          if (!option) return null;
           const selected = selectedOptionId === option.id;
           const isCorrectOption = option.id === question.correctOptionId;
           let stateClass = "border-line hover:border-brand-300 hover:bg-brand-50";
