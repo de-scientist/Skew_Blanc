@@ -55,25 +55,22 @@ export function LoginForm() {
       )}
 
       <Field label="Email" htmlFor="email">
-        <div className="relative">
-          <MailIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-          <input
-            id="email"
-            type="email"
-            autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@email.com"
-            className="input-icon"
-            aria-invalid={!!error}
-          />
-        </div>
+        <Input
+          id="email"
+          type="email"
+          autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@email.com"
+          leftIcon={<MailIcon className="h-4 w-4" />}
+          invalid={!!error}
+        />
       </Field>
 
       <Field label="Password" htmlFor="password">
         <div className="relative">
           <LockIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-          <input
+          <Input
             id="password"
             type={show ? "text" : "password"}
             autoComplete="current-password"
@@ -81,6 +78,7 @@ export function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
             className="input-icon pr-10"
+            invalid={!!error}
           />
           <button
             type="button"
@@ -128,21 +126,4 @@ export function LoginForm() {
   );
 }
 
-export function Field({
-  label,
-  htmlFor,
-  children,
-}: {
-  label: string;
-  htmlFor: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-semibold text-ink">
-        {label}
-      </label>
-      {children}
-    </div>
-  );
-}
+export { Field } from "@/components/ui/form";
