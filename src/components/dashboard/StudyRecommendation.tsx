@@ -30,7 +30,7 @@ export function StudyRecommendation({ area }: { area: RecommendedArea }) {
           </div>
         </div>
         <Link
-          href="/exam/rn-nursing"
+          href="/assessment/rn-nursing?mode=practice"
           className={buttonVariants({ variant: "primary", size: "lg" })}
         >
           Practice {area.subject}

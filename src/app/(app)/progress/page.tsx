@@ -97,7 +97,7 @@ export default async function ProgressPage() {
 
       <div className="flex justify-center">
         <Link
-          href="/exam/rn-nursing"
+          href="/assessment/rn-nursing?mode=practice"
           className={buttonVariants({ variant: "outline", size: "lg" })}
         >
           Practice weak areas

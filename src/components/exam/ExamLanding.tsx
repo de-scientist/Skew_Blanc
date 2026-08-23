@@ -143,7 +143,7 @@ export function ExamLanding({
               <CardContent className="flex items-center justify-between">
                 <span className="font-medium text-ink">{subject}</span>
                 <Link
-                  href={`/exam/${exam.id}`}
+                  href={`/assessment/${exam.id}?mode=practice`}
                   className={buttonVariants({ variant: "ghost", size: "sm" })}
                 >
                   Practice
@@ -163,10 +163,10 @@ export function ExamLanding({
           management, and the subjects that need the most attention.
         </p>
         <Link
-          href={`/exam/${exam.id}`}
+          href={`/assessment/${exam.id}?mode=exam`}
           className={buttonVariants({ variant: "primary", size: "lg", className: "mt-4" })}
         >
-          Start a practice exam
+          Start the exam simulation
           <ArrowRightIcon className="h-4 w-4" />
         </Link>
       </section>

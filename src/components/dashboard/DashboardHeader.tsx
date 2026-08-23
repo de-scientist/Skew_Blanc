@@ -41,7 +41,7 @@ export function DashboardHeader({
       </div>
       <div className="mt-6 flex flex-wrap gap-3">
         <Link
-          href="/exam/rn-nursing"
+          href="/assessment/rn-nursing?mode=practice"
           className={buttonVariants({
             variant: "secondary",
             size: "lg",
