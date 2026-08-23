@@ -19,6 +19,7 @@ const sample: Question = {
   reviewStatus: "approved",
   questionBankStatus: "published",
   tags: [],
+  number: 1,
   createdAt: "2024-01-01",
 };
 
