@@ -456,3 +456,10 @@ export const ImageOffIcon = (p: IconProps) => (
     <path d="M15 15h.01" />
   </svg>
 );
+
+export const LightbulbIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M9 18h6M10 22h4" />
+    <path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z" />
+  </svg>
+);

@@ -88,7 +88,7 @@ export function AssessmentResults({
                 ? "Below passing"
                 : "Below target"}
           </span>
-          <Badge tone="secondary">{modeConfig.label}</Badge>
+          <Badge tone="brand">{modeConfig.label}</Badge>
           {result.weakAreas.length > 0 && (
             <Badge tone="warning">
               {result.weakAreas.length} weak area
@@ -135,7 +135,7 @@ export function AssessmentResults({
                 <div className="mb-1.5 flex items-center justify-between text-sm">
                   <span className="font-medium text-ink">{s.key}</span>
                   <span className="tabular-nums text-muted">
-                    {s.accuracy}% · {s.questions} Qs
+                     {s.accuracy}% · {s.total} Qs
                   </span>
                 </div>
                 <ProgressBar value={s.accuracy} tone={accuracyTone(s.accuracy)} />

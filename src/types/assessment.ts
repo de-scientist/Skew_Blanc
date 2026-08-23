@@ -1,6 +1,7 @@
 import type {
   AnswerOptionId,
   Difficulty,
+  ID,
   Question,
 } from "./index";
 
