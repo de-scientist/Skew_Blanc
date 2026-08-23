@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { Button } from "@/components/ui/Button";
-import { Field } from "@/components/auth/LoginForm";
+import { Field, Input, Select } from "@/components/ui/form";
 import { MailIcon, LockIcon, EyeIcon, EyeOffIcon, ArrowRightIcon, CheckIcon, AlertIcon, UserIcon } from "@/components/ui/icons";
 import type { ExamGoal, NursingPath } from "@/types/domain";
 
@@ -98,30 +98,24 @@ export function RegisterForm() {
 
       <div className="grid grid-cols-2 gap-3">
         <Field label="First name" htmlFor="firstName">
-          <div className="relative">
-            <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-            <input id="firstName" value={form.firstName} onChange={(e) => set("firstName", e.target.value)} className="input-icon" placeholder="Jane" aria-invalid={!!errors.firstName} />
-          </div>
+          <Input id="firstName" value={form.firstName} onChange={(e) => set("firstName", e.target.value)} placeholder="Jane" leftIcon={<UserIcon className="h-4 w-4" />} invalid={!!errors.firstName} />
           {errors.firstName && <p className="mt-1 text-xs text-danger-600">{errors.firstName}</p>}
         </Field>
         <Field label="Last name" htmlFor="lastName">
-          <input id="lastName" value={form.lastName} onChange={(e) => set("lastName", e.target.value)} className="input" placeholder="Doe" aria-invalid={!!errors.lastName} />
+          <Input id="lastName" value={form.lastName} onChange={(e) => set("lastName", e.target.value)} placeholder="Doe" invalid={!!errors.lastName} />
           {errors.lastName && <p className="mt-1 text-xs text-danger-600">{errors.lastName}</p>}
         </Field>
       </div>
 
       <Field label="Email" htmlFor="email">
-        <div className="relative">
-          <MailIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-          <input id="email" type="email" value={form.email} onChange={(e) => set("email", e.target.value)} className="input-icon" placeholder="you@email.com" aria-invalid={!!errors.email} />
-        </div>
+        <Input id="email" type="email" value={form.email} onChange={(e) => set("email", e.target.value)} placeholder="you@email.com" leftIcon={<MailIcon className="h-4 w-4" />} invalid={!!errors.email} />
         {errors.email && <p className="mt-1 text-xs text-danger-600">{errors.email}</p>}
       </Field>
 
       <Field label="Password" htmlFor="password">
         <div className="relative">
           <LockIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-          <input id="password" type={show ? "text" : "password"} value={form.password} onChange={(e) => set("password", e.target.value)} className="input-icon pr-10" placeholder="At least 8 characters" aria-invalid={!!errors.password} />
+          <Input id="password" type={show ? "text" : "password"} value={form.password} onChange={(e) => set("password", e.target.value)} placeholder="At least 8 characters" className="input-icon pr-10" invalid={!!errors.password} />
           <button type="button" onClick={() => setShow((v) => !v)} aria-label={show ? "Hide password" : "Show password"} className="absolute right-2 top-1/2 -translate-y-1/2 rounded-lg p-1.5 text-muted hover:bg-brand-50">
             {show ? <EyeOffIcon className="h-4 w-4" /> : <EyeIcon className="h-4 w-4" />}
           </button>
@@ -138,24 +132,21 @@ export function RegisterForm() {
       </Field>
 
       <Field label="Confirm password" htmlFor="confirm">
-        <div className="relative">
-          <LockIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-          <input id="confirm" type={show ? "text" : "password"} value={form.confirm} onChange={(e) => set("confirm", e.target.value)} className="input-icon" placeholder="Re-enter password" aria-invalid={!!errors.confirm} />
-        </div>
+        <Input id="confirm" type={show ? "text" : "password"} value={form.confirm} onChange={(e) => set("confirm", e.target.value)} placeholder="Re-enter password" leftIcon={<LockIcon className="h-4 w-4" />} invalid={!!errors.confirm} />
         {errors.confirm && <p className="mt-1 text-xs text-danger-600">{errors.confirm}</p>}
       </Field>
 
       <div className="grid grid-cols-2 gap-3">
         <Field label="Nursing level" htmlFor="nursingLevel">
-          <select id="nursingLevel" value={form.nursingLevel} onChange={(e) => set("nursingLevel", e.target.value)} className="input">
+          <Select id="nursingLevel" value={form.nursingLevel} onChange={(e) => set("nursingLevel", e.target.value)}>
             <option value="RN">RN</option>
             <option value="LPN">LPN</option>
             <option value="Pre-Nursing">Pre-Nursing</option>
             <option value="Other">Other</option>
-          </select>
+          </Select>
         </Field>
         <Field label="Exam goal" htmlFor="primaryGoal">
-          <select id="primaryGoal" value={form.primaryGoal} onChange={(e) => set("primaryGoal", e.target.value)} className="input">
+          <Select id="primaryGoal" value={form.primaryGoal} onChange={(e) => set("primaryGoal", e.target.value)}>
             <option value="ATI">ATI</option>
             <option value="HESI">HESI</option>
             <option value="NCLEX-RN">NCLEX-RN</option>
@@ -163,7 +154,7 @@ export function RegisterForm() {
             <option value="RN Nursing">RN Nursing</option>
             <option value="LPN Nursing">LPN Nursing</option>
             <option value="Other">Other</option>
-          </select>
+          </Select>
         </Field>
       </div>
 
