@@ -66,18 +66,13 @@ export function SearchExperience() {
     );
   }, [q, all]);
 
-  React.useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        inputRef.current?.focus();
-      }
-    }
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
-
   React.useEffect(() => setActive(0), [q]);
+
+  function clearSearch() {
+    setQ("");
+    setActive(0);
+    inputRef.current?.focus();
+  }
 
   function onKeyDown(e: React.KeyboardEvent) {
     if (e.key === "ArrowDown") {
@@ -86,6 +81,9 @@ export function SearchExperience() {
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       setActive((a) => Math.max(0, a - 1));
+    } else if (e.key === "Escape" && q) {
+      e.preventDefault();
+      clearSearch();
     } else if (e.key === "Enter" && results[active]) {
       e.preventDefault();
       router.push(results[active].href);
@@ -100,37 +98,52 @@ export function SearchExperience() {
   return (
     <div>
       <div className="relative">
-        <SearchIcon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted" />
+        <SearchIcon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted" aria-hidden="true" />
         <input
-    ref={inputRef}
-    type="search"
-    value={q}
-    onChange={(e) => setQ(e.target.value)}
-    onKeyDown={onKeyDown}
-    placeholder="What would you like to learn today?"
-    aria-label="Search learning resources"
-    autoComplete="off"
-    className="h-14 w-full rounded-2xl border border-line bg-canvas pl-12 pr-4 text-base text-ink placeholder:text-muted transition-all duration-200 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
-  />
+          ref={inputRef}
+          type="search"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          onKeyDown={onKeyDown}
+          placeholder="Search nursing exams, notes, discussions & articles…"
+          aria-label="Search Nursora — exams, notes, discussions and articles"
+          autoComplete="off"
+          className="h-14 w-full rounded-2xl border border-line bg-canvas pl-12 pr-12 text-base text-ink shadow-sm transition-all duration-200 outline-none placeholder:text-muted hover:border-brand-300 focus:border-brand-500 focus:shadow-[0_0_0_4px_rgba(13,148,136,0.12)] focus:ring-0"
+        />
+        {q && (
+          <button
+            type="button"
+            onClick={clearSearch}
+            aria-label="Clear search"
+            className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-muted transition-colors hover:bg-brand-50 hover:text-brand-600"
+          >
+            <XIcon className="h-4 w-4" />
+          </button>
+        )}
       </div>
 
       {!q.trim() && (
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { g: "Exams", items: examCategories.slice(0, 4).map((c) => c.name) },
-            { g: "Study Notes", items: studyNotes.slice(0, 4).map((n) => n.title) },
-            { g: "Forums", items: forumTopics.slice(0, 4).map((t) => t.title) },
-            { g: "Articles", items: blogPosts.slice(0, 4).map((b) => b.title) },
-          ].map((col) => (
-            <div key={col.g} className="rounded-2xl border border-line bg-surface p-4">
-              <p className="text-xs font-bold uppercase tracking-wide text-muted">{col.g}</p>
-              <ul className="mt-2 space-y-1.5 text-sm">
-                {col.items.map((i) => (
-                  <li key={i} className="truncate text-ink">{i}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div className="mt-6">
+          <p className="mb-3 text-sm text-muted">
+            Jump straight to what helps you learn, practice and advance.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { g: "Exams", items: examCategories.slice(0, 4).map((c) => c.name) },
+              { g: "Study Notes", items: studyNotes.slice(0, 4).map((n) => n.title) },
+              { g: "Forums", items: forumTopics.slice(0, 4).map((t) => t.title) },
+              { g: "Articles", items: blogPosts.slice(0, 4).map((b) => b.title) },
+            ].map((col) => (
+              <div key={col.g} className="rounded-2xl border border-line bg-surface p-4">
+                <p className="text-xs font-bold uppercase tracking-wide text-muted">{col.g}</p>
+                <ul className="mt-2 space-y-1.5 text-sm">
+                  {col.items.map((i) => (
+                    <li key={i} className="truncate text-ink">{i}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
@@ -138,8 +151,8 @@ export function SearchExperience() {
         <EmptyState
           className="mt-8"
           icon={<SearchIcon className="h-5 w-5" />}
-          title={`No results for “${q}”`}
-          description="Try a different term or browse all sections from the home page."
+          title={`We couldn't find “${q}” yet`}
+          description="Try a nursing topic, an exam name, a study note, a discussion, or an article."
         />
       )}
 
