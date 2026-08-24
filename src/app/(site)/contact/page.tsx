@@ -51,7 +51,7 @@ export default function ContactPage() {
               <form className="space-y-4" action="/contact" method="get">
                 <div className="grid gap-3 sm:grid-cols-2">
                   <Field label="Name" htmlFor="name">
-                    <Input id="name" name="name" required placeholder="Jane Doe" />
+                    <Input id="name" name="name" required placeholder="Your name" />
                   </Field>
                   <Field label="Email" htmlFor="email">
                     <Input id="email" name="email" type="email" required placeholder="you@email.com" />

@@ -39,8 +39,8 @@ export function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search exams, notes, forums…  (⌘K)"
-          aria-label="Search"
+          placeholder="Search exams, notes, discussions…"
+          aria-label="Search Nursora"
           className="input-icon"
         />
       </form>

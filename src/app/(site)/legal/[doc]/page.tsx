@@ -39,7 +39,7 @@ const docs: Record<string, LegalDoc> = {
     title: "Refund Policy",
     updated: "2026-08-01",
     intro:
-      "Our refund approach for paid plans. Template language — review with counsel before launch.",
+      "Our refund approach for paid plans. This summary should be reviewed by counsel before launch.",
     sections: [
       { heading: "Free trial", body: "A free account includes core practice. Paid features are clearly labeled before purchase." },
       { heading: "Refunds", body: "Eligible refunds are processed to the original payment method within a reasonable period after approval." },
@@ -113,7 +113,7 @@ export default async function LegalPage({
           ))}
         </div>
         <p className="mt-10 rounded-xl border border-line bg-subtle p-4 text-xs text-muted">
-          Template content for demonstration. Replace with reviewed legal copy before launch.
+          These documents are provided as starting-point legal copy and should be reviewed by counsel before launch.
         </p>
       </div>
     </div>
