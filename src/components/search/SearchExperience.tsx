@@ -93,15 +93,16 @@ export function SearchExperience() {
       <div className="relative">
         <SearchIcon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted" />
         <input
-          ref={inputRef}
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          onKeyDown={onKeyDown}
-          placeholder="Search exams, notes, forums, articles…"
-          aria-label="Global search"
-          className="h-14 w-full rounded-2xl border border-line bg-canvas pl-12 pr-4 text-base text-ink placeholder:text-muted focus:border-brand-500 focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-brand-500/30"
-        />
-        <span className="absolute right-4 top-1/2 -translate-y-1/2 rounded-md border border-line px-2 py-1 text-xs text-muted">⌘K</span>
+    ref={inputRef}
+    type="search"
+    value={q}
+    onChange={(e) => setQ(e.target.value)}
+    onKeyDown={onKeyDown}
+    placeholder="What would you like to learn today?"
+    aria-label="Search learning resources"
+    autoComplete="off"
+    className="h-14 w-full rounded-2xl border border-line bg-canvas pl-12 pr-4 text-base text-ink placeholder:text-muted transition-all duration-200 outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
+  />
       </div>
 
       {!q.trim() && (
