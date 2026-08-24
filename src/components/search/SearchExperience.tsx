@@ -6,7 +6,16 @@ import { examCategories } from "@/data/mock/examCategories";
 import { studyNotes } from "@/data/mock/content";
 import { forumTopics } from "@/data/mock/content";
 import { blogPosts } from "@/data/mock/blog";
-import { SearchIcon, ClipboardIcon, BookIcon, MessageIcon, FileTextIcon, ArrowRightIcon, CornerDownLeftIcon } from "@/components/ui/icons";
+import {
+  SearchIcon,
+  ClipboardIcon,
+  BookIcon,
+  MessageIcon,
+  FileTextIcon,
+  ArrowRightIcon,
+  CornerDownLeftIcon,
+  XIcon,
+} from "@/components/ui/icons";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { cn } from "@/lib/utils";
 
