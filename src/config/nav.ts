@@ -74,6 +74,12 @@ export const navGroups: NavGroup[] = [
     label: "Resources",
     items: [
       {
+        label: "My Notes",
+        href: "/notes",
+        icon: FileTextIcon,
+        description: "Your knowledge base",
+      },
+      {
         label: "Study Notes",
         href: "/study-notes",
         icon: BookIcon,

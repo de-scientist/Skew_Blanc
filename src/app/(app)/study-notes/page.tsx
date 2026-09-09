@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { StudyNotesBrowser } from "@/components/study/StudyNotesBrowser";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { buttonVariants } from "@/components/ui/Button";
 import { BookIcon } from "@/components/ui/icons";
 import { sleep } from "@/lib/api/client";
 
@@ -19,8 +21,13 @@ export default async function StudyNotesPage() {
         title="Nursora Study Notes"
         description="Concise, exam-aligned notes and flashcards for the subjects you practice."
         action={
-          <span className="inline-flex items-center gap-2 rounded-xl border border-line bg-surface px-3 py-2 text-sm text-muted">
-            <BookIcon className="h-4 w-4 text-brand-600" /> 240 notes · 320 flashcards
+          <span className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-2 rounded-xl border border-line bg-surface px-3 py-2 text-sm text-muted">
+              <BookIcon className="h-4 w-4 text-brand-600" /> 240 notes · 320 flashcards
+            </span>
+            <Link href="/notes" className={buttonVariants({ variant: "outline", size: "sm" })}>
+              Open My Notes
+            </Link>
           </span>
         }
       />
