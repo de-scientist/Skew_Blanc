@@ -103,10 +103,6 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
   const [savedId, setSavedId] = React.useState<string | null>(noteId ?? null);
 
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
-  const stateRef = React.useRef({ title, content, subject, noteType, folderId, tags, isFavorite, isHighYield });
-  stateRef.current = { title, content, subject, noteType, folderId, tags, isFavorite, isHighYield };
-  const savedIdRef = React.useRef<string | null>(noteId ?? null);
-  savedIdRef.current = savedId;
 
   // Hydrate from existing note / duplicate source once data is ready.
   React.useEffect(() => {
@@ -130,45 +126,39 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
     setHydrated(true);
   }, [isLoading, hydrated, mode, existing, duplicateSource]);
 
-  const buildInput = React.useCallback(
-    (status: "draft" | "published"): NoteInput => {
-      const s = stateRef.current;
-      return {
-        title: s.title,
-        content: s.content,
-        subject: s.subject,
-        noteType: s.noteType,
-        folderId: s.folderId || null,
-        tags: s.tags,
-        isFavorite: s.isFavorite,
-        isHighYield: s.isHighYield,
-        status,
-      };
-    },
-    []
-  );
+  const buildInput = (status: "draft" | "published"): NoteInput => ({
+    title,
+    content,
+    subject,
+    noteType,
+    folderId: folderId || null,
+    tags,
+    isFavorite,
+    isHighYield,
+    status,
+  });
 
-  const persist = React.useCallback(
-    async (status: "draft" | "published", silent = false): Promise<UserNote | null> => {
-      const input = buildInput(status);
-      if (!silent) {
-        const validation = validateNoteInput(input);
-        setErrors(validation);
-        if (!isValidNoteInput(input)) return null;
-      }
-      const id = savedIdRef.current;
-      if (id) {
-        return updateNote(id, input);
-      }
-      const created = await createNote(input);
-      setSavedId(created.id);
-      return created;
-    },
-    [buildInput, createNote, updateNote]
-  );
+  const persist = async (
+    status: "draft" | "published",
+    silent = false
+  ): Promise<UserNote | null> => {
+    const input = buildInput(status);
+    if (!silent) {
+      const validation = validateNoteInput(input);
+      setErrors(validation);
+      if (!isValidNoteInput(input)) return null;
+    }
+    if (savedId) {
+      return updateNote(savedId, input);
+    }
+    const created = await createNote(input);
+    setSavedId(created.id);
+    return created;
+  };
 
   // Autosave: debounce 1.5s after the user stops typing. Skips empty,
   // untitled notes so drafts are never meaningless.
+  const publishedStatus = existing?.status;
   React.useEffect(() => {
     if (!hydrated) return;
     if (!title.trim() && !content.trim()) {
@@ -180,23 +170,31 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
       return;
     }
     setSaveState((s) => (s.kind === "saving" ? s : { kind: "dirty" }));
+    const snapshot: NoteInput = {
+      title,
+      content,
+      subject,
+      noteType,
+      folderId: folderId || null,
+      tags,
+      isFavorite,
+      isHighYield,
+      status: "draft",
+    };
     const t = window.setTimeout(() => {
       (async () => {
         setSaveState({ kind: "saving" });
         try {
-          const input = buildInput("draft");
-          // Autosave must never publish or wipe: keep the author's status
-          // unless this is a brand-new unsaved note (saved as draft).
+          // Autosave must never publish: brand-new notes save as drafts and
+          // already-published notes keep their published status.
           const status: "draft" | "published" =
-            savedIdRef.current && existing?.status === "published" ? "published" : "draft";
-          let result: UserNote | null;
-          if (savedIdRef.current) {
-            result = await updateNote(savedIdRef.current, { ...input, status });
+            savedId && publishedStatus === "published" ? "published" : "draft";
+          if (savedId) {
+            await updateNote(savedId, { ...snapshot, status });
           } else {
-            result = await createNote({ ...input, status: "draft" });
-            setSavedId(result.id);
+            const created = await createNote({ ...snapshot, status: "draft" });
+            setSavedId(created.id);
           }
-          void result;
           setSaveState({ kind: "saved", at: new Date().toISOString() });
         } catch {
           setSaveState({
@@ -207,7 +205,7 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
       })();
     }, 1500);
     return () => window.clearTimeout(t);
-  }, [title, content, subject, noteType, folderId, tags, isFavorite, isHighYield, hydrated, buildInput, createNote, updateNote, existing?.status]);
+  }, [title, content, subject, noteType, folderId, tags, isFavorite, isHighYield, hydrated, savedId, publishedStatus, createNote, updateNote]);
 
   const retryAutosave = () => {
     setSaveState({ kind: "dirty" });
@@ -228,8 +226,10 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
   };
 
   /* ------------------------- toolbar helpers ------------------------ */
+  /* Ref access lives only in these event-handler functions (never during
+     render) so autosave-safe cursor editing stays lint-clean. */
 
-  const insertAtCursor = (snippet: string, selectOffset?: number) => {
+  const handleInsertAtCursor = (snippet: string, selectOffset?: number) => {
     const el = textareaRef.current;
     if (!el) {
       setContent((c) => (c ? `${c}\n${snippet}` : snippet));
@@ -245,7 +245,7 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
     });
   };
 
-  const wrapSelection = (before: string, after: string, placeholder = "text") => {
+  const handleWrapSelection = (before: string, after: string, placeholder = "text") => {
     const el = textareaRef.current;
     if (!el) return;
     const { selectionStart, selectionEnd, value } = el;
@@ -258,7 +258,7 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
     });
   };
 
-  const prefixLines = (prefix: string) => {
+  const handlePrefixLines = (prefix: string) => {
     const el = textareaRef.current;
     if (!el) return;
     const { selectionStart, selectionEnd, value } = el;
@@ -274,26 +274,49 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
     requestAnimationFrame(() => el.focus());
   };
 
-  const toolbar: Array<{ label: string; hint: string; action: () => void }> = [
-    { label: "B", hint: "Bold", action: () => wrapSelection("**", "**", "key term") },
-    { label: "I", hint: "Italic", action: () => wrapSelection("*", "*", "emphasis") },
-    { label: "H2", hint: "Heading", action: () => prefixLines("## ") },
-    { label: "H3", hint: "Subheading", action: () => prefixLines("### ") },
-    { label: "•", hint: "Bullet list", action: () => prefixLines("- ") },
-    { label: "1.", hint: "Numbered list", action: () => prefixLines("1. ") },
-    { label: "☑", hint: "Checklist", action: () => prefixLines("- [ ] ") },
-    { label: "❝", hint: "Quote", action: () => prefixLines("> ") },
-    { label: "Link", hint: "Insert link", action: () => wrapSelection("[", "](https://)", "resource") },
-    { label: "<>", hint: "Inline code", action: () => wrapSelection("`", "`", "value") },
-    { label: "Mark", hint: "Highlight", action: () => wrapSelection("==", "==", "must remember") },
-    { label: "―", hint: "Divider", action: () => insertAtCursor("\n---\n") },
-    {
-      label: "Table",
-      hint: "Insert table",
-      action: () =>
-        insertAtCursor("\n| Column A | Column B |\n| --- | --- |\n|  |  |\n"),
-    },
-  ];
+  const handleToolbarAction = (kind: ToolbarKind) => {
+    switch (kind) {
+      case "bold":
+        handleWrapSelection("**", "**", "key term");
+        break;
+      case "italic":
+        handleWrapSelection("*", "*", "emphasis");
+        break;
+      case "h2":
+        handlePrefixLines("## ");
+        break;
+      case "h3":
+        handlePrefixLines("### ");
+        break;
+      case "bullet":
+        handlePrefixLines("- ");
+        break;
+      case "numbered":
+        handlePrefixLines("1. ");
+        break;
+      case "checklist":
+        handlePrefixLines("- [ ] ");
+        break;
+      case "quote":
+        handlePrefixLines("> ");
+        break;
+      case "link":
+        handleWrapSelection("[", "](https://)", "resource");
+        break;
+      case "code":
+        handleWrapSelection("`", "`", "value");
+        break;
+      case "highlight":
+        handleWrapSelection("==", "==", "must remember");
+        break;
+      case "divider":
+        handleInsertAtCursor("\n---\n");
+        break;
+      case "table":
+        handleInsertAtCursor("\n| Column A | Column B |\n| --- | --- |\n|  |  |\n");
+        break;
+    }
+  };
 
   const addTag = (raw: string) => {
     const t = normalizeTag(raw);
