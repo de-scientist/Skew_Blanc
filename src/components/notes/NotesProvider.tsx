@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useAuth } from "@/components/auth/AuthProvider";
 import {
-  archiveNote,
+  archiveNote as apiArchiveNote,
   createFolder as apiCreateFolder,
   createNote as apiCreateNote,
   deleteFolder as apiDeleteFolder,
@@ -13,7 +13,7 @@ import {
   getNotes,
   moveNoteToFolder,
   renameFolder as apiRenameFolder,
-  restoreNote,
+  restoreNote as apiRestoreNote,
   storageKeyForNotes,
   toggleFavorite as apiToggleFavorite,
   toggleHighYield as apiToggleHighYield,
@@ -208,7 +208,7 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
       refresh,
       createNote: (input, opts) => mutate(() => apiCreateNote(uid, input, opts), "Note created."),
       updateNote: (id, patch) => mutate(() => apiUpdateNote(uid, id, patch), "Note saved."),
-      removeNote: (id) => mutate(() => apiDeleteNote(uid, id), "Note deleted."),
+      removeNote: (id) => mutate(() => apiDeleteNote(uid, id).then(() => undefined), "Note deleted."),
       duplicateNote: (id) => mutate(() => apiDuplicateNote(uid, id), "Note duplicated."),
       toggleFavorite: (id) => mutate(() => apiToggleFavorite(uid, id)),
       toggleHighYield: (id) => mutate(() => apiToggleHighYield(uid, id)),
@@ -217,7 +217,7 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
       moveToFolder: (noteId, folderId) => mutate(() => moveNoteToFolder(uid, noteId, folderId), "Note moved."),
       createFolder: (name) => mutate(() => apiCreateFolder(uid, name), "Folder created."),
       renameFolder: (id, name) => mutate(() => apiRenameFolder(uid, id, name), "Folder renamed."),
-      deleteFolder: (id) => mutate(() => apiDeleteFolder(uid, id), "Folder deleted. Notes moved to Unfiled."),
+      deleteFolder: (id) => mutate(() => apiDeleteFolder(uid, id).then(() => undefined), "Folder deleted. Notes moved to Unfiled."),
       folderName: (folderId) =>
         folderId ? (folders.find((f) => f.id === folderId)?.name ?? "Unfiled") : "Unfiled",
       toasts,
