@@ -33,10 +33,17 @@ import {
 function RelatedQuestions({ subject, tags }: { subject: string; tags: string[] }) {
   const questions: Question[] = React.useMemo(() => {
     const pool = buildQuestionPool("nclex-rn", 60);
-    const bySubject = pool.filter((q) => q.subject === subject);
-    const rest = pool.filter((q) => q.subject !== subject);
-    void tags;
-    return [...bySubject, ...rest].slice(0, 3);
+    const scored = pool.map((q) => {
+      let score = 0;
+      if (q.subject === subject) score += 3;
+      const qtags = q.tags ?? [];
+      score += qtags.filter((t) => tags.some((nt) => t.toLowerCase().includes(nt) || nt.includes(t.toLowerCase()))).length;
+      return { q, score };
+    });
+    return scored
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 3)
+      .map((s) => s.q);
   }, [subject, tags]);
 
   return (
@@ -81,7 +88,6 @@ export function NoteViewerClient({ id }: { id: string }) {
     archiveNote,
     restoreNote,
     removeNote,
-    duplicateNote,
     moveToFolder,
   } = useNotes();
 
@@ -142,7 +148,6 @@ export function NoteViewerClient({ id }: { id: string }) {
 
   const onDuplicate = () => {
     router.push(`/notes/create?duplicate=${note.id}`);
-    void duplicateNote;
   };
 
   return (
