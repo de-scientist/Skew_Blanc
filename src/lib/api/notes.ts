@@ -6,7 +6,7 @@ import {
   defaultFolderEntities,
   duplicateNoteEntity,
   isSubject,
-  makeId,  normalizeTags,
+  normalizeTags,
   readingMinutesFor,
   seedNoteEntities,
 } from "@/lib/notes/store";
