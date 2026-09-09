@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { NoteStudyService, type GeneratedQuestion } from "@/lib/notes/ai";
@@ -102,6 +103,7 @@ function PracticeQuiz({ questions }: { questions: GeneratedQuestion[] }) {
 }
 
 export function AIStudyPanel({ note }: { note: UserNote }) {
+  const router = useRouter();
   const { updateNote, createNote, notify } = useNotes();
   const service = React.useMemo(() => new NoteStudyService(), []);
   const [tab, setTab] = React.useState<Tab>("summary");
@@ -158,8 +160,7 @@ export function AIStudyPanel({ note }: { note: UserNote }) {
         },
         { aiGenerated: true, sourceNoteId: note.id }
       );
-      window.location.assign(`/notes/${created.id}`);
-    } finally {
+      router.push(`/notes/${created.id}`);    } finally {
       setBusy(false);
     }
   };

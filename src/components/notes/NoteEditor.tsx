@@ -33,6 +33,37 @@ const BLOCK_TEMPLATES: Record<string, string> = {
   labs: "::: labs\n| Test | Normal range | Significance |\n| --- | --- | --- |\n|  |  |  |\n:::",
 };
 
+type ToolbarKind =
+  | "bold"
+  | "italic"
+  | "h2"
+  | "h3"
+  | "bullet"
+  | "numbered"
+  | "checklist"
+  | "quote"
+  | "link"
+  | "code"
+  | "highlight"
+  | "divider"
+  | "table";
+
+const TOOLBAR_BUTTONS: Array<{ kind: ToolbarKind; label: string; hint: string }> = [
+  { kind: "bold", label: "B", hint: "Bold" },
+  { kind: "italic", label: "I", hint: "Italic" },
+  { kind: "h2", label: "H2", hint: "Heading" },
+  { kind: "h3", label: "H3", hint: "Subheading" },
+  { kind: "bullet", label: "•", hint: "Bullet list" },
+  { kind: "numbered", label: "1.", hint: "Numbered list" },
+  { kind: "checklist", label: "☑", hint: "Checklist" },
+  { kind: "quote", label: "❝", hint: "Quote" },
+  { kind: "link", label: "Link", hint: "Insert link" },
+  { kind: "code", label: "<>", hint: "Inline code" },
+  { kind: "highlight", label: "Mark", hint: "Highlight" },
+  { kind: "divider", label: "―", hint: "Divider" },
+  { kind: "table", label: "Table", hint: "Insert table" },
+];
+
 function Toggle({
   pressed,
   onChange,
@@ -459,13 +490,13 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
       <div className="card overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line p-2">
           <div className="flex flex-wrap items-center gap-1" role="toolbar" aria-label="Formatting">
-            {toolbar.map((t) => (
+            {TOOLBAR_BUTTONS.map((t) => (
               <button
-                key={t.hint}
+                key={t.kind}
                 type="button"
                 title={t.hint}
                 aria-label={t.hint}
-                onClick={t.action}
+                onClick={() => handleToolbarAction(t.kind)}
                 className="min-h-[2.25rem] min-w-[2.25rem] rounded-lg px-2 text-sm font-semibold text-muted hover:bg-subtle hover:text-ink"
               >
                 {t.label}
@@ -477,7 +508,7 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
               defaultValue=""
               onChange={(e) => {
                 if (e.target.value) {
-                  insertAtCursor(`\n${BLOCK_TEMPLATES[e.target.value]}\n`);
+                  handleInsertAtCursor(`\n${BLOCK_TEMPLATES[e.target.value]}\n`);
                   e.target.value = "";
                 }
               }}
