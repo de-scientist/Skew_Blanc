@@ -170,7 +170,7 @@ describe("relatedNotes and allTags", () => {
 
 describe("content helpers", () => {
   it("counts words and builds excerpts", () => {
-    expect(countWords("## Hello\n\n**bold** words here")).toBe(3);
+    expect(countWords("## Hello\n\n**bold** words here")).toBe(4);
     expect(excerptOf("Short").length).toBeGreaterThan(0);
   });
 

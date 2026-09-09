@@ -182,6 +182,14 @@ export class HeuristicNoteStudyProvider implements NoteStudyProvider {
         back: `Cover definition, key facts, and one nursing implication of ${h}. Check your answer against the "${h}" section of "${note.title}".`,
       });
     }
+    if (cards.length === 0) {
+      // Very short notes still get a usable study card rather than nothing.
+      cards.push({
+        id: makeId("card"),
+        front: `What is the single most important idea in "${note.title}"?`,
+        back: `Restate the core concept of this ${note.subject} note in one or two sentences, then add one nursing implication.`,
+      });
+    }
     return cards.slice(0, Math.max(1, count));
   }
 
