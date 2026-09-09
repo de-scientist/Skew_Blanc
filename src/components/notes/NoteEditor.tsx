@@ -77,7 +77,7 @@ function Toggle({
 export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { notes, folders, isLoading, createNote, updateNote, notify } = useNotes();
+  const { notes, folders, isLoading, createNote, updateNote } = useNotes();
 
   const existing: UserNote | undefined =
     mode === "edit" ? notes.find((n) => n.id === noteId) : undefined;
@@ -157,7 +157,7 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
         if (!isValidNoteInput(input)) return null;
       }
       const id = savedIdRef.current;
-      if (id && mode !== "create-duplicate") {
+      if (id) {
         return updateNote(id, input);
       }
       const created = await createNote(input);
@@ -207,8 +207,7 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
       })();
     }, 1500);
     return () => window.clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, content, subject, noteType, folderId, tags, isFavorite, isHighYield, hydrated]);
+  }, [title, content, subject, noteType, folderId, tags, isFavorite, isHighYield, hydrated, buildInput, createNote, updateNote, existing?.status]);
 
   const retryAutosave = () => {
     setSaveState({ kind: "dirty" });
@@ -338,7 +337,7 @@ export function NoteEditor({ mode, noteId }: { mode: "create" | "edit"; noteId?:
           placeholder="Give your note a clear title..."
           maxLength={MAX_TITLE_LENGTH}
           invalid={!!errors.title}
-          className="h-13 border-0 bg-transparent px-0 text-2xl font-bold tracking-tight shadow-none focus:ring-0 sm:text-3xl"
+          className="h-auto border-0 bg-transparent px-0 py-2 text-2xl font-bold tracking-tight shadow-none focus:ring-0 sm:text-3xl"
         />
         <div className="flex items-center justify-between">
           {errors.title ? (
@@ -583,7 +582,3 @@ function SaveIndicator({ state, onRetry }: { state: SaveState; onRetry: () => vo
       return null;
   }
 }
-
-// Keep TS honest about the duplicate-navigation flow without extra props.
-declare const mode: never;
-void notify;
