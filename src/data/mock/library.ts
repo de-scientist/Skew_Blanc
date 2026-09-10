@@ -5,6 +5,8 @@ import type {
   TopicDifficulty,
 } from "./library-types";
 
+export { LIBRARY_TOPICS };
+
 export type {
   KnowledgeSubject,
   KnowledgeTopic,

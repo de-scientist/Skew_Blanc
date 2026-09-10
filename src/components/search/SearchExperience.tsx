@@ -4,6 +4,7 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 import { examCategories } from "@/data/mock/examCategories";
 import { studyNotes, studyNoteHref } from "@/data/mock/content";
+import { LIBRARY_TOPICS, knowledgeTopicHref } from "@/data/mock/library";
 import { forumTopics } from "@/data/mock/content";
 import { blogPosts } from "@/data/mock/blog";
 import {
@@ -40,6 +41,13 @@ export function SearchExperience() {
       title: n.title,
       sub: `${n.subject} · ${n.category}`,
       href: studyNoteHref(n.id),
+      icon: <BookIcon className="h-4 w-4" />,
+    })),
+    ...LIBRARY_TOPICS.map((t) => ({
+      group: "Knowledge Library",
+      title: t.title,
+      sub: `${t.difficulty} · ${t.flashcards.length} flashcards`,
+      href: knowledgeTopicHref(t.subjectSlug, t.slug),
       icon: <BookIcon className="h-4 w-4" />,
     })),
     ...forumTopics.map((t) => ({
