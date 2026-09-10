@@ -547,6 +547,544 @@ export const LIBRARY_TOPICS: KnowledgeTopic[] = [
         text: "'LEFT = LUNGS, RIGHT = REST' — and 'weight WAIT': never wait on a 2–3 lb overnight gain.",
       },
     },
+  {
+    id: "lib-hypertension",
+    subjectSlug: "medical-surgical-nursing",
+    title: "Hypertension",
+    slug: "hypertension",
+    description:
+      "Silent-killer fundamentals: accurate measurement, staging, first-line drugs, lifestyle change, and hypertensive crisis.",
+    difficulty: "Core",
+    tags: ["cardiac", "hypertension", "blood-pressure", "nclex"],
+    estimatedMinutes: 15,
+    examSlug: "nclex-rn",
+    relatedSlugs: ["heart-failure", "diabetes-mellitus", "ace-inhibitors"],
+    quickNotes: {
+      intro:
+        "Hypertension is usually silent until it injures something — so questions focus on correct measurement, staging numbers, and crisis recognition.",
+      sections: [
+        {
+          heading: "Definition",
+          points: [
+            "Hypertension is sustained elevation: normal below 120/80, elevated 120–129/<80, stage 1 at 130/80+, stage 2 at 140/90+.",
+            "Primary (essential) hypertension has no single cause; secondary hypertension stems from renal disease, endocrine disorders, drugs, or coarctation.",
+          ],
+        },
+        {
+          heading: "Risk Factors",
+          points: ["Non-modifiable: age, family history, ethnicity", "Modifiable: obesity, high sodium intake, inactivity, alcohol, tobacco, chronic stress, NSAID or decongestant use"],
+        },
+        {
+          heading: "Signs and Symptoms",
+          points: [
+            "Usually NONE — that is why it is called the silent killer; severe cases may show headache, visual changes, or chest discomfort.",
+            "Hypertensive crisis (above 180/120) with organ-damage signs — chest pain, neuro deficits, acute kidney injury — is an emergency.",
+          ],
+        },
+        {
+          heading: "Diagnosis",
+          points: [
+            "Confirm with correctly sized cuff, seated after 5 minutes rest, feet flat, arm at heart level — average two or more visits.",
+            "Workup screens for secondary causes and existing damage: urinalysis, creatinine, ECG, lipids, and eye exam.",
+          ],
+        },
+        {
+          heading: "Management",
+          points: [
+            "Lifestyle first: DASH diet, sodium below ~2.3 g/day, 150 min/week activity, weight loss, smoking cessation, limited alcohol.",
+            "Thiazide diuretics are first-line for most adults; ACE inhibitors, ARBs, and calcium-channel blockers follow by comorbidity.",
+          ],
+        },
+        {
+          heading: "Nursing Priorities",
+          ordered: true,
+          points: [
+            "Teach that feeling fine does not mean controlled — adherence matters precisely because there are no symptoms.",
+            "Monitor for orthostatics after starting or titrating therapy, especially in older adults.",
+            "Distinguish urgency (very high numbers, no organ damage — adjust meds urgently) from emergency (organ damage — lower pressure in a monitored setting).",
+          ],
+        },
+      ],
+      nclexFocus: [
+        "Crisis numbers: above 180 systolic or 120 diastolic — with organ-damage signs it is an emergency.",
+        "Thiazides first-line; monitor potassium, hydration, and uric acid (gout risk).",
+        "NSAIDs, decongestants, and excess alcohol raise blood pressure — reconcile them on every medication review.",
+      ],
+    },
+    detailedNotes: {
+      intro:
+        "Nearly half of adults have hypertension and most do not know it. Nursing care centers on detection, adherence coaching, and recognizing the moment high numbers become dangerous.",
+      sections: [
+        {
+          heading: "Overview",
+          paragraphs: [
+            "Sustained pressure injures arteries, heart, brain, kidneys, and eyes over years. Because early disease is silent, the nurse's highest-value actions are accurate screening and convincing asymptomatic patients that treatment matters.",
+          ],
+        },
+        {
+          heading: "Classification",
+          paragraphs: [
+            "Use this quick reference when staging readings:",
+            "| Category | Systolic | Diastolic |",
+            "| --- | --- | --- |",
+            "| Normal | < 120 | < 80 |",
+            "| Elevated | 120–129 | < 80 |",
+            "| Stage 1 | 130–139 | 80–89 |",
+            "| Stage 2 | ≥ 140 | ≥ 90 |",
+            "| Crisis | > 180 | > 120 |",
+            "Stage from the higher of the two numbers, and confirm elevation across visits before labeling a patient hypertensive.",
+          ],
+        },
+        {
+          heading: "Etiology and Risk Factors",
+          paragraphs: [
+            "Primary hypertension reflects interacting genetics, age-related arterial stiffness, and lifestyle load. Secondary causes — chronic kidney disease, primary aldosteronism, sleep apnea, thyroid disease, and drugs such as NSAIDs, steroids, and stimulants — should be suspected with sudden, severe, or treatment-resistant elevation in younger patients.",
+          ],
+        },
+        {
+          heading: "Assessment",
+          paragraphs: [
+            "Beyond the numbers, assess fundi, heart sounds, peripheral pulses, edema, weight trends, and kidney function. Ask about headaches, visual changes, chest discomfort, snoring, medication adherence, over-the-counter drugs, alcohol, and home readings technique.",
+          ],
+        },
+        {
+          heading: "Lifestyle Management",
+          paragraphs: [
+            "DASH eating (fruits, vegetables, whole grains, low-fat dairy), sodium moderation, regular aerobic activity, weight control, smoking cessation, and sleep-apnea treatment each lower pressure — and together they reduce drug burden. Set one concrete, measurable goal per visit rather than a lecture.",
+          ],
+        },
+        {
+          heading: "Pharmacologic Management",
+          paragraphs: [
+            "Thiazide diuretics suit most uncomplicated patients; ACE inhibitors or ARBs are preferred with diabetes, kidney disease, or heart failure; calcium-channel blockers work well across ages. Most stage 2 patients need two agents. Teach orthostatic precautions, potassium effects, and never stopping beta blockers abruptly (rebound hypertension and ischemia risk).",
+          ],
+          callout: {
+            type: "medications",
+            text: "Stopping clonidine or beta blockers suddenly can trigger rebound hypertensive crisis. Taper only under prescriber direction and warn patients explicitly.",
+          },
+        },
+        {
+          heading: "Hypertensive Crisis",
+          paragraphs: [
+            "Urgency: numbers above 180/120 WITHOUT acute organ damage — arrange same-day medication adjustment and close follow-up. Emergency: the same numbers WITH chest pain, neuro changes, pulmonary edema, or kidney injury — rapid, controlled lowering in a monitored setting, because dropping pressure too fast can infarct brain or heart.",
+          ],
+          callout: {
+            type: "nursing-alert",
+            text: "Above 180/120 with chest pain, confusion, visual loss, or severe headache = emergency department now. Without organ-damage signs = urgent same-day follow-up.",
+          },
+        },
+      ],
+    },
+    flashcards: [
+      {
+        id: "lib-htn-f1",
+        front: "State the five BP categories with numbers.",
+        back: "Normal <120/80 · Elevated 120–129/<80 · Stage 1 130–139/80–89 · Stage 2 ≥140/90 · Crisis >180/120.",
+      },
+      {
+        id: "lib-htn-f2",
+        front: "What distinguishes hypertensive emergency from urgency?",
+        back: "Emergency has acute organ damage (chest pain, neuro changes, AKI, pulmonary edema); urgency has severe numbers without it.",
+      },
+      {
+        id: "lib-htn-f3",
+        front: "Which drug class is first-line for most uncomplicated hypertension?",
+        back: "Thiazide diuretics — monitor potassium, hydration, glucose, and uric acid.",
+      },
+      {
+        id: "lib-htn-f4",
+        front: "Name three drugs or substances that raise blood pressure.",
+        back: "NSAIDs, decongestants (pseudoephedrine), steroids, stimulants, and excess alcohol.",
+      },
+      {
+        id: "lib-htn-f5",
+        front: "What is the core DASH teaching in one sentence?",
+        back: "Fruits, vegetables, whole grains, and low-fat dairy with limited sodium — plus activity, weight control, and no tobacco.",
+      },
+      {
+        id: "lib-htn-f6",
+        front: "Why must beta blockers and clonidine never be stopped abruptly?",
+        back: "Rebound sympathetic surge can cause hypertensive crisis and myocardial ischemia — taper only as prescribed.",
+      },
+    ],
+    cheatSheet: {
+      tagline: "Numbers, first-line drugs, and crisis rules — 60 seconds.",
+      blocks: [
+        {
+          title: "Numbers",
+          points: ["<120/80 normal · 130/80 stage 1 · 140/90 stage 2", ">180/120 = crisis — check for organ damage"],
+        },
+        {
+          title: "First-Line",
+          points: ["Thiazides for most · ACE/ARB with DM, CKD, HF", "CCBs across ages · never stop BB/clonidine abruptly"],
+        },
+        {
+          title: "Crisis",
+          points: ["Organ damage → emergency (monitored lowering)", "No damage → urgent meds adjustment + follow-up"],
+        },
+        {
+          title: "Lifestyle",
+          points: ["DASH · Na+ ~2.3 g · 150 min activity/week", "Weight · tobacco · alcohol · sleep apnea"],
+        },
+      ],
+      mnemonic: {
+        title: "Mnemonic",
+        text: "'120-130-140-180': normal, stage 1, stage 2, crisis — one ladder, four rungs.",
+      },
+    },
+  {
+    id: "lib-diabetes",
+    subjectSlug: "medical-surgical-nursing",
+    title: "Diabetes Mellitus",
+    slug: "diabetes-mellitus",
+    description:
+      "Type 1 versus type 2, insulin peaks, the 15-15 rule, and telling DKA apart from HHS under pressure.",
+    difficulty: "Core",
+    tags: ["endocrine", "diabetes", "insulin", "nclex"],
+    estimatedMinutes: 18,
+    examSlug: "nclex-rn",
+    relatedSlugs: ["hypertension", "heart-failure"],
+    quickNotes: {
+      intro:
+        "Half the questions compare two things: type 1 vs type 2, hypo vs hyper, DKA vs HHS. Learn the pairs and the numbers follow.",
+      sections: [
+        {
+          heading: "Type 1 vs Type 2",
+          points: [
+            "Type 1: autoimmune beta-cell destruction, absolute insulin lack, younger onset, DKA-prone — always needs insulin.",
+            "Type 2: insulin resistance with relative lack, adult onset strongly tied to obesity — metformin first, insulin often later.",
+          ],
+        },
+        {
+          heading: "Classic Signs",
+          points: ["The 3 Ps: polyuria, polydipsia, polyphagia — plus fatigue, blurred vision, slow wound healing", "Type 1 may present in DKA; type 2 is often found on routine labs"],
+        },
+        {
+          heading: "Diagnosis",
+          points: ["A1C ≥ 6.5%, fasting glucose ≥ 126 mg/dL, or random ≥ 200 with symptoms (confirmed on repeat)", "Target A1C is generally below 7% for most adults; tighter or looser by age and comorbidity"],
+        },
+        {
+          heading: "Hypoglycemia",
+          points: [
+            "Cold, clammy, confused, combative — give 15 g fast carbs, recheck in 15 min, repeat (the 15-15 rule).",
+            "Unconscious or NPO: glucagon IM or IV dextrose per protocol — never pour liquids into an unconscious mouth.",
+          ],
+        },
+        {
+          heading: "Management",
+          points: [
+            "Insulin: rapid (lispro) peaks ~1 h, regular peaks 2–4 h, NPH peaks 4–12 h, glargine has no peak — match meals to peaks.",
+            "Metformin first-line for type 2 (hold around contrast procedures); foot care, sick-day rules, and vaccines complete the plan.",
+          ],
+        },
+        {
+          heading: "Nursing Priorities",
+          ordered: true,
+          points: [
+            "Treat hypoglycemia first — the brain runs on glucose and symptoms escalate in minutes.",
+            "Never give rapid-acting insulin unless the patient is about to eat.",
+            "Teach foot inspection, never walking barefoot, and when high readings plus illness mean calling for help.",
+          ],
+        },
+      ],
+      nclexFocus: [
+        "15-15 rule for conscious hypoglycemia; glucagon or IV dextrose when unconscious.",
+        "DKA = type 1, fruity breath, Kussmaul respirations; HHS = type 2, extreme hyperglycemia and dehydration without ketosis.",
+        "Hold metformin around iodinated contrast (lactic acidosis risk) per prescriber direction.",
+      ],
+    },
+    detailedNotes: {
+      intro:
+        "Diabetes touches every body system, which is why it threads through cardiac, renal, wound, and infection questions. Anchor on insulin action curves and the hypoglycemia response and the rest becomes organized detail.",
+      sections: [
+        {
+          heading: "Overview",
+          paragraphs: [
+            "Diabetes mellitus is chronic hyperglycemia from insulin deficiency, resistance, or both. Acute dangers (hypoglycemia, DKA, HHS) kill quickly; chronic hyperglycemia blinds, disables kidneys, amputates limbs, and hardens arteries over years.",
+          ],
+        },
+        {
+          heading: "Type 1 vs Type 2",
+          paragraphs: [
+            "Type 1 destroys beta cells outright — onset is often abrupt in youth with weight loss and DKA risk, and survival requires lifelong insulin. Type 2 pairs resistance with gradual beta-cell fatigue — onset is silent in midlife, strongly linked to adiposity and inactivity, and early disease may reverse partially with weight loss and activity.",
+          ],
+        },
+        {
+          heading: "Clinical Manifestations",
+          paragraphs: [
+            "Osmotic diuresis drives the 3 Ps and dehydration; blurred vision comes from lens swelling; recurrent infections and slow healing reflect impaired immunity and perfusion. Long-term: retinopathy, nephropathy (microalbuminuria first), peripheral and autonomic neuropathy, and accelerated atherosclerosis.",
+          ],
+        },
+        {
+          heading: "Insulin Therapy",
+          paragraphs: [
+            "Match insulin peaks to meals: rapid-acting (lispro, aspart) onsets in ~15 min and peaks near 1 hour; regular onsets in 30–60 min and peaks at 2–4 hours; NPH peaks at 4–12 hours (cloudy, roll to mix); glargine and detemir provide peakless basal coverage. Only regular insulin goes IV.",
+          ],
+          callout: {
+            type: "medications",
+            text: "Peak = hypoglycemia danger window. A patient on morning NPH is most vulnerable mid-afternoon — schedule meals and activity around it.",
+          },
+        },
+        {
+          heading: "Oral and Injectable Agents",
+          paragraphs: [
+            "Metformin (first-line type 2) lowers hepatic glucose output without causing hypoglycemia alone — hold around contrast studies because of lactic acidosis risk with renal compromise. Sulfonylureas push insulin release (hypoglycemia risk, take with meals); SGLT2 inhibitors spill glucose in urine (genital infection and dehydration cautions); GLP-1 agents slow gastric emptying and aid weight loss.",
+          ],
+        },
+        {
+          heading: "Hypoglycemia and the 15-15 Rule",
+          paragraphs: [
+            "Shakiness, sweating, pallor, confusion, and combativeness signal neuroglycopenia. The conscious patient gets 15 g of fast carbohydrate (glucose tablets, juice, regular soda — not chocolate or cheese), a recheck in 15 minutes, and repetition until above 70 mg/dL, followed by a snack or meal. The unconscious patient gets glucagon or IV dextrose — never oral intake.",
+          ],
+          callout: {
+            type: "nursing-alert",
+            text: "Cold and clammy = give candy (hypoglycemia). Hot and dry = sugar high (hyperglycemia). When in doubt and the patient is conscious with low readings, treat the low — it kills faster.",
+          },
+        },
+        {
+          heading: "DKA vs HHS",
+          paragraphs: [
+            "DKA strikes type 1 patients with insulin lack: glucose above ~250, ketones, fruity breath, Kussmaul respirations, and metabolic acidosis — treat with fluids, IV regular insulin, and aggressive potassium replacement as insulin drives K+ into cells. HHS strikes type 2 patients: glucose often above 600 with profound dehydration and altered mentation but minimal ketosis — fluids dominate resuscitation.",
+          ],
+        },
+        {
+          heading: "Ongoing Nursing Management",
+          paragraphs: [
+            "Daily foot inspection, well-fitting shoes, no barefoot walking, and prompt blister care prevent amputations. Sick-day rules (never stop basal insulin, check ketones, stay hydrated, know call thresholds), hypoglycemia action plans for the household, and annual eye, kidney, vaccine, and dental reviews complete the safety net.",
+          ],
+        },
+      ],
+    },
+    flashcards: [
+      {
+        id: "lib-dm-f1",
+        front: "State the 3 Ps and what causes them.",
+        back: "Polyuria, polydipsia, polyphagia — osmotic diuresis from hyperglycemia dehydrates the patient and starves cells.",
+      },
+      {
+        id: "lib-dm-f2",
+        front: "Recite the 15-15 rule and its exception.",
+        back: "15 g fast carbs, recheck in 15 min, repeat until >70, then a snack. Exception: unconscious/NPO → glucagon or IV dextrose, never oral.",
+      },
+      {
+        id: "lib-dm-f3",
+        front: "Contrast DKA and HHS in one breath.",
+        back: "DKA: type 1, ketones + fruity breath + Kussmaul + acidosis. HHS: type 2, glucose >600, profound dehydration, minimal ketones.",
+      },
+      {
+        id: "lib-dm-f4",
+        front: "When do rapid-acting, regular, NPH, and glargine insulins peak?",
+        back: "Rapid ~1 h · Regular 2–4 h · NPH 4–12 h · Glargine peakless. Only regular goes IV.",
+      },
+      {
+        id: "lib-dm-f5",
+        front: "Why is metformin held around contrast procedures?",
+        back: "Contrast can impair kidneys; metformin plus renal compromise risks lactic acidosis — hold per prescriber direction.",
+      },
+      {
+        id: "lib-dm-f6",
+        front: "What are the diabetes diagnostic thresholds?",
+        back: "A1C ≥ 6.5%, fasting ≥ 126, or random ≥ 200 with symptoms — confirmed on repeat testing.",
+      },
+    ],
+    cheatSheet: {
+      tagline: "Pairs and peaks — the whole topic in one minute.",
+      blocks: [
+        {
+          title: "T1 vs T2",
+          points: ["T1: no insulin made → always needs it → DKA risk", "T2: resistant → metformin first → HHS risk"],
+        },
+        {
+          title: "Hypo Action",
+          points: ["Conscious: 15-15 rule with fast carbs", "Unconscious: glucagon / IV dextrose, nothing by mouth"],
+        },
+        {
+          title: "Insulin Peaks",
+          points: ["Rapid ~1 h · Regular 2–4 h (only IV one)", "NPH 4–12 h (cloudy) · Glargine peakless"],
+        },
+        {
+          title: "DKA vs HHS",
+          points: ["DKA: fruity + Kussmaul + acidotic", "HHS: >600 + dry + confused, few ketones"],
+        },
+      ],
+      mnemonic: {
+        title: "Mnemonic",
+        text: "'Cold-clammy-candy, hot-dry-high' — temperature and moisture of the skin point to hypo versus hyper.",
+      },
+    },
+  {
+    id: "lib-copd",
+    subjectSlug: "medical-surgical-nursing",
+    title: "COPD",
+    slug: "copd",
+    description:
+      "Chronic bronchitis versus emphysema, the 88–92% oxygen rule, inhaler sequencing, and exacerbation rescue.",
+    difficulty: "Core",
+    tags: ["respiratory", "copd", "oxygen", "nclex"],
+    estimatedMinutes: 15,
+    examSlug: "nclex-rn",
+    relatedSlugs: ["heart-failure", "infection-control"],
+    quickNotes: {
+      intro:
+        "COPD questions hinge on airflow limitation that does not fully reverse — and on oxygen handled differently than in most patients.",
+      sections: [
+        {
+          heading: "Definition",
+          points: [
+            "COPD is persistent, usually progressive airflow limitation from chronic bronchitis (productive cough ≥ 3 months/year for 2 years) and emphysema (alveolar destruction).",
+            "Smoking is the dominant cause; alpha-1 antitrypsin deficiency causes early-onset disease.",
+          ],
+        },
+        {
+          heading: "Signs and Symptoms",
+          points: [
+            "Chronic productive cough, exertional dyspnea progressing to rest dyspnea, wheezing, and prolonged expiration.",
+            "Barrel chest from air trapping, pursed-lip and tripod positioning, accessory-muscle use, and eventual cor pulmonale (right-sided failure).",
+          ],
+        },
+        {
+          heading: "Diagnosis",
+          points: [
+            "Spirometry confirms: FEV1/FVC ratio below 0.70 with limited reversibility.",
+            "ABGs show CO2 retention in advanced disease; chest X-ray shows hyperinflation and flattened diaphragms.",
+          ],
+        },
+        {
+          heading: "Management",
+          points: [
+            "Smoking cessation is the only intervention that slows decline; influenza, pneumococcal, and RSV vaccines prevent exacerbations.",
+            "Bronchodilators (SABA rescue, LABA/LAMA maintenance), inhaled steroids for frequent exacerbators, pulmonary rehab, and controlled oxygen.",
+            "Breathing retraining: pursed-lip exhalation, diaphragmatic breathing, energy conservation with rest breaks.",
+          ],
+        },
+        {
+          heading: "Nursing Priorities",
+          ordered: true,
+          points: [
+            "Titrate oxygen to 88–92% — high flows can blunt the hypoxic drive of chronic CO2 retainers.",
+            "Give bronchodilator before steroid inhaler, and teach mouth-rinsing after steroids to prevent thrush.",
+            "Treat exacerbations early: more dyspnea, more sputum, or color change means same-day evaluation.",
+          ],
+        },
+      ],
+      nclexFocus: [
+        "Target SpO2 88–92% (not 95%+) for COPD with CO2 retention; 1–2 L nasal cannula is the classic order.",
+        "Blue bloaters (bronchitis: cyanotic, edematous) vs pink puffers (emphysema: thin, pursed-lip) is favorite comparison material.",
+        "Encourage fluids to thin secretions unless contraindicated; avoid sedatives that depress respiratory drive.",
+      ],
+    },
+    detailedNotes: {
+      intro:
+        "COPD traps air, flattens diaphragms, and remodels pulmonary vessels — so patients work harder for every breath while retaining CO2. Nursing care balances oxygenation against drive, secretions against hydration, and activity against exhaustion.",
+      sections: [
+        {
+          heading: "Overview",
+          paragraphs: [
+            "COPD affects hundreds of millions worldwide and remains a leading cause of death. Exacerbations — usually viral or bacterial — accelerate decline, so prevention (vaccines, smoking cessation, action plans) carries as much weight as daily therapy.",
+          ],
+        },
+        {
+          heading: "Chronic Bronchitis vs Emphysema",
+          paragraphs: [
+            "Bronchitis inflames airways and overproduces mucus: the 'blue bloater' is cyanotic, edematous, and coughs constantly. Emphysema destroys alveolar walls and elastic recoil: the 'pink puffer' is thin, barrel-chested, and breathes through pursed lips with minimal cough. Most patients have both in varying proportion.",
+          ],
+        },
+        {
+          heading: "Pathophysiology",
+          paragraphs: [
+            "Narrowed airways and lost recoil trap air on exhalation, flattening the diaphragm into a weak position and raising the work of breathing. Chronic hypoxia constricts pulmonary vessels, straining the right heart into cor pulmonale. Long-standing CO2 retention resets the respiratory center to respond to hypoxia instead of hypercapnia — the hypoxic drive.",
+          ],
+          callout: {
+            type: "key-concept",
+            text: "Hypoxic drive is why COPD oxygen differs: flood a chronic retainer with oxygen and the brain may simply stop signaling breaths. Titrate, don't blast.",
+          },
+        },
+        {
+          heading: "Assessment",
+          paragraphs: [
+            "Track dyspnea scales, sputum volume and color, weight (steroid and inactivity effects), barrel-chest progression, and edema or JVD suggesting cor pulmonale. Listen for diminished sounds and wheezes, and watch the clock: pursed-lip tripod posture at rest means severe disease.",
+          ],
+        },
+        {
+          heading: "Oxygen Therapy",
+          paragraphs: [
+            "Deliver the lowest flow that holds saturation at 88–92% for CO2 retainers — typically 1–2 L by nasal cannula. Monitor mentation and ABGs after changes: rising drowsiness with climbing CO2 means backing oxygen down and notifying the provider. Venturi masks give precise fractions when control matters.",
+          ],
+          callout: {
+            type: "nursing-alert",
+            text: "New confusion or somnolence after increasing oxygen in COPD = possible CO2 narcosis. Recheck gases, reduce flow per orders, and escalate — do not just add more oxygen.",
+          },
+        },
+        {
+          heading: "Pharmacologic Management",
+          paragraphs: [
+            "Short-acting bronchodilators rescue acute tightness; long-acting agents plus inhaled steroids maintain the stable patient. Sequence matters: bronchodilator first to open airways, steroid second, with mouth-rinsing after steroids. Theophylline has a narrow window with drug interactions; systemic steroids are burst-limited by glucose, mood, and bone effects.",
+          ],
+        },
+        {
+          heading: "Rehabilitation and Exacerbations",
+          paragraphs: [
+            "Pulmonary rehab pairs exercise with breathing retraining: diaphragmatic breathing, pursed-lip exhalation twice as long as inhalation, paced activities with rest breaks, and humidified air plus hydration to mobilize secretions. Written action plans define the patient's personal red zone — increased dyspnea, sputum change, or fever — triggering steroids, antibiotics, or urgent evaluation per standing orders.",
+          ],
+        },
+      ],
+    },
+    flashcards: [
+      {
+        id: "lib-copd-f1",
+        front: "What spirometry finding confirms COPD?",
+        back: "FEV1/FVC ratio below 0.70 with limited bronchodilator reversibility.",
+      },
+      {
+        id: "lib-copd-f2",
+        front: "What is the oxygen saturation target for a CO2-retaining COPD patient, and why?",
+        back: "88–92%: higher flows can blunt the hypoxic drive and worsen CO2 narcosis.",
+      },
+      {
+        id: "lib-copd-f3",
+        front: "Contrast 'blue bloaters' and 'pink puffers.'",
+        back: "Blue bloaters (bronchitis): cyanotic, edematous, chronic productive cough. Pink puffers (emphysema): thin, barrel chest, pursed-lip, little cough.",
+      },
+      {
+        id: "lib-copd-f4",
+        front: "In what order are bronchodilator and steroid inhalers given, and what follows steroids?",
+        back: "Bronchodilator first, steroid second, then rinse the mouth to prevent oral thrush.",
+      },
+      {
+        id: "lib-copd-f5",
+        front: "Which single intervention slows COPD progression?",
+        back: "Smoking cessation — nothing else changes the rate of decline.",
+      },
+      {
+        id: "lib-copd-f6",
+        front: "What three changes define a COPD exacerbation red zone?",
+        back: "More dyspnea, more sputum, or sputum color change (plus fever) — triggers same-day evaluation per the action plan.",
+      },
+    ],
+    cheatSheet: {
+      tagline: "Two diseases, one oxygen rule — 60 seconds.",
+      blocks: [
+        {
+          title: "Bronchitis vs Emphysema",
+          points: ["Blue bloater: cough + cyanosis + edema", "Pink puffer: thin + barrel chest + pursed-lip"],
+        },
+        {
+          title: "Oxygen Rule",
+          points: ["Target 88–92% for retainers", "1–2 L NC typical · drowsiness = check CO2"],
+        },
+        {
+          title: "Inhalers",
+          points: ["Rescue SABA first · maintenance second", "Steroid last + rinse mouth", "Sequence: open, then coat"],
+        },
+        {
+          title: "Prevention",
+          points: ["Stop smoking · flu + pneumococcal vaccines", "Rehab + pursed-lip + fluids (if allowed)"],
+        },
+      ],
+      mnemonic: {
+        title: "Mnemonic",
+        text: "'COPD COPES with less O2': Chronic, Obstructive, Pursed-lip, Eighty-eight to ninety-two, Exacerbation plan, Smoking cessation.",
+      },
+    },
     // __MORE_TOPICS__
-  },
 ];
