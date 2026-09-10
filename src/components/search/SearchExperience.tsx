@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { examCategories } from "@/data/mock/examCategories";
-import { studyNotes } from "@/data/mock/content";
+import { studyNotes, studyNoteHref } from "@/data/mock/content";
 import { forumTopics } from "@/data/mock/content";
 import { blogPosts } from "@/data/mock/blog";
 import {
@@ -39,7 +39,7 @@ export function SearchExperience() {
       group: "Study Notes",
       title: n.title,
       sub: `${n.subject} · ${n.category}`,
-      href: "/study-notes",
+      href: studyNoteHref(n.id),
       icon: <BookIcon className="h-4 w-4" />,
     })),
     ...forumTopics.map((t) => ({

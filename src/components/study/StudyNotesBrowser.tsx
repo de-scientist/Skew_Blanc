@@ -8,7 +8,7 @@ import { ProgressBar } from "@/components/ui/ProgressBar";
 import { ImageFrame } from "@/components/ui/ImageFrame";
 import { buttonVariants } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/EmptyState";
-import { studyNotes } from "@/data/mock/content";
+import { studyNotes, studyNoteHref } from "@/data/mock/content";
 import { SearchIcon, BookIcon, BookmarkIcon, ArrowRightIcon, FileTextIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
@@ -65,7 +65,7 @@ export function StudyNotesBrowser() {
                 <span>{n.subject}</span>
                 <span>{n.readingMinutes} min read</span>
               </div>
-              <Link href="/study-notes" className={buttonVariants({ variant: "ghost", size: "sm", className: "mt-3 self-start" })}>
+              <Link href={studyNoteHref(n.id)} className={buttonVariants({ variant: "ghost", size: "sm", className: "mt-3 self-start" })} aria-label={`Open note: ${n.title}`}>
                 Open note
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>

@@ -191,6 +191,14 @@ export const studyNotes: StudyNote[] = [
   },
 ];
 
+export function getStudyNote(id: string): StudyNote | undefined {
+  return studyNotes.find((n) => n.id === id);
+}
+
+export function studyNoteHref(id: string): string {
+  return `/study-notes/${id}`;
+}
+
 export const studyResources: StudyResource[] = [
   {
     id: "r1",
