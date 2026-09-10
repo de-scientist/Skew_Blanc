@@ -67,7 +67,7 @@ export function Sidebar({
                       pathname.startsWith(item.href));
                   const Icon = item.icon;
                   return (
-                    <li key={item.href}>
+                    <li key={item.label}>
                       <Link
                         href={item.href}
                         onClick={onClose}

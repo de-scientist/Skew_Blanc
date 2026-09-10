@@ -19,7 +19,7 @@ export function MobileBottomNav() {
             (item.href !== "/dashboard" && pathname.startsWith(item.href));
           const Icon = item.icon;
           return (
-            <li key={item.href}>
+            <li key={item.label}>
               <Link
                 href={item.href}
                 aria-current={active ? "page" : undefined}
