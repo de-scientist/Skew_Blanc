@@ -369,5 +369,184 @@ export const LIBRARY_TOPICS: KnowledgeTopic[] = [
         text: "'60-100, 12-20' — heart and lungs share the same decades: HR 60–100, RR 12–20.",
       },
     },
+  {
+    id: "lib-heart-failure",
+    subjectSlug: "medical-surgical-nursing",
+    title: "Heart Failure",
+    slug: "heart-failure",
+    description:
+      "Left-sided versus right-sided failure, daily-weight monitoring, diuretics, and the perfusion-first nursing priorities.",
+    difficulty: "Core",
+    tags: ["cardiac", "heart-failure", "perfusion", "nclex", "prioritization"],
+    estimatedMinutes: 20,
+    examSlug: "nclex-rn",
+    relatedSlugs: ["hypertension", "diuretics", "copd"],
+    quickNotes: {
+      intro:
+        "Think perfusion first: every assessment and intervention protects cardiac output. Left = lungs, right = rest of the body.",
+      sections: [
+        {
+          heading: "Definition",
+          points: [
+            "A clinical syndrome in which the heart cannot pump enough blood to meet the body's metabolic demands.",
+            "Ejection fraction below 40% indicates systolic (HFrEF) failure; preserved EF with stiff ventricles indicates diastolic (HFpEF) failure.",
+          ],
+        },
+        {
+          heading: "Left-Sided Signs",
+          points: ["Dyspnea, orthopnea, paroxysmal nocturnal dyspnea", "Pulmonary crackles, cough with frothy sputum", "Fatigue and decreased activity tolerance"],
+        },
+        {
+          heading: "Right-Sided Signs",
+          points: ["Jugular vein distention (JVD)", "Dependent edema and rapid weight gain", "Hepatomegaly, ascites, right-upper-quadrant pain"],
+        },
+        {
+          heading: "Diagnosis",
+          points: ["BNP rises with ventricular stretch; echocardiogram confirms EF", "Chest X-ray shows pulmonary congestion; daily weights track fluid status", "Assess I&O, lung sounds, edema grade, and electrolytes (especially potassium)"],
+        },
+        {
+          heading: "Management",
+          points: ["ACE inhibitors, beta blockers, and diuretics are the core regimen; digoxin adds contractility with toxicity risk", "Sodium restriction (often 2 g/day) and fluid restriction as prescribed", "High Fowler's position, oxygen for hypoxia, activity as tolerated with rest periods"],
+        },
+        {
+          heading: "Nursing Priorities",
+          ordered: true,
+          points: [
+            "Weigh daily at the same time, same scale, same clothing — the best indicator of fluid status.",
+            "Report a gain of 2–3 lb in 24 hours or 5 lb in a week immediately.",
+            "Monitor potassium closely: diuretics waste it, ACE inhibitors retain it, and digoxin turns dangerous when it falls.",
+          ],
+        },
+      ],
+      nclexFocus: [
+        "Airway and perfusion come before calling the provider: assess first, then intervene.",
+        "High Fowler's eases breathing in pulmonary edema; never lay these patients flat.",
+        "Digoxin toxicity: anorexia, nausea, vision changes (yellow-green halos); hold for pulse below 60.",
+      ],
+    },
+    detailedNotes: {
+      intro:
+        "Heart failure is among the most tested topics on the exam because it fuses assessment, pharmacology, prioritization, and teaching into a single patient story. Master the left/right distinction and the weight-monitoring routine, and most questions answer themselves.",
+      sections: [
+        {
+          heading: "Overview",
+          paragraphs: [
+            "Heart failure is not a disease but the common endpoint of many cardiac disorders — coronary disease, hypertension, valve disease, and cardiomyopathies. Prevalence rises with age, and exacerbations are frequently triggered by dietary indiscretion, missed medications, infection, or arrhythmias.",
+          ],
+        },
+        {
+          heading: "Etiology and Risk Factors",
+          paragraphs: [
+            "Chronic hypertension and coronary artery disease cause most cases. Additional risks include diabetes, obesity, sleep apnea, heavy alcohol use, cardiotoxic drugs, and a family history of cardiomyopathy. Nurses target modifiable risks at every encounter.",
+          ],
+        },
+        {
+          heading: "Pathophysiology",
+          paragraphs: [
+            "Left-sided failure lets pressure back up into the pulmonary circulation: fluid leaks into alveoli and gas exchange falls. Right-sided failure backs pressure into the systemic veins: the liver congests, the gut swells, and dependent tissues collect fluid. Most patients eventually show both sides, but one side usually dominates the presentation.",
+          ],
+          callout: {
+            type: "key-concept",
+            text: "Left = LUNGS (crackles, cough, dyspnea). Right = REST OF BODY (JVD, edema, ascites). Say it until it is automatic.",
+          },
+        },
+        {
+          heading: "Clinical Manifestations",
+          paragraphs: [
+            "Early signs are subtle: exertional dyspnea, new nocturia, and needing an extra pillow. Late signs declare themselves: pink frothy sputum, severe orthopnea, anasarca, and confusion from poor cerebral perfusion. Nocturia occurs because recumbency returns edema fluid to the circulation at night.",
+          ],
+        },
+        {
+          heading: "Diagnostics",
+          paragraphs: [
+            "BNP above 100 pg/mL supports the diagnosis and tracks severity. Echocardiography measures ejection fraction and valve function. Chest X-ray reveals cardiomegaly and pulmonary edema; ECG and electrolytes screen for ischemic triggers and arrhythmia risk from potassium shifts.",
+          ],
+        },
+        {
+          heading: "Medical and Pharmacologic Management",
+          paragraphs: [
+            "ACE inhibitors reduce afterload and remodeling; beta blockers protect the tired myocardium; loop diuretics relieve congestion. Digoxin strengthens contraction but has a narrow therapeutic window (0.5–2.0 ng/mL). Newer agents such as ARNIs and SGLT2 inhibitors increasingly appear in guidelines — know their purpose even if dosing details stay with the prescriber.",
+          ],
+          callout: {
+            type: "medications",
+            text: "Digoxin: check apical pulse for 1 full minute, hold below 60, and watch for toxicity (anorexia, nausea, blurred or yellow-green vision) — especially when potassium is low.",
+          },
+        },
+        {
+          heading: "Nursing Management",
+          paragraphs: [
+            "Position in high Fowler's, administer oxygen for saturation below target, enforce sodium and fluid limits, and cluster care to conserve energy. Teach the 'zone' system many clinics use: green (stable weights, no new symptoms), yellow (2–3 lb gain, more swelling, call the clinic), red (severe breathlessness, chest pain, confusion — emergency care).",
+          ],
+          callout: {
+            type: "nursing-alert",
+            text: "Daily weights are the single best indicator of fluid status. A 2–3 lb gain in 24 hours or 5 lb in a week must be reported the same day.",
+          },
+        },
+        {
+          heading: "Patient Education",
+          paragraphs: [
+            "Discharge teaching covers medications (purpose plus potassium effects), a written weight-and-symptom diary, sodium literacy (bread, soup, and processed meats hide most of it), fluid limits, smoking cessation, annual influenza and pneumococcal vaccines, and exactly when to call versus when to go to the emergency department.",
+          ],
+        },
+      ],
+    },
+    flashcards: [
+      {
+        id: "lib-hf-f1",
+        front: "Contrast left-sided and right-sided heart failure in one sentence each.",
+        back: "Left: pressure backs into the lungs (dyspnea, crackles, frothy sputum). Right: pressure backs into the body (JVD, edema, ascites).",
+      },
+      {
+        id: "lib-hf-f2",
+        front: "What is the single best indicator of fluid status, and which gain must be reported?",
+        back: "Daily weights — report 2–3 lb in 24 hours or 5 lb in a week.",
+      },
+      {
+        id: "lib-hf-f3",
+        front: "List three signs of digoxin toxicity and the hold parameter.",
+        back: "Anorexia/nausea, vision changes (halos), confusion; hold for apical pulse below 60 and notify the provider.",
+      },
+      {
+        id: "lib-hf-f4",
+        front: "Why is the patient positioned in high Fowler's during pulmonary edema?",
+        back: "Upright positioning pools blood in the lower body, reduces venous return and preload, and maximizes lung expansion.",
+      },
+      {
+        id: "lib-hf-f5",
+        front: "Why is potassium monitored so closely in heart failure?",
+        back: "Loop diuretics waste potassium while ACE inhibitors retain it — and low potassium dramatically raises digoxin toxicity risk.",
+      },
+      {
+        id: "lib-hf-f6",
+        front: "What does paroxysmal nocturnal dyspnea tell you?",
+        back: "Left-sided failure: recumbency redistributes edema fluid into the pulmonary circulation, waking the patient gasping 1–2 hours after sleep.",
+      },
+    ],
+    cheatSheet: {
+      tagline: "Left versus right, weights, and meds — 90 seconds.",
+      blocks: [
+        {
+          title: "Left-Sided",
+          points: ["Dyspnea · orthopnea · PND", "Crackles · frothy cough", "Fatigue · low output"],
+        },
+        {
+          title: "Right-Sided",
+          points: ["JVD · dependent edema", "Weight gain · ascites", "Hepatomegaly · RUQ pain"],
+        },
+        {
+          title: "Priorities",
+          points: ["Daily weights (same time/scale/clothes)", "2–3 lb/24 h or 5 lb/week → report", "High Fowler's · O2 · I&O · K+"],
+        },
+        {
+          title: "Meds",
+          points: ["ACE-I + beta blocker + loop diuretic", "Digoxin: pulse <60 hold; watch vision/GI signs", "2 g sodium diet · fluid limits"],
+        },
+      ],
+      mnemonic: {
+        title: "Mnemonic",
+        text: "'LEFT = LUNGS, RIGHT = REST' — and 'weight WAIT': never wait on a 2–3 lb overnight gain.",
+      },
+    },
     // __MORE_TOPICS__
+  },
 ];
