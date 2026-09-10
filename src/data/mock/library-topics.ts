@@ -200,6 +200,7 @@ export const LIBRARY_TOPICS: KnowledgeTopic[] = [
         text: "Airborne trio 'MTV': Measles, TB, Varicella — think 'on MTV you need an N95 backstage pass.'",
       },
     },
+  },
   {
     id: "lib-vital-signs",
     subjectSlug: "fundamentals-of-nursing",
@@ -369,6 +370,7 @@ export const LIBRARY_TOPICS: KnowledgeTopic[] = [
         text: "'60-100, 12-20' — heart and lungs share the same decades: HR 60–100, RR 12–20.",
       },
     },
+  },
   {
     id: "lib-heart-failure",
     subjectSlug: "medical-surgical-nursing",
@@ -547,6 +549,7 @@ export const LIBRARY_TOPICS: KnowledgeTopic[] = [
         text: "'LEFT = LUNGS, RIGHT = REST' — and 'weight WAIT': never wait on a 2–3 lb overnight gain.",
       },
     },
+  },
   {
     id: "lib-hypertension",
     subjectSlug: "medical-surgical-nursing",
@@ -732,6 +735,7 @@ export const LIBRARY_TOPICS: KnowledgeTopic[] = [
         text: "'120-130-140-180': normal, stage 1, stage 2, crisis — one ladder, four rungs.",
       },
     },
+  },
   {
     id: "lib-diabetes",
     subjectSlug: "medical-surgical-nursing",
@@ -912,6 +916,7 @@ export const LIBRARY_TOPICS: KnowledgeTopic[] = [
         text: "'Cold-clammy-candy, hot-dry-high' — temperature and moisture of the skin point to hypo versus hyper.",
       },
     },
+  },
   {
     id: "lib-copd",
     subjectSlug: "medical-surgical-nursing",
@@ -1086,5 +1091,349 @@ export const LIBRARY_TOPICS: KnowledgeTopic[] = [
         text: "'COPD COPES with less O2': Chronic, Obstructive, Pursed-lip, Eighty-eight to ninety-two, Exacerbation plan, Smoking cessation.",
       },
     },
-    // __MORE_TOPICS__
+  },
+  {
+    id: "lib-diuretics",
+    subjectSlug: "pharmacology",
+    title: "Diuretics",
+    slug: "diuretics",
+    description:
+      "Loop, thiazide, potassium-sparing, and osmotic diuretics: what each wastes or keeps, and what to monitor.",
+    difficulty: "Core",
+    tags: ["pharmacology", "diuretics", "electrolytes", "cardiac", "nclex"],
+    estimatedMinutes: 15,
+    examSlug: "nclex-rn",
+    relatedSlugs: ["ace-inhibitors", "heart-failure", "hypertension"],
+    quickNotes: {
+      intro:
+        "Every diuretic question is really an electrolyte question: know what each class dumps, what it keeps, and which labs prove it.",
+      sections: [
+        {
+          heading: "Classes",
+          points: [
+            "Loop (furosemide, bumetanide): strongest, work in the ascending loop — dump K+, Na+, water; risk ototoxicity.",
+            "Thiazide (hydrochlorothiazide, chlorthalidone): first-line hypertension, milder — dump K+, raise glucose and uric acid.",
+            "Potassium-sparing (spironolactone, triamterene): weak diuresis but KEEP potassium — risk hyperkalemia.",
+            "Osmotic (mannitol IV): pulls water from tissues — used for cerebral edema and intraocular pressure.",
+          ],
+        },
+        {
+          heading: "Uses",
+          points: ["Heart failure congestion, hypertension, edema states, hyperkalemia (loops + thiazides)", "Mannitol for raised intracranial pressure; acetazolamide for altitude and glaucoma (niche but tested)"],
+        },
+        {
+          heading: "Side Effects",
+          points: [
+            "Loops + thiazides: hypokalemia, hyponatremia, dehydration, hypotension, orthostatics.",
+            "Loops: ototoxicity (worse with rapid IV push and aminoglycosides). Thiazides: hyperglycemia, gout flares.",
+            "Spironolactone: hyperkalemia plus gynecomastia and menstrual changes.",
+          ],
+        },
+        {
+          heading: "Monitoring",
+          points: [
+            "Daily weights, strict I&O, orthostatic vitals, and potassium/magnesium before the next dose decision.",
+            "Rising BUN/creatinine signals over-diuresis and prerenal injury — report it.",
+          ],
+        },
+        {
+          heading: "Nursing Priorities",
+          ordered: true,
+          points: [
+            "Give in the morning so diuresis does not destroy sleep — and expect frequent bathroom trips after the dose.",
+            "Check potassium and hydration status before assuming the dose is safe to repeat.",
+            "Protect hearing with slow IV furosemide pushes and avoid stacking other ototoxic drugs.",
+          ],
+        },
+      ],
+      nclexFocus: [
+        "Hypokalemia + digoxin = lethal combination: cramps, weakness, dysrhythmias — supplement and recheck K+.",
+        "Thiazides raise glucose and uric acid: caution in diabetes and gout.",
+        "Mannitol needs a filter, crystallizes in the vial (warm to dissolve), and requires strict I&O plus neuro checks.",
+      ],
+    },
+    detailedNotes: {
+      intro:
+        "Diuretics move fluid, but exam questions score whether you move electrolytes safely with it. Anchor each class to its site of action and its potassium behavior.",
+      sections: [
+        {
+          heading: "Overview",
+          paragraphs: [
+            "Diuretics increase renal sodium and water excretion to relieve congestion, lower pressure, and correct select electrolyte emergencies. Potency and potassium effects differ by nephron segment, so the 'right' diuretic depends on the goal: rapid decongestion, chronic pressure control, potassium retention, or brain water.",
+          ],
+        },
+        {
+          heading: "Loop Diuretics",
+          paragraphs: [
+            "Furosemide and bumetanide block the Na-K-2Cl transporter in the thick ascending limb — the most powerful site available. Expect brisk diuresis within the hour (IV) with potassium, magnesium, and calcium losses. Give IV doses slowly to protect hearing, and watch aminoglycoside combinations that compound ototoxicity.",
+          ],
+        },
+        {
+          heading: "Thiazide Diuretics",
+          paragraphs: [
+            "Hydrochlorothiazide and chlorthalidone block the distal convoluted tubule's sodium-chloride channel — gentler diuresis ideal for chronic hypertension. They waste potassium like loops but add metabolic quirks: higher glucose, higher uric acid (gout), and higher lipids. They lose effectiveness as kidney function falls, where loops take over.",
+          ],
+        },
+        {
+          heading: "Potassium-Sparing Agents",
+          paragraphs: [
+            "Spironolactone (aldosterone blocker) and triamterene/amiloride keep potassium while shedding modest sodium and water — often paired with a loop or thiazide to balance losses. The trade is hyperkalemia, especially with ACE inhibitors, ARBs, kidney disease, or salt substitutes. Spironolactone's hormonal effects add gynecomastia, menstrual irregularity, and hirsutism counseling points.",
+          ],
+          callout: {
+            type: "nursing-alert",
+            text: "Hypokalemia plus digoxin can be fatal: muscle cramps, fatigue, and ventricular dysrhythmias. Recheck potassium after diuresis starts and supplement before toxicity declares itself.",
+          },
+        },
+        {
+          heading: "Osmotic Diuretics",
+          paragraphs: [
+            "Mannitol stays in the vasculature and drags tissue water with it — lowering intracranial and intraocular pressure within minutes. It demands a filter needle (crystals), strict intake-output and daily weights, serum osmolality monitoring, and crackle checks, because the mobilized fluid can briefly overload a failing heart before the kidneys clear it.",
+          ],
+        },
+        {
+          heading: "Interactions and Education",
+          paragraphs: [
+            "NSAIDs blunt diuretic effect and injure kidneys; lithium levels climb as thiazides cut its clearance; digoxin toxicity blooms in hypokalemia. Teach morning dosing, potassium-rich foods or supplements as prescribed, orthostatic precautions, and the weight-gain thresholds that trigger a call — the same 2–3 lb rule heart-failure patients live by.",
+          ],
+          callout: {
+            type: "nclex-tip",
+            text: "'Give in the morning' and 'monitor potassium and daily weight' answer a remarkable share of diuretic questions — pair every class with its K+ direction and you are covered.",
+          },
+        },
+      ],
+    },
+    flashcards: [
+      {
+        id: "lib-diur-f1",
+        front: "Which diuretic class is most potent, and what is its signature toxicity?",
+        back: "Loop diuretics (furosemide) — ototoxicity, worse with rapid IV push or aminoglycosides.",
+      },
+      {
+        id: "lib-diur-f2",
+        front: "Which class is first-line for uncomplicated hypertension, and what two labs does it raise?",
+        back: "Thiazides — raise glucose and uric acid (gout); also waste potassium.",
+      },
+      {
+        id: "lib-diur-f3",
+        front: "A patient on spironolactone also takes lisinopril and uses salt substitute. What is the danger?",
+        back: "Triple potassium stacking → hyperkalemia (peaked Ts, widened QRS, arrest). Recheck K+ and stop the substitute.",
+      },
+      {
+        id: "lib-diur-f4",
+        front: "Mannitol is ordered for raised ICP. Name three administration safeguards.",
+        back: "Filter needle (crystals), strict I&O with neuro checks, and lung-sound monitoring — mobilized fluid can overload weak hearts.",
+      },
+      {
+        id: "lib-diur-f5",
+        front: "Why are diuretics given in the morning?",
+        back: "Peak diuresis hits within hours — morning dosing protects sleep and reduces fall risk from nighttime bathroom trips.",
+      },
+      {
+        id: "lib-diur-f6",
+        front: "Your heart-failure patient on furosemide + digoxin reports cramps and nausea with K+ 3.0. What is happening?",
+        back: "Hypokalemia-driven digoxin toxicity — hold per parameters, notify the provider, recheck levels, supplement potassium.",
+      },
+    ],
+    cheatSheet: {
+      tagline: "What each class dumps or keeps — 60 seconds.",
+      blocks: [
+        {
+          title: "Classes",
+          points: ["Loop: strongest, dumps K+ (ototoxic)", "Thiazide: first-line HTN, dumps K+, raises sugar/gout", "K+-sparing: keeps K+ (hyperK risk)", "Mannitol: brain water, needs filter + I&O"],
+        },
+        {
+          title: "Watch For",
+          points: ["K+ direction per class · Mg2+ with loops", "Weights + I&O + orthostatics daily", "BUN/Cr climb = over-diuresis"],
+        },
+        {
+          title: "Give Tips",
+          points: ["Morning dosing always", "Slow IV furosemide push", "K+-rich foods or supplements as ordered"],
+        },
+        {
+          title: "Interactions",
+          points: ["HypoK + digoxin = toxicity", "Thiazides raise lithium levels", "NSAIDs blunt the effect + hurt kidneys"],
+        },
+      ],
+      mnemonic: {
+        title: "Mnemonic",
+        text: "'Loops Lose K, Thiazides Toss K, Sparers Save K' — then mannitol Moves brain water.",
+      },
+    },
+  },
+  {
+    id: "lib-ace-inhibitors",
+    subjectSlug: "pharmacology",
+    title: "ACE Inhibitors",
+    slug: "ace-inhibitors",
+    description:
+      "The '-pril' drugs: RAAS blockade for hypertension, heart failure, and kidney protection — plus cough, potassium, and pregnancy rules.",
+    difficulty: "Core",
+    tags: ["pharmacology", "cardiac", "ace-inhibitors", "nclex"],
+    estimatedMinutes: 12,
+    examSlug: "nclex-rn",
+    relatedSlugs: ["diuretics", "hypertension", "heart-failure"],
+    quickNotes: {
+      intro:
+        "If it ends in '-pril', run the same checklist: why it helps, what it raises (potassium, creatinine), what it forbids (pregnancy), and what it swells (lips and tongue).",
+      sections: [
+        {
+          heading: "Examples and Mechanism",
+          points: [
+            "Lisinopril, enalapril, captopril, ramipril — all end in '-pril'.",
+            "They block angiotensin I → angiotensin II conversion: vasodilation, less aldosterone, lower pressure and cardiac workload.",
+          ],
+        },
+        {
+          heading: "Uses",
+          points: ["Hypertension, heart failure with reduced EF, post-MI remodeling, and diabetic nephropathy (kidney protection)"],
+        },
+        {
+          heading: "Side Effects",
+          points: [
+            "Persistent dry cough (bradykinin) — the classic reason to switch to an ARB.",
+            "Hyperkalemia, first-dose hypotension, rising creatinine, and angioedema of lips/tongue/airway.",
+          ],
+        },
+        {
+          heading: "Contraindications",
+          points: [
+            "Pregnancy — teratogenic, especially second/third trimester; needs contraception counseling.",
+            "History of angioedema and bilateral renal artery stenosis; caution with existing hyperkalemia or kidney disease.",
+          ],
+        },
+        {
+          heading: "Monitoring",
+          points: [
+            "Blood pressure (including orthostatics early), potassium, creatinine/eGFR, and pregnancy status.",
+            "No potassium supplements or salt substitutes without explicit prescriber approval.",
+          ],
+        },
+        {
+          heading: "Nursing Priorities",
+          ordered: true,
+          points: [
+            "Teach the cough-versus-emergency distinction: nagging dry cough gets reported routinely; lip/tongue swelling gets emergency care.",
+            "Verify pregnancy status and contraception in every patient who could become pregnant.",
+            "Recheck potassium and creatinine after initiation and dose changes — small rises are expected, large ones are reported.",
+          ],
+        },
+      ],
+      nclexFocus: [
+        "Angioedema = stop the drug + emergency airway management; never rechallenge.",
+        "Dry cough on an ACE inhibitor → prescriber switches to an ARB ('-sartan'), which rarely causes cough.",
+        "Avoid K+ supplements and salt substitutes; monitor with diuretics that waste or spare potassium.",
+      ],
+    },
+    detailedNotes: {
+      intro:
+        "ACE inhibitors protect hearts, vessels, and kidneys through one elegant blockade — but the same pathway produces the cough, the potassium rise, and the pregnancy danger. Learn the RAAS axis once and every '-pril' question resolves the same way.",
+      sections: [
+        {
+          heading: "Overview",
+          paragraphs: [
+            "The renin-angiotensin-aldosterone system defends pressure by constricting vessels, retaining sodium and water, and remodeling the heart — useful in hemorrhage, harmful as chronic therapy targets go. ACE inhibitors interrupt this axis at the conversion step, easing load on failing hearts and shielding diabetic kidneys.",
+          ],
+        },
+        {
+          heading: "The RAAS Axis in One Minute",
+          paragraphs: [
+            "Low perfusion releases renin, which builds angiotensin I; ACE converts it to angiotensin II, which constricts vessels and triggers aldosterone-driven sodium and water retention. Blocking ACE therefore vasodilates, drops aldosterone (so potassium rises), and slows cardiac remodeling — while bradykinin accumulates and produces the famous cough.",
+          ],
+          callout: {
+            type: "key-concept",
+            text: "Block ACE → less angiotensin II → vasodilation + less aldosterone → lower pressure, higher potassium, protected kidneys — plus bradykinin cough.",
+          },
+        },
+        {
+          heading: "Indications",
+          paragraphs: [
+            "First-line or co-first-line in hypertension with compelling indications (diabetes, chronic kidney disease, heart failure, post-MI), cornerstone of HFrEF regimens alongside beta blockers, and renal-protective in diabetic nephropathy even before pressure control is the headline goal.",
+          ],
+        },
+        {
+          heading: "Adverse Effects",
+          paragraphs: [
+            "Dry persistent cough affects up to one in ten patients and resolves only by switching class. Hyperkalemia threatens patients on potassium-sparing diuretics, with kidney disease, or using salt substitutes. First-dose hypotension hits volume-depleted patients hardest — start low, monitor orthostatics. Creatinine may rise modestly; large jumps suggest renal artery stenosis or over-diuresis.",
+          ],
+          callout: {
+            type: "medications",
+            text: "Cough → switch to ARB. Swelling → stop everything and secure the airway. Rising K+ or creatinine → hold, hydrate-review, and call before the next dose.",
+          },
+        },
+        {
+          heading: "Pregnancy and Contraindications",
+          paragraphs: [
+            "ACE inhibitors are teratogenic — fetal renal injury, oligohydramnios, and skull hypoplasia cluster in later trimesters, so they are stopped before or the moment pregnancy is known. Absolute no-go history includes prior ACE-related angioedema; bilateral renal artery stenosis makes kidney function entirely angiotensin-dependent and equally forbidding.",
+          ],
+          callout: {
+            type: "nursing-alert",
+            text: "Any lip, tongue, or throat swelling on an ACE inhibitor is an airway emergency: stop the drug, call for help, prepare for airway intervention — and document a permanent allergy.",
+          },
+        },
+        {
+          heading: "Monitoring and Education",
+          paragraphs: [
+            "Check pressure sitting and standing for the first weeks, recheck potassium and creatinine within 1–2 weeks of starts and dose changes, and confirm contraception plans at every refill for patients of childbearing potential. Teach slow position changes, adherence despite feeling well, and the salt-substitute ban — then document the cough conversation so the next refill is not a surprise.",
+          ],
+        },
+      ],
+    },
+    flashcards: [
+      {
+        id: "lib-ace-f1",
+        front: "Name three ACE inhibitors and their shared suffix.",
+        back: "Lisinopril, enalapril, captopril (also ramipril) — all end in '-pril'.",
+      },
+      {
+        id: "lib-ace-f2",
+        front: "What causes the ACE-inhibitor dry cough, and what is the fix?",
+        back: "Bradykinin accumulation — switch to an ARB ('-sartan'), which rarely causes cough.",
+      },
+      {
+        id: "lib-ace-f3",
+        front: "Your patient's lips swell two hours after enalapril. Actions?",
+        back: "Angioedema emergency: stop the drug, call for help, secure the airway, document permanent allergy — never rechallenge.",
+      },
+      {
+        id: "lib-ace-f4",
+        front: "Why are ACE inhibitors stopped in pregnancy?",
+        back: "Teratogenic: fetal renal failure, oligohydramnios, skull defects — stop before or at first knowledge of pregnancy.",
+      },
+      {
+        id: "lib-ace-f5",
+        front: "Which labs and vitals are rechecked after starting an ACE inhibitor?",
+        back: "Blood pressure with orthostatics, potassium, and creatinine/eGFR within 1–2 weeks and after dose changes.",
+      },
+      {
+        id: "lib-ace-f6",
+        front: "Why are salt substitutes banned on ACE inhibitors?",
+        back: "They are potassium chloride — stacked on reduced aldosterone, they push potassium toward arrest levels.",
+      },
+    ],
+    cheatSheet: {
+      tagline: "Block, cough, potassium, pregnancy — 60 seconds.",
+      blocks: [
+        {
+          title: "RAAS Block",
+          points: ["Less angiotensin II → vasodilation", "Less aldosterone → K+ rises, kidneys protected"],
+        },
+        {
+          title: "Watch For",
+          points: ["Dry cough (→ ARB) · hyperK+ · first-dose drop", "Creatinine bump — small ok, large reported"],
+        },
+        {
+          title: "Never",
+          points: ["Pregnancy (teratogenic) · prior angioedema", "K+ supplements or salt substitutes unapproved"],
+        },
+        {
+          title: "Monitor",
+          points: ["Orthostatic BP early · K+ + creatinine 1–2 wks", "Contraception plan at every refill"],
+        },
+      ],
+      mnemonic: {
+        title: "Mnemonic",
+        text: "'Prils Protect but Provoke': Pressure down, Proteinuria down — yet Potassium up, Pregnancy forbidden.",
+      },
+    },
+  },
 ];
